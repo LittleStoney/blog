@@ -9,6 +9,7 @@ app.use('/public',express.static(__dirname+'/public'))
 app.get('/',(req,res,next) => {
     res.render('home/index.html')
 })
+//开启服务
 app.listen(8080,() => {
     console.log('http running at http://localhost:8080')
 })
