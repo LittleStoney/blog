@@ -1,0 +1,19 @@
+{
+  "name": "blog",
+  "version": "2.0.0",
+  "description": "博客第二版",
+  "main": "index.js",
+  "repository": "git@gitee.com:littlestoney/blog.git",
+  "author": "shixtao <shixtao@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon ./app"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "global": "^4.4.0",
+    "nodemon": "^2.0.2"
+  }
+}
