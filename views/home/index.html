@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans"> 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="shortcut icon" href="favicon.ico"> 
+    <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+    <link id="theme-style" rel="stylesheet" href="/public/home/css/index.css">
+	<!--[if lt IE 9]>
+		<script src="https://cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
+		<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.js"></script>
+	<![endif]-->
+    <title>小涛's 个人博客</title>
+</head> 
+<body onload="colorSet()"> 
+    <header class="header text-center">	    
+	    <h1 class="blog-name pt-lg-4 mb-0">小涛's 个人博客</h1>        
+	    <nav class="navbar navbar-expand-lg navbar-dark" >         
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+			<div id="navigation" class="collapse navbar-collapse flex-column" >
+				<div class="profile-section pt-3 pt-lg-0">
+				    <img class="profile-image mb-3 rounded-circle mx-auto" src="/public/home/images/me.JPG" alt="小涛,帅哥" width="120px" height="120px" >								
+					<div class="bio mb-3">Hi, my name is Anthony Doe. <br><a href="about.html">Find out more about me</a></div>
+					<ul class="social-list list-inline py-3 mx-auto">
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-github-alt fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="#"><i class="fab fa-codepen fa-fw"></i></a></li>
+			        </ul>
+			        <hr> 
+				</div>			
+				<ul class="navbar-nav flex-column text-left">
+					<li class="nav-item active">
+					    <a class="nav-link" href="index.html"><i class="fas fa-home fa-fw mr-2"></i>博客首页<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+					    <a class="nav-link" href="blog-post.html"><i class="fas fa-bookmark fa-fw mr-2"></i>Blog Post</a>
+					</li>
+					<li class="nav-item">
+					    <a class="nav-link" href="about.html"><i class="fas fa-user fa-fw mr-2"></i>About Me</a>
+					</li>
+				</ul>				
+				<div class="my-2 my-md-3">
+				    <a class="btn btn-primary" href="#" target="_blank">Get in Touch</a>
+				</div>
+			</div>
+		</nav>
+    </header>   
+    <div class="main-wrapper">
+	    <section class="cta-section theme-bg-light py-5">
+		    <div class="container text-center">
+			    <h2 class="heading">小涛的博客 - 一个前端爱好者的博客</h2>
+			    <div class="intro">欢迎您的访问！期待您留下宝贵的意见</div>
+			    <form class="signup-form form-inline justify-content-center pt-3">
+                    <div class="form-group">
+                        <label class="sr-only" for="semail">Your email</label>
+                        <input type="email" id="semail" name="semail1" class="form-control mr-md-1 semail" placeholder="Enter email">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+		    </div>
+	    </section>
+	    <section class="blog-list px-3 py-5 p-md-5">
+		    <div class="container">
+			    <div class="item mb-5">
+				    <div class="media">
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="/public/home/images/blog/blog-post-thumb-1.jpg" alt="" >
+					    <div class="media-body">
+						    <h3 class="title mb-1"><a href="blog-post.html">Why Every Developer Should Have A Blog</a></h3>
+						    <div class="meta mb-1"><span class="date">Published 2 days ago</span><span class="time">5 min read</span><span class="comment"><a href="#">8 comments</a></span></div>
+						    <div class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</div>
+						    <a class="more-link" href="blog-post.html">Read more &rarr;</a>
+					    </div>
+				    </div>
+			    </div>		    
+			    <nav class="blog-nav nav nav-justified my-5">
+				  <a class="nav-link-prev nav-item nav-link d-none rounded-left" href="#">Previous<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
+				  <a class="nav-link-next nav-item nav-link rounded" href="blog-list.html">Next<i class="arrow-next fas fa-long-arrow-alt-right"></i></a>
+				</nav>				
+		    </div>
+	    </section>	    
+	    <footer class="footer text-center py-2 theme-bg-dark">
+	       <small class="copyright">Designed with <i class="fas fa-heart"></i> by 3rdwavemedia for developers / More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></small>		   
+	    </footer>   
+    </div>
+    <div id="config-panel" class="config-panel d-none d-lg-block">
+        <div class="panel-inner">
+            <a id="config-trigger" class="config-trigger config-panel-hide text-center" href="#"><i class="fas fa-cog fa-spin mx-auto" data-fa-transform="down-6" ></i></a>
+            <h5 class="panel-title">选择主题</h5>
+            <ul id="color-options" class="list-inline mb-0">
+				<li class="theme-1 active list-inline-item"><a href="javascript:void(0)"></a></li>
+				<li class="theme-2 list-inline-item"><a href="javascript:void(0)"></a></li>
+				<li class="theme-3 list-inline-item"><a href="javascript:void(0)"></a></li>
+				<li class="theme-4 list-inline-item"><a href="javascript:void(0)"></a></li>
+			</ul>
+            <a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
+        </div>
+    </div>         
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="/public/home/plugins/popper.min.js"></script> 
+<script src="/public/home/plugins/bootstrap/js/bootstrap.min.js"></script> 
+<script src="/public/home/js/demo/style.js"></script>   
+</body>
+</html> 
+
