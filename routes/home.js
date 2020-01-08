@@ -1,6 +1,7 @@
 const express = require('express'),
       router =  express.Router(),
-      query = require('../config/db')
+      query = require('../config/db'),
+      log = console.log.bind(console)
 router.get('/',(req,res,next) => {
     async function queryBlogs(){
         return await query('SELECT * FROM blogs')
