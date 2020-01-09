@@ -6,6 +6,7 @@ app.set('views','./views')
 app.set('view engine','ejs')
 app.engine('html',ejs.__express)
 app.use('/public',express.static(__dirname+'/public'))
+app.use('/upload',express.static(__dirname+'/upload'))
 app.use(bodyParser.urlencoded(
     {extended:false}
 ))

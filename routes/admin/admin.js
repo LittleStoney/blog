@@ -7,13 +7,10 @@ const express = require('express'),
 const log = console.log.bind(console)
 //管理员管理首页
 router.get('/',(req,res,next) => {
-    let search = req.query.search ? req.query.search : ""
-    async function queryAdmins(){
-        return await query('SELECT * FROM admin WHERE adminname LIKE ? ORDER BY id DESC',[`%${search}%`])
-    }
+    let search = req.query.search ? req.query.search : "";
     (async () => {
         try{
-            let rows = await queryAdmins()
+            let rows = await query('SELECT * FROM admin WHERE adminname LIKE ? ORDER BY id DESC',[`%${search}%`])
             rows.forEach(item => {
                 item.time = moment(item.time * 1000).format("YYYY年MM月DD日 HH:mm:ss")
               })
@@ -41,7 +38,7 @@ router.post('/add',(req,res,next) => {
                         try {
                           let name = await query('SELECT * FROM admin WHERE adminname = ?',[adminname])  
                           if(name.length === 0){
-                            let time = Math.round((new Date().getTime())/1000)
+                            let time = Math.trunc((new Date().getTime())/1000)
                             let md5 = crypto.createHash('md5')
                             password = md5.update(password).digest('hex')
                             let addAdmin = await query('INSERT INTO admin (adminname,password,status,time) VALUES (?,?,?,?)',[adminname,password,0,time])
