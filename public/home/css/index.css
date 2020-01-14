@@ -9648,18 +9648,6 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: darkgray;
   }
 }
-/*************************** Theme Styles Section ****************************/
-/*!  
- * DevBlog - Bootstrap 4 Blog Template For Developers
- * Version: 1.1
- * Author: Xiaoying Riley
- * Copyright: 3rd Wave Media Ltd.
- * Website: http://themes.3rdwavemedia.com/
- * Twitter: @3rdwave_themes
-*/
-/* ============= Theme Mixins ============= */
-/* ============= Base ============= */
-/*********** Theme Generic **********/
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -9705,8 +9693,6 @@ h1, h2, h3, h4, h5, h6 {
 .theme-bg-dark {
   background: #223142 !important;
 }
-
-/* Header */
 .header {
   position: fixed;
   left: 0;
@@ -9720,6 +9706,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   font-size: 1.5rem;
   color: #fff;
+  text-shadow: .1em .1em .2em #fff;
 }
 .header .blog-name a:hover {
   text-decoration: none;
@@ -9895,7 +9882,6 @@ h1, h2, h3, h4, h5, h6 {
 .meta span:last-child:after {
   display: none;
 }
-
 .blog-nav .nav-link {
   background: #5ECCA9;
   color: #fff;
@@ -9922,7 +9908,6 @@ h1, h2, h3, h4, h5, h6 {
   top: 1.25rem;
   color: #fff;
 }
-
 .blog-post .title {
   font-weight: bold;
   font-size: 2rem;
@@ -9968,8 +9953,6 @@ h1, h2, h3, h4, h5, h6 {
 .blog-post .blockquote p {
   font-size: 1.5rem;
 }
-
-/* ============= About Page ============= */
 .about-section .heading {
   font-size: 2rem;
 }
@@ -10042,12 +10025,9 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
   }
 }
-/* ======= Configure Style (Remove in production) ======= */
-/* Demo theme colour variables */
 body {
   overflow-x: hidden;
 }
-
 .config-trigger {
   position: absolute;
   top: 30px;
@@ -10062,19 +10042,32 @@ body {
   border-bottom-right-radius: 0;
   text-decoration: none;
 }
+@keyframes rotation{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+.icon-chilun {
+  font-size: 22px !important;
+}
+.icon-chahao {
+  font-size: 30px !important;
+}
+.icon-chilun:before {
+  animation: rotation 2s linear infinite;
+  display: inline-block;
+}
+.icon-chilun:hover {
+  color: #fff;
+}
 .config-trigger:hover {
   background: #111820;
   text-decoration: none;
-}
-.config-trigger:hover .fa-cog {
   color: #fff;
 }
-.config-trigger .fa-cog {
-  font-size: 1.25rem;
-  display: block;
-  color: #fff;
-}
-
 .config-panel {
   position: absolute;
   top: 50px;
@@ -10145,5 +10138,3 @@ body {
 .config-panel .close .fa {
   color: #fff;
 }
-
-/*# sourceMappingURL=index.css.map */

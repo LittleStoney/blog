@@ -14,6 +14,7 @@ function query(sql,values){
             connection.query(sql,values,(err,rows) => {
                 if(err) reject(err)
                 resolve(rows)
+                connection.release()
             })
         })
     })

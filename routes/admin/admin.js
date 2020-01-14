@@ -73,7 +73,7 @@ router.get('/ajax_status',(req,res,next) => {
             try {
             let Admin = await query(`
             UPDATE admin SET status = ${status} WHERE id = ${id}
-            `.trim())
+            `)
             if(Admin.affectedRows === 1) {
                 res.send('1')
             }else{
@@ -91,7 +91,7 @@ router.get('/ajax_del',(req,res,next) => {
         try {
             let delAdmin = await query(`
             DELETE FROM admin WHERE id = ${id}
-            `.trim())
+            `)
             if(delAdmin.affectedRows == 1) {
                 res.send('1')
             }else{

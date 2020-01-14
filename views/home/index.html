@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN"> 
 <head>
-    <%- include('./public/head.html') %>
+	<%- include('./public/head.html') %>
 </head> 
 <body onload="colorSet()"> 
     <%- include('./public/header.html') %>  
     <div class="main-wrapper">
 	    <section class="cta-section theme-bg-light py-5">
 		    <div class="container text-center">
-			    <h2 class="heading">小涛的博客 - 一个前端爱好者的博客</h2>
+				<h2 class="heading">小涛的博客 ——— 一个前端爱好者的博客</h2>
 			    <div class="intro">欢迎您的访问！期待您留下宝贵的意见</div>
 			    <form class="signup-form form-inline justify-content-center pt-3">
                     <div class="form-group">
@@ -24,12 +24,20 @@
 				<% for(let data of blogs){ %>
 			    <div class="item mb-5">
 				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="/public/home/images/blog/blog-post-thumb-1.jpg" alt="" >
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="<%= data.img %>" alt="博客封面图">
 					    <div class="media-body">
 						    <h3 class="title mb-1"><a href="/article/<%= data.id %>"><%= data.title %></a></h3>
-						    <div class="meta mb-1"><span class="date">Published 2 days ago</span><span class="time">5 min read</span><span class="comment"><a href="#">8 comments</a></span></div>
-						    <div class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</div>
-						    <a class="more-link" href="blog-post.html">Read more &rarr;</a>
+							<div class="meta mb-1"><i class="iconfont icon-shizhong"></i>
+								<span class="date"><%= data.time %></span>
+								<i class="iconfont icon-renyuan"></i>
+								<span class="author"><%= data.author %></span>
+								<i class="iconfont icon-pinglun"></i>
+								<span class="comment"><a href="#"><%= data.comment %> 评论</a></span>
+								<i class="iconfont icon-liulan"></i>
+								<span class="comment"><%= data.click %></span>
+							</div>
+						    <div class="intro"><%= data.description %></div>
+						    <a class="more-link" href="/article/<%= data.id %>">更多内容 &rarr;</a>
 					    </div>
 					</div>
 				</div>
@@ -40,23 +48,9 @@
 				</nav>				
 		    </div>
 	    </section>	    
-	    <footer class="footer text-center py-2 theme-bg-dark">
-	       <small class="copyright">Designed with <i class="fas fa-heart"></i> by 3rdwavemedia for developers / More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></small>		   
-	    </footer>   
+	    <%- include('./public/footer.html') %>  
     </div>
-    <div id="config-panel" class="config-panel d-none d-lg-block">
-        <div class="panel-inner">
-            <a id="config-trigger" class="config-trigger config-panel-hide text-center" href="#"><i class="fas fa-cog fa-spin mx-auto" data-fa-transform="down-6" ></i></a>
-            <h5 class="panel-title">选择主题</h5>
-            <ul id="color-options" class="list-inline mb-0">
-				<li class="theme-1 active list-inline-item"><a href="javascript:void(0)"></a></li>
-				<li class="theme-2 list-inline-item"><a href="javascript:void(0)"></a></li>
-				<li class="theme-3 list-inline-item"><a href="javascript:void(0)"></a></li>
-				<li class="theme-4 list-inline-item"><a href="javascript:void(0)"></a></li>
-			</ul>
-            <a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
-        </div>
-    </div>         
+	<%- include('./public/color.html') %>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <script src="/public/home/plugins/popper.min.js"></script> 
 <script src="/public/home/plugins/bootstrap/js/bootstrap.min.js"></script> 

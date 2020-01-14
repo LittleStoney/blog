@@ -1,5 +1,4 @@
-
- $(function(){
+$(function(){
 	 //点击切换颜色按钮
 	 $('#config-trigger').click(function(e){	 	
 	 	e.preventDefault()	 		 	
@@ -27,10 +26,12 @@
 	 	$listItem.siblings().removeClass('active') 	
 	 	$('.header').css('backgroundColor','#5ECCA9')
 		$('.nav-link').css('backgroundColor','#5ECCA9')
+		$('.more-link').css('color','#5ECCA9')
+		$('.list-inline-item a').css('color','#5ECCA9')
 	 	$('.btn-primary').css({
 			'backgroundColor':'#5ECCA9',
 			'borderColor':'#5ECCA9'
-		})	
+		})
 		localStorage.setItem('color','#5ECCA9')
 	 })
 	 $('.theme-2 a').on('click', function() { 		
@@ -39,6 +40,8 @@
 	 	$listItem.siblings().removeClass('active') 	
 		$('.header').css('backgroundColor','#3B7EEB')
 		$('.nav-link').css('backgroundColor','#3B7EEB')
+		$('.more-link').css('color','#3B7EEB')
+		$('.list-inline-item a').css('color','#3B7EEB')
 		$('.btn-primary').css({
 			'backgroundColor':'#3B7EEB',
 			'borderColor':'#3B7EEB'
@@ -51,6 +54,8 @@
 	 	$listItem.siblings().removeClass('active') 	
 	 	$('.header').css('backgroundColor','#EEA73B')
 		$('.nav-link').css('backgroundColor','#EEA73B')
+		$('.more-link').css('color','#EEA73B')
+		$('.list-inline-item a').css('color','#EEA73B')
 	 	$('.btn-primary').css({
 			'backgroundColor':'#EEA73B',
 			'borderColor':'#EEA73B'
@@ -63,22 +68,14 @@
 	 	$listItem.siblings().removeClass('active') 	
 	 	$('.header').css('backgroundColor','#6C51A4')
 		$('.nav-link').css('backgroundColor','#6C51A4')
+		$('.more-link').css('color','#6C51A4')
+		$('.list-inline-item a').css('color','#6C51A4')
 	 	$('.btn-primary').css({
 			'backgroundColor':'#6C51A4',
 			'borderColor':'#6C51A4'
 		})	
 		localStorage.setItem('color','#6C51A4')
 	 })
-	 //颜色保存于localstorage中
-	 function colorSet(){
-	 	var color = localStorage.getItem('color')
-	 	$('.header').css('backgroundColor',color)
-	 	$('.nav-link').css('backgroundColor',color)
-	 	$('.btn-primary').css({
-	 		'backgroundColor':color,
-	 		'borderColor':color
-	 	})
-	 }
  })
 	
 

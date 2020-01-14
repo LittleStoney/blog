@@ -26,8 +26,8 @@ router.post('/add',(req,res,next) => {
     (async () => {
         try {
             let addType = await query(`
-            INSERT INTO blogstype (name,sort) VALUES (${name},${sort})
-            `.trim())
+            INSERT INTO blogstype (name,sort) VALUES ('${name}','${sort}')
+            `)
             if(addType.affectedRows === 1 ){
                 res.send("<script>alert('添加成功！');window.location.href='/admin/blogstype'</script>")
             }else{
@@ -56,8 +56,8 @@ router.post('/edit',(req,res,next) => {
     (async () => {
         try {
             let editBlog = await query(`
-            UPDATE blogstype SET name = ${name},sort = ${sort} WHERE id = ${id}
-            `.trim())
+            UPDATE blogstype SET name = '${name}',sort = ${sort} WHERE id = ${id}
+            `)
             if(editBlog.affectedRows === 1) {
                 res.send("<script>alert('修改成功!');window.location.href = '/admin/blogstype'</script>")
             }else{
@@ -75,7 +75,7 @@ router.get('/ajax_del',(req,res,next) => {
         try {
             let delBlog = await query(`
             DELETE FROM blogstype WHERE id = ${id}
-            `.trim())
+            `)
             if(delBlog.affectedRows === 1) {
                 res.send('1')
             }else{
