@@ -10138,3 +10138,54 @@ body {
 .config-panel .close .fa {
   color: #fff;
 }
+.comment {
+  font-weight: normal;
+}
+.touxiang,.content {
+  float: left;
+}
+.touxiang {
+  margin-top: 10px;
+}
+.touxiang div {
+  margin-top: 5px;
+}
+.content {
+  padding: 10px;
+  background: Gainsboro;
+  border-radius: 5px;
+  position: relative;
+  color: #000;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+.content::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 25px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 10px solid Gainsboro;
+}
+.content::after {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 25px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 10px solid Gainsboro;
+}
+.content small {
+  text-align: right;
+}
+#face {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  margin-left: 10px;
+}
+.floor p {
+  text-align: right;
+}

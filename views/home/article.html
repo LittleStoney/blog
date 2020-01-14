@@ -48,36 +48,80 @@
 						<i class="iconfont icon-renyuan"></i>
 						<span class="author"><%= blog.author %></span>
 						<i class="iconfont icon-pinglun"></i>
-						<span class="comment"><a href="#"><%= blog.comment %> 评论</a></span>
+						<span class="comment"><a href="#form"><%= blog.comment %> 评论</a></span>
 						<i class="iconfont icon-liulan"></i>
-						<span class="comment"><%= blog.click %></span>
+                        <span class="comment"><%= blog.click %></span>                      
 					</div>
 				</header>
 				<!-- 内容区 -->
 				<div class="blog-post-body">
 					<%- blog.content %>
-				</div>		    
-		    	</div>
-	    </article>
+                </div>
+                <h4 class="comment">评论区</h4>
+                <form id="form">
+                <fieldset>
+                    <legend></legend>
+                    <div class="form-group">
+                        <label>输入大名：<input type="text" required name="name" id="name"></label>
+                        <label>选择头像：
+                            <select name="face" onchange="document.images['face'].src=options[selectedIndex].value;">
+                                <option value="/public/home/images/p1.png">头像1</option>
+                                <option value="/public/home/images/p2.png">头像2</option>
+                                <option value="/public/home/images/p3.png">头像3</option>
+                                <option value="/public/home/images/p4.png">头像4</option>
+                                <option value="/public/home/images/p5.png">头像5</option>
+                                <option value="/public/home/images/p6.png">头像6</option>
+                            </select>
+                        </label>
+                        <span><img src="/public/home/images/p1.png" id="face" alt="face" width="50" height="50"></span>
+                        <textarea name="comment" rows="3" class="form-control" id="form-control" maxlength="50" placeholder="欢迎您留下宝贵的意见"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="blog-btn">提交</button>
+                    <span id="txt">0</span><span>/30</span><br><br>
+                </fieldset>
+                </form>
+                <table class="table">
+                    <tbody>
+                        <% for (let comment of comments) { %>
+                            <tr>
+                                <td>
+                                <div class="touxiang">
+                                    <img src="<%= comment.face %>" alt="人物头像" width="50" height="50">
+                                    <div><%= comment.name %></div>
+                                </div>             
+                                <div class="content">
+                                    <%= comment.content %>
+                                    <br>
+                                    <small><%= comment.time %></small>   
+                                </div>
+                                <div class="floor">
+                                    <p><%= comment.id %>楼</p>
+                                </div>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>	    
+            </div>               
+        </article>
 		<%- include('./public/footer.html') %> 
     </div>
     <%- include('./public/color.html') %>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="/public/home/plugins/popper.min.js"></script> 
-<script src="/public/home/plugins/bootstrap/js/bootstrap.min.js"></script> 
-<script src="/public/home/js/blog.js"></script>
-<script src="/public/home/js/demo/style.js"></script>
-<!-- 代码高亮 -->
+<script src="/public/home/js/style.js"></script>
 <script src="/public/ueditor/third-party/highlight/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad()</script>
+<script src="/public/home/js/bootstrap.min.js"></script>
 <script>
-    var allpre = document.querySelectorAll('pre')
-    for(var i = 0;i<allpre.length;i++){
-        var onepre = document.querySelectorAll('pre')[i]
-        var mycode = document.querySelectorAll('pre')[i].innerHTML
-        onepre.innerHTML = '<code id="mycode">' + mycode + '</code>'
-    }
-    </script>
+// 代码高亮
+hljs.initHighlightingOnLoad()
+var allpre = document.querySelectorAll('pre')
+for(var i = 0;i<allpre.length;i++){
+    var onepre = document.querySelectorAll('pre')[i]
+    var mycode = document.querySelectorAll('pre')[i].innerHTML
+    onepre.innerHTML = '<code id="mycode">' + mycode + '</code>'
+}
+</script>
+<script src="/public/home/js/form.js"></script>
 </body>
 </html> 
 

@@ -32,7 +32,7 @@
 								<i class="iconfont icon-renyuan"></i>
 								<span class="author"><%= data.author %></span>
 								<i class="iconfont icon-pinglun"></i>
-								<span class="comment"><a href="#"><%= data.comment %> 评论</a></span>
+								<span class="comment"><a href="/article/<%= data.id %>#form"><%= data.comment %> 评论</a></span>
 								<i class="iconfont icon-liulan"></i>
 								<span class="comment"><%= data.click %></span>
 							</div>
@@ -41,20 +41,22 @@
 					    </div>
 					</div>
 				</div>
-				<% } %>	    
+				<% } %>
+				<!-- 分页 -->
+				<% if(pageNum > 1) { %>
 			    <nav class="blog-nav nav nav-justified my-5">
-				  <a class="nav-link-prev nav-item nav-link d-none rounded-left" href="#">Previous<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
-				  <a class="nav-link-next nav-item nav-link rounded" href="blog-list.html">Next<i class="arrow-next fas fa-long-arrow-alt-right"></i></a>
-				</nav>				
+				<% for(let i = 1; i<= pageNum; i++) { %>
+				  <a class="nav-item nav-link rounded" href="/?page=<%= i %>"><%= i %></a>
+				<% } %>
+				</nav>	
+				<% } %>			
 		    </div>
 	    </section>	    
 	    <%- include('./public/footer.html') %>  
     </div>
 	<%- include('./public/color.html') %>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="/public/home/plugins/popper.min.js"></script> 
-<script src="/public/home/plugins/bootstrap/js/bootstrap.min.js"></script> 
-<script src="/public/home/js/demo/style.js"></script>   
+<script src="/public/home/js/style.js"></script>   
 </body>
 </html> 
 
