@@ -2,8 +2,7 @@ const express = require('express'),
       router =  express.Router(),
       query = require('../config/db'),
       fs = require('fs'),
-      moment = require('moment'),
-	  xss = require('xss')
+      moment = require('moment')
 const log = console.log.bind(console)
 const webConfigData = fs.readFileSync(__dirname + '/../config/webConfig.json')
 const webConfig = JSON.parse(webConfigData.toString())
@@ -49,7 +48,12 @@ router.get('/article/:id',(req,res,next) => {
     }
     async function queryComments(){
         return await query(`
-        SELECT * FROM comment WHERE blog_id = ${id} ORDER BY id DESC
+        SELECT * FROM comment WHERE blog_id = ${id} AND status = 1 ORDER BY id DESC
+        `)
+    }
+    async function queryReply(){
+        return await query(`
+        SELECT * FROM reply WHERE blog_id = ${id} AND status = 1
         `)
     }
     (async () => {
@@ -60,6 +64,8 @@ router.get('/article/:id',(req,res,next) => {
             let list = await listPromise
             let commentsPromise = queryComments()
             let comments = await commentsPromise
+            let replyPromise = queryReply()
+            let reply = await replyPromise
             let updateClick = await query(`
             UPDATE blogs SET click = click + 1 WHERE id = ${id}
             `)
@@ -70,7 +76,8 @@ router.get('/article/:id',(req,res,next) => {
                 webConfig:webConfig,
                 blog:blogs[0],
                 list:list[0],
-                comments:comments
+                comments:comments,
+                replys:reply
             })
         } catch (error) {
             log(error)
@@ -80,9 +87,6 @@ router.get('/article/:id',(req,res,next) => {
 //处理评论
 router.post('/blogs/:id',(req,res,next) => {
     let {name,comment,time,face} = req.body
-    log(req.body)
-	name = xss(name)
-    comment = xss(comment)
     let id = req.params.id;
 	(async () => {
 		try {
@@ -97,6 +101,25 @@ router.post('/blogs/:id',(req,res,next) => {
             log(error)
         }
     })()
+})
+//处理回复
+router.post('/reply',(req,res,next) => {
+    let user_id = req.query.id
+    let blog_id = req.query.blog_id
+    let {replyname,replycomment,replytime,replyface} = req.body;
+        (async() => {
+        try {
+            let rows = await query('INSERT INTO reply (name,content,time,status,reply_id,blog_id,face) VALUES (?,?,?,?,?,?,?)',[replyname,replycomment,replytime,1,user_id,blog_id,replyface])
+            if(rows.affectedRows === 1) {
+                res.send('ok')
+            }else{
+                res.send('fail')
+            }  
+    } catch (error) {
+        log(error)
+    }
+    })()
+
 })
 
 

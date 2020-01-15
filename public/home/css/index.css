@@ -294,6 +294,7 @@ fieldset {
   padding: 0;
   margin: 0;
   border: 0;
+  margin-top: 2rem;
 }
 
 legend {
@@ -1921,6 +1922,7 @@ textarea.form-control {
 
 .form-group {
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .form-text {
@@ -10180,7 +10182,7 @@ body {
 .content small {
   text-align: right;
 }
-#face {
+.face {
   width: 40px;
   height: 40px;
   display: inline-block;
@@ -10188,4 +10190,33 @@ body {
 }
 .floor p {
   text-align: right;
+}
+.replyedit {
+  clear:both;
+}
+.reply_info {
+  display: inline-block;
+}
+.reply_content {
+    padding: 10px;
+    background: Gainsboro;
+    border-radius: 5px;
+    position: relative;
+    color: #000;
+    margin-top: 10px;
+    margin-left: 20px;
+    display: inline-block;
+}
+.reply_content::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 25px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 10px solid Gainsboro;
+}
+.reply_area {
+  margin-top: 2rem;
+  margin-left: 2rem;
 }

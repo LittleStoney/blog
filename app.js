@@ -34,6 +34,6 @@ const adminRouter = require('./routes/admin')
 app.use('/',indexRouter)
 app.use('/admin',adminRouter)
 //开启服务
-app.listen(8080,() => {
-    console.log('http running at http://localhost:8080')
+app.listen(3000,() => {
+    console.log('http running at http://localhost:3000')
 })

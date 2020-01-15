@@ -48,7 +48,7 @@
 						<i class="iconfont icon-renyuan"></i>
 						<span class="author"><%= blog.author %></span>
 						<i class="iconfont icon-pinglun"></i>
-						<span class="comment"><a href="#form"><%= blog.comment %> 评论</a></span>
+						<span class="comment"><a href="#form"><%= blog.comment %>评论</a></span>
 						<i class="iconfont icon-liulan"></i>
                         <span class="comment"><%= blog.click %></span>                      
 					</div>
@@ -60,9 +60,8 @@
                 <h4 class="comment">评论区</h4>
                 <form id="form">
                 <fieldset>
-                    <legend></legend>
                     <div class="form-group">
-                        <label>输入大名：<input type="text" required name="name" id="name"></label>
+                        <label>输入大名：<input type="text" required name="name" maxlength="6" id="name"></label>
                         <label>选择头像：
                             <select name="face" onchange="document.images['face'].src=options[selectedIndex].value;">
                                 <option value="/public/home/images/p1.png">头像1</option>
@@ -73,7 +72,7 @@
                                 <option value="/public/home/images/p6.png">头像6</option>
                             </select>
                         </label>
-                        <span><img src="/public/home/images/p1.png" id="face" alt="face" width="50" height="50"></span>
+                        <span><img src="/public/home/images/p1.png" id="face" class="face" alt="face" width="50" height="50"></span>
                         <textarea name="comment" rows="3" class="form-control" id="form-control" maxlength="50" placeholder="欢迎您留下宝贵的意见"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" id="blog-btn">提交</button>
@@ -96,7 +95,45 @@
                                 </div>
                                 <div class="floor">
                                     <p><%= comment.id %>楼</p>
+                                    <p><a href="#<%= comment.id %>" onclick="reply('<%= comment.id %>')">回复</a></p>                       
                                 </div>
+                                    <% for (let reply of replys) { %>
+                                        <% if(reply.reply_id === comment.id){ %>
+                                    <div class="reply_area">
+                                    <span class="reply_info">
+                                        <img src="<%= reply.face %>" alt="人物头像" width="50" height="50">
+                                        <span><%= reply.name %><span class="text-info">&nbsp;回复&nbsp;</span><span id="<%= comment.id %>toname"><%= comment.name %></span>:</span>
+                                    </span>
+                                    <span class="reply_content">
+                                        <%= reply.content %><br>
+                                        <small><%= reply.time %></small>   
+                                    </span>
+                                    </div>
+                                        <% } %>
+                                    <% } %>
+                                <div class="replyedit">
+                                <form id="<%= comment.id %>" style="display: none;">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label>输入大名：<input type="text" required id="<%= comment.id %>name" maxlength="6"></label>
+                                            <label>选择头像：
+                                                <select id="<%= comment.id %>replyface" onchange="document.images['<%= comment.id %>replyface'].src=options[selectedIndex].value;">
+                                                    <option value="/public/home/images/p1.png">头像1</option>
+                                                    <option value="/public/home/images/p2.png">头像2</option>
+                                                    <option value="/public/home/images/p3.png">头像3</option>
+                                                    <option value="/public/home/images/p4.png">头像4</option>
+                                                    <option value="/public/home/images/p5.png">头像5</option>
+                                                    <option value="/public/home/images/p6.png">头像6</option>
+                                                </select>
+                                            </label>
+                                            <span><img src="/public/home/images/p1.png" class="face" id="<%= comment.id %>replyface" alt="face" width="50" height="50"></span>
+                                            <textarea id="<%= comment.id %>reply" rows="3" class="form-control" maxlength="50" placeholder="回复区"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">回复</button>
+                                        <span id="txt">0</span><span>/30</span><br><br>
+                                    </fieldset>
+                                </form>
+                                </div>                            
                                 </td>
                             </tr>
                         <% } %>
@@ -110,7 +147,8 @@
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <script src="/public/home/js/style.js"></script>
 <script src="/public/ueditor/third-party/highlight/highlight.pack.js"></script>
-<script src="/public/home/js/bootstrap.min.js"></script>
+<script defer src="/public/home/js/bootstrap.min.js"></script>
+<script defer src="/public/home/js/xss.min.js"></script>
 <script>
 // 代码高亮
 hljs.initHighlightingOnLoad()
