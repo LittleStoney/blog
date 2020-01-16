@@ -12,7 +12,7 @@
 			    <div class="intro">欢迎您的访问！期待您留下宝贵的意见</div>
 			    <form class="signup-form form-inline justify-content-center pt-3">
                     <div class="form-group" style="margin: 0;">
-                        <input type="text" id="" name="" class="form-control mr-md-1 " placeholder="输入您想搜索的文章">
+                        <input type="text" onkeyup="this.value = this.value.trim()" name="search" class="form-control mr-md-1 " placeholder="输入您想搜索的文章">
                     </div>
                     <button type="submit" class="btn btn-primary">搜索</button>
                 </form>
@@ -25,10 +25,12 @@
 				    <div class="media">
 					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="<%= data.img %>" alt="博客封面图">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="/article/<%= data.id %>"><%= data.title %></a></h3>
+						    <h2 class="title mb-1">
+								<a href="/article/<%= data.id %>"><%= data.title %></a>
+							</h2>
 							<div class="meta mb-1">
 								<i class="iconfont icon-bokeyuan"></i>
-						<span title="博客类型"><%= data.type %>&nbsp;
+							<span title="博客类型"><%= data.type %>&nbsp;
 							<span class="text-info">
 								<% for(let list of lists){ %>
 									<% if(data.cid === list.id){ %>
@@ -66,7 +68,7 @@
     </div>
 	<%- include('./public/color.html') %>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="/public/home/js/style.js"></script>   
+<script src="/public/home/js/style.js"></script>
 </body>
 </html> 
 

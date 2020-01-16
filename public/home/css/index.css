@@ -9911,8 +9911,11 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 .blog-post .title {
-  font-weight: bold;
+  
   font-size: 2rem;
+}
+.title a {
+  font-weight: normal;
 }
 .blog-post .blog-post-body p, .blog-post .blog-post-body li {
   font-size: 1.125rem;

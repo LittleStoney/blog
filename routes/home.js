@@ -10,12 +10,11 @@ const webConfig = JSON.parse(webConfigData.toString())
 router.get('/',(req,res,next) => {
     let page = req.query.page || 1
     let start = (page - 1 ) * 6
-    let end = page * 6;
+    let end = page * 6
+    let search = req.query.search || '';
     (async () => {
         try {
-            let blogs = await query(`
-            SELECT * FROM blogs ORDER BY id DESC LIMIT ${start}, ${end}
-            `)
+            let blogs = await query('SELECT * FROM blogs WHERE title LIKE ? ORDER BY id DESC LIMIT ?, ?',[`%${search}%`,start,end])
             let num = await query(`
             SELECT COUNT(*) AS num FROM blogs
             `)
@@ -32,7 +31,8 @@ router.get('/',(req,res,next) => {
                 blogs:blogs,
                 pageNum:pageNum,
                 page:page,
-                lists:lists
+                lists:lists,
+                search:search
             })
         } catch (error) {
             log(error)
@@ -125,10 +125,6 @@ router.post('/reply',(req,res,next) => {
     })()
 
 })
-
-
-
-
 
 
 module.exports = router
