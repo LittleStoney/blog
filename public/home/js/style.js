@@ -76,6 +76,6 @@ $(function(){
 		})	
 		localStorage.setItem('color','#6C51A4')
 	 })
- })
+})
 	
 

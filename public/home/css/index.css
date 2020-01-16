@@ -10025,6 +10025,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   .signup-form .btn-primary {
     width: 100%;
+    margin-top: 1rem;
   }
 }
 body {

@@ -88,20 +88,10 @@ function reply(user_id){
             success:function(data){
                 var toname = $('#' + user_id + 'toname').html()
                 if(data === 'ok') {
-                    $('#' + user_id).parent().prepend(`
-                    <div class="reply_area">
-                        <span class="reply_info">
-                            <img src="${replyface}" alt="人物头像" width="50" height="50">
-                            <span>${replyname}<span class="text-info">&nbsp;回复&nbsp;</span><span id=""></span>:</span>
-                        </span>
-                        <span class="reply_content">
-                            ${replycomment}<br>
-                            <small>${replytime}</small>   
-                        </span>
-                        </div>
-                    `)
+                    $('#' + user_id).parent().prepend("<div class=\"reply_area\"><span class=\"reply_info\"><img src=\"".concat(replyface, "\" alt=\"\u4EBA\u7269\u5934\u50CF\" width=\"50\" height=\"50\"> <span>").concat(replyname, "<span class=\"text-info\">&nbsp;\u56DE\u590D&nbsp;</span><span id=\"\"></span>").concat(toname, ":</span></span><span class=\"reply_content\">").concat(replycomment, "<br><small>").concat(replytime, "</small></span></div>"))
                     $('#' + user_id + 'reply').val('')
                     $('#' + user_id + 'name').val('')
+                    $('#' + user_id).hide()
                 }
             },
             error:function(error){

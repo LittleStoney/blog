@@ -3,7 +3,8 @@ const express = require('express'),
       ejs = require('ejs'),
       bodyParser = require('body-parser'),
       ueditor = require('ueditor'),
-      path = require('path')
+      path = require('path'),
+      session = require('express-session')
 app.set('views','./views')
 app.set('view engine','ejs')
 app.engine('html',ejs.__express)
@@ -12,6 +13,12 @@ app.use('/upload',express.static(__dirname+'/upload'))
 app.use(bodyParser.urlencoded(
     {extended:false}
 ))
+app.use(session({
+    secret: 'shixtao',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {maxAge: 1000*60*24*30},
+  }))
 app.use('/public/ueditor/ueditors', ueditor(path.join(__dirname, ''), (req, res, next) => {
     if (req.query.action === 'uploadimage') {
         let foo = req.ueditor

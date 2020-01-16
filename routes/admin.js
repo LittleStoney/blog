@@ -1,6 +1,53 @@
 const express = require('express'),
       router = express.Router(),
-      log = console.log.bind(console)
+      crypto = require('crypto'),
+      query = require('../config/db')
+const log = console.log.bind(console)
+//监听用户访问
+router.use((req,res,next) => {
+	if (req.url != '/login' && req.url != '/check') {
+		if (req.session.YzmMessageIsAdmin && req.session.YzmMessagePass) {
+			next()
+		}else{
+			res.send("<script>window.location.href='/admin/login'</script>")
+		}
+	}else{
+		next()
+	}
+})
+//登录页
+router.get('/login',(req,res,next) => {
+    res.render('admin/login.html')
+})
+//登录页处理
+router.post('/check',(req,res,next) => {
+    let {adminname,password} = req.body
+	if(adminname) {
+		if(password) {
+			let md5 = crypto.createHash('md5')
+			password = md5.update(password).digest('hex');
+			(async () => {
+				try {
+                    let namerows = await query('SELECT * FROM admin WHERE adminname = ?  AND status = ?',[adminname,0])
+                    if(namerows.length) {
+                        let passrows = await query('SELECT * FROM admin WHERE adminname = ? AND password = ?  AND status = ?',[adminname,password,0])
+                        if(passrows.length) {
+                            req.session.YzmMessageIsAdmin = true
+                            req.session.YzmMessagePass = true
+                            res.send('ok')
+                        }else{
+                            res.send('Nopass')
+                        }
+                    }else{
+                        res.send('Noname')
+                    }
+                } catch (error) {
+                    log(error)
+                }
+			})()
+        }
+    }
+})
 //后台首页
 router.get('/',(req,res,next) => {
     res.render('admin/index.html')

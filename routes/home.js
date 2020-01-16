@@ -19,6 +19,9 @@ router.get('/',(req,res,next) => {
             let num = await query(`
             SELECT COUNT(*) AS num FROM blogs
             `)
+            let lists = await query(`
+            SELECT * FROM blogstype
+            `)
             num = num[0].num  //得到总页数
             let pageNum = Math.ceil(num / 6 )
             for (const item of blogs) {
@@ -28,7 +31,8 @@ router.get('/',(req,res,next) => {
                 webConfig:webConfig,
                 blogs:blogs,
                 pageNum:pageNum,
-                page:page
+                page:page,
+                lists:lists
             })
         } catch (error) {
             log(error)

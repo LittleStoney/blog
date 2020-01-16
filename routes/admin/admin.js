@@ -47,7 +47,9 @@ router.post('/add',(req,res,next) => {
                             }else{
                                 res.send("<script>alert('添加失败！');history.go(-1);</script>")
                             }
-                          }
+                          }else{
+							 res.send("<script>alert('该用户名已注册，请重新输入！');history.go(-1);</script>")
+						  }
                         } catch (error) {
                            log(error) 
                         }
