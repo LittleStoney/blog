@@ -1,7 +1,7 @@
 {
   "name": "blog",
   "version": "2.0.0",
-  "description": "博客第二版",
+  "description": "博客第二版,欢迎您留下宝贵的意见",
   "main": "index.js",
   "repository": "git@gitee.com:littlestoney/blog.git",
   "author": "shixtao <shixtao@qq.com>",
