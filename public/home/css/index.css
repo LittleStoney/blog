@@ -5964,11 +5964,6 @@ button.bg-dark:focus {
 .rounded-lg {
   border-radius: 0.3rem !important;
 }
-
-.rounded-circle {
-  border-radius: 100% !important;
-}
-
 .rounded-pill {
   border-radius: 50rem !important;
 }
@@ -9764,14 +9759,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 @keyframes rotation{
 	from{
-		transform: rotate(360deg);
+		transform: rotate(0deg);
 	}
 	to{
-		transform: rotate(720deg);
+		transform: rotate(360deg);
 	}
 }
 .profile-image:hover {
-	animation: rotation 1.2s;
+	animation: rotation 1s;
 }
 .profile-section .bio {
   font-size: 0.875rem;

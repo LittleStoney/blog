@@ -114,6 +114,7 @@ router.post('/reply',(req,res,next) => {
         (async() => {
         try {
             let rows = await query('INSERT INTO reply (name,content,time,status,reply_id,blog_id,face) VALUES (?,?,?,?,?,?,?)',[replyname,replycomment,replytime,1,user_id,blog_id,replyface])
+            let updateComment = await query(`UPDATE blogs SET comment = comment + 1 WHERE id = ${blog_id}`)
             if(rows.affectedRows === 1) {
                 res.send('ok')
             }else{

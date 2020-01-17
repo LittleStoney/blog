@@ -24,7 +24,7 @@
     $('.more-link').css('color','#6C51A4')
 	}
     </script>
-    <link id="theme-style" rel="stylesheet" href="/public/home/css/index.css">
+    <link rel="stylesheet" href="/public/home/css/index.css">
     <link rel="shortcut icon" href="/public/home/images/favicon.ico">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_1611091_vrwagneyj2.css">
     <!--[if lt IE 9]>
@@ -44,15 +44,15 @@
                     </h2>
 					<div class="meta mb-3">
                         <i class="iconfont icon-bokeyuan"></i>
-                        <span class="type"><%= blog.type %>&nbsp;<span class="text-info"><%= list.name %></span></span>                       
+                        <span title="博客类型"><%= blog.type %>&nbsp;<span class="text-info"><%= list.name %></span></span>                       
 						<i class="iconfont icon-shizhong"></i>
-						<span class="date"><%= blog.time %></span>						
+						<span title="发表时间"><%= blog.time %></span>						
 						<i class="iconfont icon-renyuan"></i>
-						<span class="author"><%= blog.author %></span>
+						<span title="博客作者"><%= blog.author %></span>
 						<i class="iconfont icon-pinglun"></i>
-						<span class="comment"><a href="#form"><%= blog.comment %>评论</a></span>
+						<span title="评论"><a href="#form"><%= blog.comment %>评论</a></span>
 						<i class="iconfont icon-liulan"></i>
-                        <span class="comment"><%= blog.click %></span>                      
+                        <span title="浏览量"><%= blog.click %></span>                      
 					</div>
 				</header>
 				<!-- 内容区 -->

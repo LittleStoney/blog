@@ -4,7 +4,7 @@ const pool = mysql.createPool({
     host:'localhost',
     user:'root',
     password:'13579asd',
-    database:'blog',
+    database:'blogv2',
     port:'3306'
 })
 function query(sql,values){
