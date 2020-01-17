@@ -2,6 +2,7 @@ const express = require('express'),
       router = express.Router(),
       crypto = require('crypto'),
       query = require('../config/db')
+
 const log = console.log.bind(console)
 //监听用户访问
 router.use((req,res,next) => {
@@ -81,4 +82,5 @@ router.use('/admin',adminRouter)
 //系统管理
 let systemRouter = require('./admin/system')
 router.use('/system',systemRouter)
+
 module.exports = router

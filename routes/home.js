@@ -3,6 +3,7 @@ const express = require('express'),
       query = require('../config/db'),
       fs = require('fs'),
       moment = require('moment')
+
 const log = console.log.bind(console)
 const webConfigData = fs.readFileSync(__dirname + '/../config/webConfig.json')
 const webConfig = JSON.parse(webConfigData.toString())
@@ -126,6 +127,5 @@ router.post('/reply',(req,res,next) => {
     })()
 
 })
-
 
 module.exports = router

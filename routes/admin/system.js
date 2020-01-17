@@ -4,6 +4,7 @@ const express = require('express'),
       multer = require('multer'),
       upload = multer({dest:'tmp/'}),
       uploads = require('../../common/uploads')
+
 const log = console.log.bind(console)
 function readFile(filename) {
     return new Promise((resolve,reject) => {
@@ -45,5 +46,6 @@ router.post('/save',upload.single('logo'),(req,res,next) => {
 		fs.unlinkSync(__dirname+'/../../'+logo)
     }
     res.send("<script>alert('修改成功');window.location.href='/admin/system'</script>")
-})    
+})
+
 module.exports = router

@@ -1,6 +1,7 @@
 const express = require('express'),
       router = express.Router(),
       query = require('../../config/db')
+      
 const log = console.log.bind(console)
 //查询评论
 router.get('/',(req,res,next) => {

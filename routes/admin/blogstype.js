@@ -1,8 +1,8 @@
 const express = require('express'),
       router = express.Router(),
       query = require('../../config/db')
-const log = console.log.bind(console)
 
+const log = console.log.bind(console)
 //博客分类首页
 router.get('/',(req,res,next) => {
     (async () => {
@@ -86,4 +86,5 @@ router.get('/ajax_del',(req,res,next) => {
         }
     })()
 })
+
 module.exports = router
