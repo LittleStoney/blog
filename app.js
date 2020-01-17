@@ -2,7 +2,7 @@ const express = require('express'),
       app = express(),
       ejs = require('ejs'),
       bodyParser = require('body-parser'),
-      ueditor = require('ueditor'),
+      ueditor = require('ueditor')
       path = require('path'),
       session = require('express-session')
 app.set('views','./views')
@@ -10,6 +10,7 @@ app.set('view engine','ejs')
 app.engine('html',ejs.__express)
 app.use('/public',express.static(__dirname+'/public'))
 app.use('/upload',express.static(__dirname+'/upload'))
+app.use('/images',express.static(__dirname+'/images'))
 app.use(bodyParser.urlencoded(
     {extended:false}
 ))
@@ -40,6 +41,9 @@ const indexRouter = require('./routes/home')
 const adminRouter = require('./routes/admin')
 app.use('/',indexRouter)
 app.use('/admin',adminRouter)
+app.use((req,res,next) => {
+    res.send('404 NOT found')
+  })
 //开启服务
 app.listen(3000,() => {
     console.log('http running at http://localhost:3000')
