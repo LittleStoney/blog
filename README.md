@@ -1,32 +1,24 @@
-# blog
+# blogv2
 
 #### 介绍
-个人博客源码，后台由express搭建
-
-#### 软件架构
-软件架构说明
-
+个人博客源码，后台由express搭建,前台模板引擎为ejs
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  yarn or npm install 安装依赖
+2.  **添加数据库，mysql执行sql文件**
+3.  yarn start or npm run start 启动
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+  后台管理初始账号：123456 初始密码：12345678
 
 #### 参与贡献
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+    *Copyright © 2019 Shixtao*
 
-
-#### 码云特技
+## 已知bug
++   前台回复评论 to 某人时 会一定概率显示undefined
++   后台session过期会在浮动框架中显示登陆页面
 
 
