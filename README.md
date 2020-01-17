@@ -14,6 +14,8 @@
   后台管理初始账号：123456 初始密码：12345678
   开启https服务：引入redirectToHTTPS yarn add redirectToHTTPS  or npm i redirectToHTTPS   --save
 
+
+```
 const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS， //引入重定向模块
       fs = require('fs'),
       http = require('http'),
@@ -32,6 +34,8 @@ let httpsServer = https.createServer(options,app)
 httpsServer.listen(443, () => {
     console.log('HTTPS Listening at https://localhost'
 })
+```
+
 
 
 #### 参与贡献
