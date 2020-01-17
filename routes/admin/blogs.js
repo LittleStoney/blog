@@ -5,7 +5,7 @@ const express = require('express'),
       pagess = require('../../common/page'),
       fs = require('fs'),
       multer = require('multer'),
-      upload = multer({dest:'temp/'}),
+      upload = multer({dest:'tmp/'}),
       uploads = require('../../common/uploads')
 const log = console.log.bind(console)
 //博客管理首页

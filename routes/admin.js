@@ -23,6 +23,12 @@ router.get('/login',(req,res,next) => {
     res.render('admin/login.html')
     }
 })
+//退出登录
+router.get('/logout',(req,res,next) => {
+    req.session.YzmMessageIsAdmin = false
+    req.session.YzmMessageUsername = false
+    res.send("<script>alert('退出成功！');window.location.href='/admin/login'</script>")
+})
 //登录页处理
 router.post('/check',(req,res,next) => {
     let {adminname,password} = req.body
