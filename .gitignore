@@ -1,6 +1,7 @@
-# 日志
+# 忽略文件
 logs
 *.log
+nodemon.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
