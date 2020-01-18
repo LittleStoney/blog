@@ -32,7 +32,7 @@ httpserver.listen(80, () => {
 })
 let httpsServer = https.createServer(options,app)
 httpsServer.listen(443, () => {
-    console.log('HTTPS Listening at https://localhost'
+    console.log('HTTPS Listening at https://localhost')
 })
 ```
 
