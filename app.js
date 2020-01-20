@@ -2,7 +2,7 @@ const express = require('express'),
       app = express(),
       ejs = require('ejs'),
       bodyParser = require('body-parser'),
-      ueditor = require('ueditor')
+      ueditor = require('ueditor'),
       path = require('path'),
       session = require('express-session')
 app.set('views','./views')
