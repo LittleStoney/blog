@@ -4,10 +4,12 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       ueditor = require('ueditor'),
       path = require('path'),
-      session = require('express-session')
+      session = require('express-session'),
+      compression = require('compression')
 app.set('views','./views')
 app.set('view engine','ejs')
-app.engine('html',ejs.__express)
+app.engine('html', ejs.__express)
+app.use(compression())
 app.use('/public',express.static(__dirname+'/public'))
 app.use('/upload',express.static(__dirname+'/upload'))
 app.use('/images',express.static(__dirname+'/images'))
