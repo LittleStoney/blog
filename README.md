@@ -7,7 +7,7 @@
 
 1.  yarn or npm install 安装依赖
 2.  **添加数据库，mysql执行sql文件**
-3.  yarn start or npm run start 启动
+3.  yarn start or npm start 启动
 
 #### 使用说明
 
