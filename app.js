@@ -1,27 +1,27 @@
 const express = require('express'),
-      app = express(),
-      ejs = require('ejs'),
-      bodyParser = require('body-parser'),
-      ueditor = require('ueditor'),
-      path = require('path'),
-      session = require('express-session'),
-      compression = require('compression')
-app.set('views','./views')
-app.set('view engine','ejs')
+    app = express(),
+    ejs = require('ejs'),
+    bodyParser = require('body-parser'),
+    ueditor = require('ueditor'),
+    path = require('path'),
+    session = require('express-session'),
+    compression = require('compression')
+app.set('views', './views')
+app.set('view engine', 'ejs')
 app.engine('html', ejs.__express)
 app.use(compression())
-app.use('/public',express.static(__dirname+'/public'))
-app.use('/upload',express.static(__dirname+'/upload'))
-app.use('/images',express.static(__dirname+'/images'))
+app.use('/public', express.static(__dirname + '/public'))
+app.use('/upload', express.static(__dirname + '/upload'))
+app.use('/images', express.static(__dirname + '/images'))
 app.use(bodyParser.urlencoded(
-    {extended:false}
+    { extended: false }
 ))
 app.use(session({
     secret: 'shixtao',
     resave: false,
     saveUninitialized: true,
-    cookie: {maxAge: 1000*60*24*30},
-  }))
+    cookie: { maxAge: 1000 * 60 * 24 * 30 },
+}))
 app.use('/public/ueditor/ueditors', ueditor(path.join(__dirname, ''), (req, res, next) => {
     if (req.query.action === 'uploadimage') {
         let foo = req.ueditor
@@ -41,12 +41,12 @@ app.use('/public/ueditor/ueditors', ueditor(path.join(__dirname, ''), (req, res,
 }))
 const indexRouter = require('./routes/home')
 const adminRouter = require('./routes/admin')
-app.use('/',indexRouter)
-app.use('/admin',adminRouter)
-app.use((req,res,next) => {
-    res.send('404 NOT found')
-  })
+app.use('/', indexRouter)
+app.use('/admin', adminRouter)
+app.use((req, res, next) => {
+    res.render('404.html')
+})
 //开启服务
-app.listen(3000,() => {
+app.listen(3000, () => {
     console.log('http running at http://localhost:3000')
 })
