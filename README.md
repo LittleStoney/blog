@@ -6,7 +6,7 @@
 #### 安装教程
 
 1.  `yarn or npm install `安装依赖
-2.  **添加数据库，mysql执行sql文件**（必须）
+2.  **添加数据库，mysql执行sql文件**（必须）。注意数据库的名称和账户、密码，在config目录下的db.js可以修改
 3.  `yarn start or npm start` 启动
 
 #### 使用说明
