@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <%- include('./public/head.html') %>
+</head>
+
+<body onload="colorSet()">
+    <header class="header text-center">
+        <h1 class="blog-name pt-lg-4 mb-0"><%= webConfig.title %></h1>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+                aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navigation" class="collapse navbar-collapse flex-column">
+                <div class="profile-section pt-3 pt-lg-0">
+                    <img class="profile-image mb-3 mx-auto" src="<%= webConfig.logo %>" alt="小涛,帅哥,logo图">
+                    <div class="bio mb-3">Hi，欢迎访问我的博客，和我一起学习<strong>Web前端</strong>和<strong>TypeScript</strong>知识吧！<br><a
+                            href="https://gitee.com/littlestoney/blog" target="_blank">本博客源代码地址</a>，欢迎star</div>
+                    <ul class="social-list list-inline py-3 mx-auto">
+                        <li class="list-inline-item"><a href="tencent://message/?uin=1085813343&Site=QQ交谈&Menu=yes"
+                                target="blank" title="1085813343"><i class="iconfont icon-qq"></i></a></li>
+                        <li class="list-inline-item"><a href="javascript:void(0)" title="13088183198"><i
+                                    class="iconfont icon-weixin"></i></a></li>
+                        <li class="list-inline-item"><a href="https://gitee.com/littlestoney" target="_blank"><i
+                                    class="iconfont icon-github"></i></a></li>
+                        <li class="list-inline-item"><a href="mailto:Shixtao@qq.com"><i
+                                    class="iconfont icon-youxiang"></i></a></li>
+                    </ul>
+                    <hr>
+                </div>
+                <ul class="navbar-nav flex-column text-left">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/"><i class="iconfont icon-shouye"></i>&nbsp;博客首页<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="/list" class="nav-link"><i class="iconfont icon-icon"></i>&nbsp;博客分类</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin"><i class="iconfont icon-bokeyuan"></i>&nbsp;博客管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:alert('小白一个，低调为主')"><i
+                                class="iconfont icon-guanyu"></i>&nbsp;关于作者</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="main-wrapper">
+        <section class="cta-section theme-bg-light py-5">
+            <div class="container text-center">
+                <h2 class="heading">小涛的博客 ——— 选择你喜欢的博客分类</h2>
+                <ul class="navbar-nav flex-column" style="text-align: left;">
+                    <% for(let list of lists) { %>
+                    <li class="nav-item list-nav-item">
+                        <a class="blog-type" href="/list?listSearch=<%= list.id %>"><%= list.name %></a>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+        </section>
+        <section class="blog-list px-3 py-5 p-md-5">
+            <div class="container">
+                <% for(let data of blogs){ %>
+                <div class="item mb-5">
+                    <div class="media">
+                        <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="<%= data.img %>" alt="博客封面图">
+                        <div class="media-body">
+                            <h2 class="title mb-1">
+                                <a href="/article/<%= data.id %>"><%= data.title %></a>
+                            </h2>
+                            <div class="meta mb-1">
+                                <i class="iconfont icon-bokeyuan"></i>
+                                <span title="博客类型"><%= data.type %>&nbsp;
+                                    <span class="text-info">
+                                        <% for(let list of lists){ %>
+                                        <% if(data.cid === list.id){ %>
+                                        <%= list.name %>
+                                        <% } %>
+                                        <% } %>
+                                    </span>
+                                </span>
+                                <i class="iconfont icon-shizhong"></i>
+                                <span title="发表时间"><%= data.time %></span>
+                                <i class="iconfont icon-renyuan"></i>
+                                <span title="博客作者"><%= data.author %></span>
+                                <i class="iconfont icon-pinglun"></i>
+                                <span title="评论"><a href="/article/<%= data.id %>#form"><%= data.comment %>
+                                        评论</a></span>
+                                <i class="iconfont icon-liulan"></i>
+                                <span title="浏览量"><%= data.click %></span>
+                            </div>
+                            <div class="intro"><%= data.description %></div>
+                            <a class="more-link" href="/article/<%= data.id %>">更多内容 &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </section>
+        <%- include('./public/footer.html') %>
+    </div>
+    <%- include('./public/color.html') %>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/public/home/js/style.js"></script>
+    <script defer src="/public/home/js/bootstrap.min.js"></script>
+</body>
+
+</html>

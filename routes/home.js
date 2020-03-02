@@ -40,6 +40,26 @@ router.get('/', (req, res, next) => {
         }
     })()
 })
+// 博客分类页
+router.get('/list', (req, res, next) => {
+    let listSearch = req.query.listSearch ? req.query.listSearch : "";
+    (async () => {
+        try {
+            let lists = await query(`
+            SELECT * FROM blogstype
+            `)
+            let blogs = await query(`
+            SELECT * FROM blogs WHERE cid LIKE ?
+            `, [`%${listSearch}%`])
+            blogs.forEach(item => {
+                item.time = moment(item.time * 1000).format("YYYY年MM月DD日 HH:mm:ss")
+            })
+            res.render('home/list.html', { webConfig, lists, blogs })
+        } catch (error) {
+            log(error)
+        }
+    })()
+})
 //博客文章页
 router.get('/article/:id', (req, res, next) => {
     let id = req.params.id
@@ -78,10 +98,10 @@ router.get('/article/:id', (req, res, next) => {
                 item.time = moment(item.time * 1000).format("YYYY年MM月DD日 HH:mm:ss")
             })
             res.render('home/article.html', {
-                webConfig: webConfig,
+                webConfig,
                 blog: blogs[0],
                 list: list[0],
-                comments: comments,
+                comments,
                 replys: reply
             })
         } catch (error) {

@@ -1,75 +1,79 @@
 <!DOCTYPE html>
-<html lang="zh-CN"> 
+<html lang="zh-CN">
+
 <head>
 	<%- include('./public/head.html') %>
-</head> 
-<body onload="colorSet()"> 
-    <%- include('./public/header.html') %>  
-    <div class="main-wrapper">
-	    <section class="cta-section theme-bg-light py-5">
-		    <div class="container text-center">
+</head>
+
+<body onload="colorSet()">
+	<%- include('./public/header.html') %>
+	<div class="main-wrapper">
+		<section class="cta-section theme-bg-light py-5">
+			<div class="container text-center">
 				<h2 class="heading">小涛的博客 ——— 一个前端爱好者的博客</h2>
-			    <div class="intro">欢迎您的访问！期待您留下宝贵的意见</div>
-			    <form class="signup-form form-inline justify-content-center pt-3">
-                    <div class="form-group" style="margin: 0;">
-                        <input type="text" onkeyup="this.value = this.value.trim()" name="search" class="form-control mr-md-1 " placeholder="输入您想搜索的文章">
-                    </div>
-                    <button type="submit" class="btn btn-primary">搜索</button>
-                </form>
-		    </div>
-	    </section>
-	    <section class="blog-list px-3 py-5 p-md-5">
-		    <div class="container">
+				<div class="intro">欢迎您的访问！期待您留下宝贵的意见</div>
+				<form class="signup-form form-inline justify-content-center pt-3">
+					<div class="form-group" style="margin: 0;">
+						<input type="text" onkeyup="this.value = this.value.trim()" name="search"
+							class="form-control mr-md-1 " placeholder="输入您想搜索的文章">
+					</div>
+					<button type="submit" class="btn btn-primary">搜索</button>
+				</form>
+			</div>
+		</section>
+		<section class="blog-list px-3 py-5 p-md-5">
+			<div class="container">
 				<% for(let data of blogs){ %>
-			    <div class="item mb-5">
-				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="<%= data.img %>" alt="博客封面图">
-					    <div class="media-body">
-						    <h2 class="title mb-1">
+				<div class="item mb-5">
+					<div class="media">
+						<img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="<%= data.img %>" alt="博客封面图">
+						<div class="media-body">
+							<h2 class="title mb-1">
 								<a href="/article/<%= data.id %>"><%= data.title %></a>
 							</h2>
 							<div class="meta mb-1">
 								<i class="iconfont icon-bokeyuan"></i>
-							<span title="博客类型"><%= data.type %>&nbsp;
-							<span class="text-info">
-								<% for(let list of lists){ %>
-									<% if(data.cid === list.id){ %>
-									<%= list.name %>
-									<% } %>
-								<% } %>
-							</span>
-						</span>
+								<span title="博客类型"><%= data.type %>&nbsp;
+									<span class="text-info">
+										<% for(let list of lists){ %>
+										<% if(data.cid === list.id){ %>
+										<%= list.name %>
+										<% } %>
+										<% } %>
+									</span>
+								</span>
 								<i class="iconfont icon-shizhong"></i>
 								<span title="发表时间"><%= data.time %></span>
 								<i class="iconfont icon-renyuan"></i>
 								<span title="博客作者"><%= data.author %></span>
 								<i class="iconfont icon-pinglun"></i>
-								<span title="评论"><a href="/article/<%= data.id %>#form"><%= data.comment %> 评论</a></span>
+								<span title="评论"><a href="/article/<%= data.id %>#form"><%= data.comment %>
+										评论</a></span>
 								<i class="iconfont icon-liulan"></i>
 								<span title="浏览量"><%= data.click %></span>
 							</div>
-						    <div class="intro"><%= data.description %></div>
-						    <a class="more-link" href="/article/<%= data.id %>">更多内容 &rarr;</a>
-					    </div>
+							<div class="intro"><%= data.description %></div>
+							<a class="more-link" href="/article/<%= data.id %>">更多内容 &rarr;</a>
+						</div>
 					</div>
 				</div>
 				<% } %>
 				<!-- 分页 -->
 				<% if(pageNum > 1) { %>
-			    <nav class="blog-nav nav nav-justified my-5">
-				<% for(let i = 1; i<= pageNum; i++) { %>
-				  <a class="nav-item nav-link rounded" href="/?page=<%= i %>"><%= i %></a>
+				<nav class="blog-nav nav  my-5">
+					<% for(let i = 1; i<= pageNum; i++) { %>
+					<a class="nav-item nav-link rounded" href="/?page=<%= i %>"><%= i %></a>
+					<% } %>
+				</nav>
 				<% } %>
-				</nav>	
-				<% } %>			
-		    </div>
-	    </section>	    
-	    <%- include('./public/footer.html') %>  
-    </div>
+			</div>
+		</section>
+		<%- include('./public/footer.html') %>
+	</div>
 	<%- include('./public/color.html') %>
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="/public/home/js/style.js"></script>
-<script defer src="/public/home/js/bootstrap.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/public/home/js/style.js"></script>
+	<script defer src="/public/home/js/bootstrap.min.js"></script>
 </body>
-</html> 
 
+</html>

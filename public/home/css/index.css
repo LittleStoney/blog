@@ -3686,7 +3686,7 @@ input[type="button"].btn-block {
 
 .nav-link {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 1rem;
 }
 .nav-link:hover, .nav-link:focus {
   text-decoration: none;
@@ -9883,9 +9883,10 @@ h1, h2, h3, h4, h5, h6 {
   background: #5ECCA9;
   color: #fff;
   font-size: 1rem;
-  padding: 1rem;
+  padding: 1.2rem;
   font-weight: bold;
   position: relative;
+  margin: 15px;
 }
 .blog-nav .nav-link:hover {
   background: #3bbc93;
@@ -10218,4 +10219,38 @@ body {
 .reply_area {
   margin-top: 2rem;
   margin-left: 2rem;
+}
+.list {
+  margin-top: 15px;
+}
+.list-nav-item {
+  margin-top: 15px;
+}
+.blog-type {
+  color: #000;
+}
+.list-nav-item::before {
+  width: 18px;
+  height: 18px;
+  color: #fff;
+  line-height: 18px;
+  border-radius: 5px;
+  display: inline-block;
+  text-align: center;
+}
+.list-nav-item:first-child::before {
+  content: "1";
+  background: #ff858e;
+}
+.list-nav-item:nth-child(2)::before {
+  content: "2";
+  background: #77d549;
+}
+.list-nav-item:nth-child(3)::before {
+  content: "3";
+  background: #007bff;
+}
+.list-nav-item:nth-child(n+4)::before {
+  content: "";
+  background: #cecece;
 }
