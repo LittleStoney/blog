@@ -49,7 +49,7 @@ router.get('/list', (req, res, next) => {
             SELECT * FROM blogstype
             `)
             let blogs = await query(`
-            SELECT * FROM blogs WHERE cid LIKE ?
+            SELECT * FROM blogs WHERE cid LIKE ? ORDER BY id DESC
             `, [`%${listSearch}%`])
             blogs.forEach(item => {
                 item.time = moment(item.time * 1000).format("YYYY年MM月DD日 HH:mm:ss")
