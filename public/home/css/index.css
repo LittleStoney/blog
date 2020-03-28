@@ -9812,7 +9812,27 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 2rem;
   font-weight: normal;
 }
-
+.heading>strong{
+  transition: 1s;
+  display: inline-block;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+}
+.heading>strong:nth-of-type(1){
+  background: #EEA73B;
+  font-weight: normal;
+}
+.heading>strong:nth-of-type(2){
+  background: #6C51A4;
+  font-weight: normal;
+}
+.heading>strong:nth-of-type(1):hover{
+  transform: rotate(360deg);
+}
+.heading>strong:nth-of-type(2):hover{
+  transform: rotate(-360deg);
+}
 .promo-section {
   margin-bottom: 40px;
 }
