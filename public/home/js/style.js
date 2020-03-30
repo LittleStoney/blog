@@ -76,6 +76,23 @@ $(function () {
 		})
 		localStorage.setItem('color', '#6C51A4')
 	})
+
+	// 动态logo
+	var $logo = $('.logo')
+	var logoArr = Array.prototype.slice.call($logo.text())
+	logoArr.reduce(function (pre, cur, index) {
+		pre === index && $logo.html('')
+		var span = document.createElement('span')
+		var $span = $(span)
+		$span.html(cur)
+		$logo.append($span)
+		$span.on('mouseover', function () {
+			$(this).addClass('color')
+		})
+		$span.on('animationend', function () {
+			$(this).removeClass('color')
+		})
+	}, 0)
 })
 
 

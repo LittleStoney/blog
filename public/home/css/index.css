@@ -7432,7 +7432,7 @@ button.bg-dark:focus {
 
 .pb-5,
 .py-5 {
-  padding-bottom: 3rem !important;
+  padding-bottom: 2rem !important;
 }
 
 .pl-5,
@@ -9812,27 +9812,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 2rem;
   font-weight: normal;
 }
-.heading>strong{
-  transition: 1s;
-  display: inline-block;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-}
-.heading>strong:nth-of-type(1){
-  background: #EEA73B;
-  font-weight: normal;
-}
-.heading>strong:nth-of-type(2){
-  background: #6C51A4;
-  font-weight: normal;
-}
-.heading>strong:nth-of-type(1):hover{
-  transform: rotate(360deg);
-}
-.heading>strong:nth-of-type(2):hover{
-  transform: rotate(-360deg);
-}
 .promo-section {
   margin-bottom: 40px;
 }
@@ -10273,4 +10252,32 @@ body {
 .list-nav-item:nth-child(n+4)::before {
   content: "";
   background: #cecece;
+}
+/* logo */
+.logo {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #9b59b6;
+}
+.logo>span {
+  display: inline-block;
+}
+.color {
+    animation-name: color;
+    animation-duration: 1s;
+    animation-iteration-count: 2;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+}
+
+@keyframes color {
+    50% {
+        color: #f1c40f;
+        transform: scale(2);
+    }
+
+    to {
+        color: #e74c3c;
+        transform: scale(.5);
+    }
 }
