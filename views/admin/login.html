@@ -29,37 +29,37 @@
                 <div class="form">
                     <form id="form">
                         <p class="p-input pos">
-                            <div>
-                                <input type="text" id="admin" name="adminname" minlength="6" autocomplete="off" required
-                                    placeholder="请输入管理员名">
-                                <span class="name-warn name hide"><em>用户名不存在，请重新输入</em><i class="icon-warn"></i></span>
+
+                            <input type="text" id="admin" name="adminname" minlength="6" autocomplete="off" required
+                                placeholder="请输入管理员名">
+                            <span class="name-warn name hide"><em>用户名不存在，请重新输入</em><i class="icon-warn"></i></span>
                         </p>
                         <p class="p-input pos">
                             <input type="password" placeholder="请输入密码" autocomplete="off" minlength="8" id="pass"
                                 name="password" required>
                             <span class="name-warn pass hide"><em>密码错误，请重新输入</em><i class="icon-warn"></i></span>
                         </p>
+
+                        <div class="r-forget cl">
+                            <a href="javascript:alert('请联系博主获取后台管理账号')" class="z">账号注册</a>
+                        </div>
+                        <div class="r-forget cl radio">
+                            <input type="checkbox" id="radio">&nbsp;记住密码
+                        </div>
+                        <button class="lang-btn log-btn" type="submit">登录</button>
+                    </form>
+                    <div class="third-party">
+                        <a href="javascript:alert('QQ登录开发中，敬请期待')" class="log-qq icon-qq-round"></a>
+                        <a href="javascript:alert('微信登录开发中，敬请期待')" class="log-qq icon-weixin"></a>
+                    </div><br>
+                    <p style="text-align: center;">Copyright &copy; Shixtao All rights reserved.<br><br>
+                        Powered By express 4
+                    </p>
                 </div>
-                <div class="r-forget cl">
-                    <a href="javascript:alert('请联系博主获取后台管理账号')" class="z">账号注册</a>
-                </div>
-                <div class="r-forget cl radio">
-                    <input type="checkbox" id="radio">&nbsp;记住密码
-                </div>
-                <button class="lang-btn log-btn" type="submit">登录</button>
-                </form>
-                <div class="third-party">
-                    <a href="javascript:alert('QQ登录开发中，敬请期待')" class="log-qq icon-qq-round"></a>
-                    <a href="javascript:alert('微信登录开发中，敬请期待')" class="log-qq icon-weixin"></a>
-                </div><br>
-                <p style="text-align: center;">Copyright &copy; Shixtao All rights reserved.<br><br>
-                    Powered By express 4
-                </p>
             </div>
         </div>
-    </div>
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script src="/public/login/js/agree.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script src="/public/login/js/agree.js"></script>
 </body>
 
 </html>

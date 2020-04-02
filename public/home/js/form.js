@@ -5,8 +5,9 @@ inputs.forEach(function (item) {
     item.onkeyup = function () {
         this.value = this.value.trim()
     }
-    item = null
+    // item = null
 })
+// 处理url信息
 var htmlHref = window.location.href
 htmlHref = htmlHref.replace(/^http:\/\/[^/]+/, "")
 var addr = htmlHref.substr(htmlHref.lastIndexOf('/', htmlHref.lastIndexOf('/') - 1) + 1)
@@ -24,7 +25,7 @@ $(function () {
     $('#form').on('submit', function () {
         var comment = $('#form-control').val()
         var name = $('input[name=name]').val()
-        comment = filterXSS(comment)
+        comment = filterXSS(comment) // 防止XSS攻击
         name = filterXSS(name)
         var time = new Date().toLocaleString()
         var face = $('select[name=face]').val()

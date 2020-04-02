@@ -1,4 +1,5 @@
 $(function () {
+
 	//点击切换颜色按钮
 	$('#config-trigger').click(function (e) {
 		e.preventDefault()
