@@ -10,17 +10,19 @@
 <link rel="shortcut icon" href="/public/home/images/favicon.ico">
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1611091_k3rjchrrrgp.css">
 <script>
-	//颜色保存于localstorage中
+    //颜色保存于localstorage中
     function colorSet() {
         var color = localStorage.getItem('color')
-        $('.header').css('backgroundColor', color)
-        $('.nav-link').css('backgroundColor', color)
-        $('.btn-primary').css({
-            'backgroundColor': color,
-            'borderColor': color
-        })
-        $('.list-inline-item a').css('color', color)
-        $('.more-link').css('color', '#6C51A4')
+        if (color) {
+            $('.header').css('backgroundColor', color)
+            $('.nav-link').css('backgroundColor', color)
+            $('.btn-primary').css({
+                'backgroundColor': color,
+                'borderColor': color
+            })
+            $('.list-inline-item a').css('color', color)
+            $('.more-link').css('color', '#6C51A4')
+        }
     }
 </script>
 <!--[if lt IE 10]>
