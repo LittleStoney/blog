@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
@@ -15,14 +14,16 @@
         //颜色保存于localstorage中
         function colorSet() {
             var color = localStorage.getItem('color')
-            $('.header').css('backgroundColor', color)
-            $('.nav-link').css('backgroundColor', color)
-            $('.btn-primary').css({
-                'backgroundColor': color,
-                'borderColor': color
-            })
-            $('.list-inline-item a').css('color', color)
-            $('.more-link').css('color', '#6C51A4')
+            if (color) {
+                $('.header').css('backgroundColor', color)
+                $('.nav-link').css('backgroundColor', color)
+                $('.btn-primary').css({
+                    'backgroundColor': color,
+                    'borderColor': color
+                })
+                $('.list-inline-item a').css('color', color)
+                $('.more-link').css('color', '#6C51A4')
+            }
         }
     </script>
     <link rel="stylesheet" href="/public/home/css/index.css">
@@ -34,7 +35,6 @@
     <![endif]-->
     <title><%= blog.title %></title>
 </head>
-
 <body onload="colorSet()">
     <%- include('./public/header.html') %>
     <div class="main-wrapper">
@@ -178,5 +178,4 @@
     </script>
     <script src="/public/home/js/form.js"></script>
 </body>
-
 </html>
