@@ -61,14 +61,16 @@
 <script>
     var countTime = 5
     var time = document.querySelector('#time')
-    setInterval(function () {
+    function fn(){
         if (countTime === 0) {
             location.href = '/'
         } else {
             time.innerHTML = countTime
             countTime--
         }
-    }, 1000)
+    }
+    fn()
+    setInterval(fn, 1000)
 </script>
 
 </html>
