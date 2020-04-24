@@ -34,7 +34,6 @@
         }
 
         .error-page .notFound span {
-            display: block;
             line-height: 60px;
             font-size: 18px;
             color: #8b7b8b;
@@ -54,13 +53,22 @@
             <img src="/public/404_images/404.png" class="pic-404_parent" alt="404" />
         </div>
         <div class="notFound">
-            <span>找不到页面了</span>
-            <span>
-                你可以尝试
-                <a class="link" href="/">返回上一页</a>
-            </span>
+            <span>找不到页面了，<span id="time">5</span>秒后<a href="/">返回首页</a></span>
         </div>
     </div>
 </body>
+
+<script>
+    var countTime = 5
+    var time = document.querySelector('#time')
+    setInterval(function () {
+        if (countTime === 0) {
+            location.href = '/'
+        } else {
+            time.innerHTML = countTime
+            countTime--
+        }
+    }, 1000)
+</script>
 
 </html>
