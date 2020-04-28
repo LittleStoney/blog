@@ -9823,6 +9823,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Footer */
+/* backtotop */
+.top {
+  position: fixed;
+  right: 40px;
+  bottom: 60px;
+  cursor: pointer;
+  display: none;
+}
+.top img {
+  width: 100px;
+  height: 60px;
+}
+.top img:hover {
+  transform: rotate(360deg);
+  transition: .4s;
+}
 .footer {
   color: rgba(255, 255, 255, 0.7);
 }

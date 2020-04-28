@@ -1,3 +1,4 @@
+'use strict'
 $(function () {
 	//保存密码
 	var adminname = localStorage.getItem('adminname')
@@ -12,7 +13,9 @@ $(function () {
 		$('#radio').prop("checked", true)
 	}
 	//登录验证
-	$('#form').on('submit', function () {
+	$('#form').on('submit', function (e) {
+		// 禁止重复提交
+		$('.log-btn').prop('disabled', true)
 		$.ajax({
 			type: 'POST',
 			url: '/admin/check',
@@ -46,10 +49,12 @@ $(function () {
 				}
 			},
 			error: function (error) {
-				console.log(error)
-				return
+				// 出错直接返回首页
+				location.href = '/'
+				return false
 			}
 		})
+		e.preventDefault()
 		return false
 	})
 })

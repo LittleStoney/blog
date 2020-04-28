@@ -1,5 +1,4 @@
 $(function () {
-
 	//点击切换颜色按钮
 	$('#config-trigger').click(function (e) {
 		e.preventDefault()
@@ -20,67 +19,54 @@ $(function () {
 		e.preventDefault()
 		$('#config-trigger').click()
 	})
-	//点击选择颜色
-	$('.theme-1 a').on('click', function () {
-		var $listItem = $(this).closest('li')
-		$listItem.addClass('active')
-		$listItem.siblings().removeClass('active')
-		$('.header').css('backgroundColor', '#5ECCA9')
-		$('.nav-link').css('backgroundColor', '#5ECCA9')
-		$('.more-link').css('color', '#5ECCA9')
-		$('.list-inline-item a').css('color', '#5ECCA9')
+
+	// 点击选择颜色
+	var colors = [	// 颜色数组
+		'#5ecca9',
+		'#3b7eeb',
+		'#eea73b',
+		'#6c51a4'
+	]
+	// 切换皮肤
+	var cureentColor = localStorage.getItem('color'),
+		$listLnlineItem = $('#color-options .list-inline-item')
+	$listLnlineItem.click(function () {
+		$(this).addClass('active').siblings().removeClass('active')
+		var currentIndex = $(this).index(),
+			resultColor
+		resultColor = colors[currentIndex]
+		$('.header').css('backgroundColor', resultColor)
+		$('.nav-link').css('backgroundColor', resultColor)
+		$('.more-link').css('color', resultColor)
+		$('.list-inline-item a').css('color', resultColor)
 		$('.btn-primary').css({
-			'backgroundColor': '#5ECCA9',
-			'borderColor': '#5ECCA9'
+			'backgroundColor': resultColor,
+			'borderColor': resultColor
 		})
-		localStorage.setItem('color', '#5ECCA9')
+		localStorage.setItem('color', resultColor)
 	})
-	$('.theme-2 a').on('click', function () {
-		var $listItem = $(this).closest('li')
-		$listItem.addClass('active')
-		$listItem.siblings().removeClass('active')
-		$('.header').css('backgroundColor', '#3B7EEB')
-		$('.nav-link').css('backgroundColor', '#3B7EEB')
-		$('.more-link').css('color', '#3B7EEB')
-		$('.list-inline-item a').css('color', '#3B7EEB')
-		$('.btn-primary').css({
-			'backgroundColor': '#3B7EEB',
-			'borderColor': '#3B7EEB'
-		})
-		localStorage.setItem('color', '#3B7EEB')
-	})
-	$('.theme-3 a').on('click', function () {
-		var $listItem = $(this).closest('li')
-		$listItem.addClass('active')
-		$listItem.siblings().removeClass('active')
-		$('.header').css('backgroundColor', '#EEA73B')
-		$('.nav-link').css('backgroundColor', '#EEA73B')
-		$('.more-link').css('color', '#EEA73B')
-		$('.list-inline-item a').css('color', '#EEA73B')
-		$('.btn-primary').css({
-			'backgroundColor': '#EEA73B',
-			'borderColor': '#EEA73B'
-		})
-		localStorage.setItem('color', '#EEA73B')
-	})
-	$('.theme-4 a').on('click', function () {
-		var $listItem = $(this).closest('li')
-		$listItem.addClass('active')
-		$listItem.siblings().removeClass('active')
-		$('.header').css('backgroundColor', '#6C51A4')
-		$('.nav-link').css('backgroundColor', '#6C51A4')
-		$('.more-link').css('color', '#6C51A4')
-		$('.list-inline-item a').css('color', '#6C51A4')
-		$('.btn-primary').css({
-			'backgroundColor': '#6C51A4',
-			'borderColor': '#6C51A4'
-		})
-		localStorage.setItem('color', '#6C51A4')
-	})
+	// 遍历存储色
+	switch (cureentColor) {
+		case colors[0]:
+			$listLnlineItem.eq(0).addClass('active')
+			break;
+		case colors[1]:
+			$listLnlineItem.eq(1).addClass('active')
+			break;
+		case colors[2]:
+			$listLnlineItem.eq(2).addClass('active')
+			break;
+		case colors[3]:
+			$listLnlineItem.eq(3).addClass('active')
+			break;
+		default:
+			$listLnlineItem.eq(0).addClass('active')
+			break;
+	}
 
 	// 动态logo
-	var $logo = $('.logo')
-	var logoArr = Array.prototype.slice.call($logo.text())
+	var $logo = $('.logo'),
+		logoArr = Array.prototype.slice.call($logo.text())
 	logoArr.reduce(function (pre, cur, index) {
 		pre === index && $logo.html('')
 		var span = document.createElement('span')
@@ -94,6 +80,22 @@ $(function () {
 			$(this).removeClass('color')
 		})
 	}, 0)
+
+	// 回到顶部
+	var windowTop = $(window).height()
+	var $back = $('.top')
+	$(document).on('scroll', function () {
+		if ($(document).scrollTop() >= windowTop / 2) {
+			$back.fadeIn()
+		} else {
+			$back.fadeOut()
+		}
+	})
+	$back.on('click', function () {
+		$('body ,html').stop().animate({
+			scrollTop: 0
+		})
+	})
 })
 
 

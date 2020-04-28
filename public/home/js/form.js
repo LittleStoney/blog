@@ -5,7 +5,6 @@ inputs.forEach(function (item) {
     item.onkeyup = function () {
         this.value = this.value.trim()
     }
-    // item = null
 })
 // 处理url信息
 var htmlHref = window.location.href
@@ -13,7 +12,7 @@ htmlHref = htmlHref.replace(/^http:\/\/[^/]+/, "")
 var addr = htmlHref.substr(htmlHref.lastIndexOf('/', htmlHref.lastIndexOf('/') - 1) + 1)
 var index = addr.lastIndexOf("\/")
 var id = decodeURI(addr.substring(index + 1, addr.length))
-//保存用户名
+//保存用户名至localStorage
 var username = localStorage.getItem('username')
 if (username) {
     $('#name').val(username)
@@ -22,7 +21,9 @@ if (username) {
 }
 //提交评论
 $(function () {
-    $('#form').on('submit', function () {
+    $('#form').on('submit', function (e) {
+        // 防止重复提交
+
         var comment = $('#form-control').val()
         var name = $('input[name=name]').val()
         comment = filterXSS(comment) // 防止XSS攻击
@@ -60,6 +61,7 @@ $(function () {
                 return false
             }
         })
+        e.preventDefault()
         return false
     })
 })
