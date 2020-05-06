@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
@@ -36,6 +37,7 @@
     <![endif]-->
     <title><%= blog.title %></title>
 </head>
+
 <body onload="colorSet()">
     <%- include('./public/header.html') %>
     <div class="main-wrapper">
@@ -165,8 +167,6 @@
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <script src="/public/home/js/style.js"></script>
     <script src="/public/ueditor/third-party/highlight/highlight.pack.js"></script>
-    <script defer src="/public/home/js/bootstrap.min.js"></script>
-    <script defer src="/public/home/js/xss.min.js"></script>
     <script>
         // 代码高亮
         hljs.initHighlightingOnLoad()
@@ -177,6 +177,9 @@
             onepre.innerHTML = '<code id="mycode">' + mycode + '</code>'
         }
     </script>
+    <script defer src="/public/home/js/bootstrap.min.js"></script>
+    <script defer src="/public/home/js/xss.min.js"></script>
     <script src="/public/home/js/form.js"></script>
 </body>
+
 </html>

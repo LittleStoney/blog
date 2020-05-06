@@ -22,10 +22,9 @@ if (username) {
 //提交评论
 $(function () {
     $('#form').on('submit', function (e) {
-        // 防止重复提交
-
-        var comment = $('#form-control').val()
-        var name = $('input[name=name]').val()
+        var name = $('input[name=name]').val().replace(/做爱|黄色|日|妈|操|gay|fuck/gi, '**'),
+            comment = $('#form-control').val().replace(/做爱|黄色|日|妈|操|gay|fuck/gi, '**')
+        
         comment = filterXSS(comment) // 防止XSS攻击
         name = filterXSS(name)
         var time = new Date().toLocaleString()
