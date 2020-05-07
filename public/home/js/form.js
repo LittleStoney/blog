@@ -24,7 +24,7 @@ $(function () {
     $('#form').on('submit', function (e) {
         var name = $('input[name=name]').val().replace(/做爱|黄色|日|妈|操|gay|fuck/gi, '**'),
             comment = $('#form-control').val().replace(/做爱|黄色|日|妈|操|gay|fuck/gi, '**')
-        
+
         comment = filterXSS(comment) // 防止XSS攻击
         name = filterXSS(name)
         var time = new Date().toLocaleString()
@@ -70,8 +70,8 @@ function reply(user_id) {
     $('#' + user_id).show()
     //提交回复
     $('#' + user_id).on('submit', function () {
-        var replycomment = $('#' + user_id + 'reply').val()
-        var replyname = $('#' + user_id + 'name').val()
+        var replycomment = $('#' + user_id + 'reply').val().replace(/做爱|黄色|日|妈|操|gay|fuck/gi, '**'),
+            replyname = $('#' + user_id + 'name').val().replace(/做爱|黄色|日|妈|操|gay|fuck/gi, '**')
         var replytime = new Date().toLocaleString()
         var replyface = $('#' + user_id + 'replyface').val()
         replycomment = filterXSS(replycomment)
