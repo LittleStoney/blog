@@ -28,15 +28,16 @@ router.get('/', (req, res, next) => {
                 item.time = moment(item.time * 1000).format("YYYY年MM月DD日 HH:mm:ss")
             }
             res.render('home/index.html', {
-                webConfig: webConfig,
-                blogs: blogs,
-                pageNum: pageNum,
-                page: page,
-                lists: lists,
-                search: search
+                webConfig,
+                blogs,
+                pageNum,
+                page,
+                lists,
+                search
             })
         } catch (error) {
             log(error)
+            return
         }
     })()
 })
@@ -57,6 +58,7 @@ router.get('/list', (req, res, next) => {
             res.render('home/list.html', { webConfig, lists, blogs })
         } catch (error) {
             log(error)
+            return
         }
     })()
 })
@@ -106,6 +108,7 @@ router.get('/article/:id', (req, res, next) => {
             })
         } catch (error) {
             log(error)
+            return
         }
     })()
 })
@@ -124,6 +127,7 @@ router.post('/blogs/:id', (req, res, next) => {
             }
         } catch (error) {
             log(error)
+            return
         }
     })()
 })
@@ -143,6 +147,7 @@ router.post('/reply', (req, res, next) => {
             }
         } catch (error) {
             log(error)
+            return
         }
     })()
 

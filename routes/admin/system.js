@@ -21,7 +21,7 @@ router.get('/', (req, res, next) => {
             let data = JSON.parse(e.toString())
             res.render('admin/system/index.html', { data: data })
         })
-        .catch(error => log(error))
+        .catch(error => { log(error); return })
 })
 //系统管理首页处理
 router.post('/save', upload.single('logo'), (req, res, next) => {
@@ -41,6 +41,7 @@ router.post('/save', upload.single('logo'), (req, res, next) => {
     }
     fs.writeFile(__dirname + '/../../config/webConfig.json', JSON.stringify(data), err => {
         if (err) throw new Error(err)
+        return
     })
     if (imgRes) {
         fs.unlinkSync(__dirname + '/../../' + logo)

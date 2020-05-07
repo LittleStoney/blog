@@ -20,6 +20,7 @@ router.get('/', (req, res, next) => {
             })
         } catch (err) {
             log(err)
+            return
         }
     })()
 })
@@ -52,6 +53,7 @@ router.post('/add', (req, res, next) => {
                             }
                         } catch (error) {
                             log(error)
+                            return
                         }
                     })()
                 } else {
@@ -83,6 +85,7 @@ router.get('/ajax_status', (req, res, next) => {
             }
         } catch (error) {
             log(error)
+            return
         }
     })()
 })
@@ -101,6 +104,7 @@ router.get('/ajax_del', (req, res, next) => {
             }
         } catch (error) {
             log(error)
+            return
         }
     })()
 })
@@ -115,6 +119,7 @@ router.get('/edit', (req, res, next) => {
             res.render('admin/admin/edit.html', { queryAdmin: queryAdmin[0] })
         } catch (error) {
             log(error)
+            return
         }
     })()
 })
@@ -143,6 +148,7 @@ router.post('/edit', (req, res, next) => {
             }
         } catch (error) {
             log(err)
+            return
         }
     })()
 })

@@ -54,6 +54,7 @@ router.post('/check', (req, res, next) => {
                     }
                 } catch (error) {
                     log(error)
+                    return
                 }
             })()
         }
