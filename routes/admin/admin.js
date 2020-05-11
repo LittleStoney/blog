@@ -6,7 +6,7 @@ const express = require('express'),
 
 const log = console.log.bind(console)
 //管理员管理首页
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
     let search = req.query.search ? req.query.search : "";
     (async () => {
         try {
@@ -25,11 +25,11 @@ router.get('/', (req, res, next) => {
     })()
 })
 //管理员添加页
-router.get('/add', (req, res, next) => {
+router.get('/add', (req, res) => {
     res.render('admin/admin/add.html')
 })
 //管理员添加页处理
-router.post('/add', (req, res, next) => {
+router.post('/add', (req, res) => {
     let { adminname, password, repassword } = req.body
     if (adminname) {
         if (adminname.length >= 6 && adminname.length <= 12) {
@@ -71,7 +71,7 @@ router.post('/add', (req, res, next) => {
 
 })
 //ajax修改黑白名单
-router.get('/ajax_status', (req, res, next) => {
+router.get('/ajax_status', (req, res) => {
     let { id, status } = req.query;
     (async () => {
         try {
@@ -90,7 +90,7 @@ router.get('/ajax_status', (req, res, next) => {
     })()
 })
 //ajax删除管理员
-router.get('/ajax_del', (req, res, next) => {
+router.get('/ajax_del', (req, res) => {
     let id = req.query.id;
     (async () => {
         try {
@@ -109,7 +109,7 @@ router.get('/ajax_del', (req, res, next) => {
     })()
 })
 //管理员修改页
-router.get('/edit', (req, res, next) => {
+router.get('/edit', (req, res) => {
     let id = req.query.id;
     (async () => {
         try {
@@ -124,7 +124,7 @@ router.get('/edit', (req, res, next) => {
     })()
 })
 //管理员修改页处理
-router.post('/edit', (req, res, next) => {
+router.post('/edit', (req, res) => {
     let { id, adminname, password, repassword, status } = req.body
     let sql = ""
     if (password) {

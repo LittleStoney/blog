@@ -9,7 +9,7 @@ const express = require('express'),
     uploads = require('../../common/uploads')
 const log = console.log.bind(console)
 //博客管理首页
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
     let size = 6
     let page = req.query.page ? req.query.page : 1
     async function countBlogs() {
@@ -45,7 +45,7 @@ router.get('/', (req, res, next) => {
     })()
 })
 //博客管理添加页
-router.get('/add', (req, res, next) => {
+router.get('/add', (req, res) => {
     (async () => {
         try {
             let queryType = await query(`SELECT * FROM blogstype ORDER BY id DESC`)
@@ -57,7 +57,7 @@ router.get('/add', (req, res, next) => {
     })()
 })
 //博客管理添加页处理
-router.post('/add', upload.single('img'), (req, res, next) => {
+router.post('/add', upload.single('img'), (req, res) => {
     let imgRes = req.file
     let { type, title, keywords, description, author, cid, content } = req.body
     let click = 0
@@ -81,7 +81,7 @@ router.post('/add', upload.single('img'), (req, res, next) => {
     })()
 })
 //博客修改页
-router.get('/edit', (req, res, next) => {
+router.get('/edit', (req, res) => {
     let id = req.query.id
     async function queryBlogstype() {
         return await query('SELECT * FROM blogstype')
@@ -106,7 +106,7 @@ router.get('/edit', (req, res, next) => {
     })()
 })
 //博客修改页处理
-router.post('/edit', upload.single('img'), (req, res, next) => {
+router.post('/edit', upload.single('img'), (req, res) => {
     let imgRes = req.file
     let { id, type, title, keywords, description, oldimg, author, cid, content } = req.body
     let img = oldimg
@@ -133,7 +133,7 @@ router.post('/edit', upload.single('img'), (req, res, next) => {
     })()
 })
 //删除博客
-router.get('/ajax_del', (req, res, next) => {
+router.get('/ajax_del', (req, res) => {
     let { id, img } = req.query;
     (async () => {
         try {

@@ -4,7 +4,7 @@ const express = require('express'),
 
 const log = console.log.bind(console)
 //博客分类首页
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
     (async () => {
         try {
             let queryTypes = await query('SELECT * FROM blogstype')
@@ -18,11 +18,11 @@ router.get('/', (req, res, next) => {
     })()
 })
 //博客分类添加页
-router.get('/add', (req, res, next) => {
+router.get('/add', (req, res) => {
     res.render('admin/blogstype/add.html')
 })
 //博客分类页处理
-router.post('/add', (req, res, next) => {
+router.post('/add', (req, res) => {
     let { name, sort } = req.body;
     (async () => {
         try {
@@ -41,7 +41,7 @@ router.post('/add', (req, res, next) => {
     })()
 })
 //博客修改页
-router.get('/edit', (req, res, next) => {
+router.get('/edit', (req, res) => {
     let id = req.query.id;
     (async () => {
         try {
@@ -54,7 +54,7 @@ router.get('/edit', (req, res, next) => {
     })()
 })
 //博客修改页处理
-router.post('/edit', (req, res, next) => {
+router.post('/edit', (req, res) => {
     let { id, name, sort } = req.body;
     (async () => {
         try {
@@ -73,7 +73,7 @@ router.post('/edit', (req, res, next) => {
     })()
 })
 //博客分类删除
-router.get('/ajax_del', (req, res, next) => {
+router.get('/ajax_del', (req, res) => {
     let id = req.query.id;
     (async () => {
         try {

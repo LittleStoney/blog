@@ -17,7 +17,7 @@ router.use((req, res, next) => {
     }
 })
 //登录页
-router.get('/login', (req, res, next) => {
+router.get('/login', (req, res) => {
     if (req.session.YzmMessageIsAdmin && req.session.YzmMessagePass) {
         res.redirect('/admin')
     } else {
@@ -25,13 +25,13 @@ router.get('/login', (req, res, next) => {
     }
 })
 //退出登录
-router.get('/logout', (req, res, next) => {
+router.get('/logout', (req, res) => {
     req.session.YzmMessageIsAdmin = false
     req.session.YzmMessageUsername = false
     res.send("<script>alert('退出成功！');window.location.href='/admin/login'</script>")
 })
 //登录页处理
-router.post('/check', (req, res, next) => {
+router.post('/check', (req, res) => {
     let { adminname, password } = req.body
     if (adminname) {
         if (password) {
@@ -61,11 +61,11 @@ router.post('/check', (req, res, next) => {
     }
 })
 //后台首页
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
     res.render('admin/index.html')
 })
 //欢迎页
-router.get('/welcome', (req, res, next) => {
+router.get('/welcome', (req, res) => {
     res.render('admin/welcome.html')
 })
 //博客内容管理

@@ -8,7 +8,7 @@ const log = console.log.bind(console)
 const webConfigData = fs.readFileSync(__dirname + '/../config/webConfig.json')
 const webConfig = JSON.parse(webConfigData.toString())
 //首页
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
     let page = req.query.page || 1
     let start = (page - 1) * 6
     let end = 6
@@ -42,7 +42,7 @@ router.get('/', (req, res, next) => {
     })()
 })
 // 博客分类页
-router.get('/list', (req, res, next) => {
+router.get('/list', (req, res) => {
     let listSearch = req.query.listSearch ? req.query.listSearch : "";
     (async () => {
         try {
@@ -63,7 +63,7 @@ router.get('/list', (req, res, next) => {
     })()
 })
 //博客文章页
-router.get('/article/:id', (req, res, next) => {
+router.get('/article/:id', (req, res) => {
     let id = req.params.id
     async function queryBlog() {
         return await query(`SELECT * FROM blogs WHERE id = ${id} ORDER BY blogs.id DESC`)
@@ -113,7 +113,7 @@ router.get('/article/:id', (req, res, next) => {
     })()
 })
 //处理评论
-router.post('/blogs/:id', (req, res, next) => {
+router.post('/blogs/:id', (req, res) => {
     let { name, comment, time, face } = req.body
     let id = req.params.id;
     (async () => {
@@ -132,7 +132,7 @@ router.post('/blogs/:id', (req, res, next) => {
     })()
 })
 //处理回复
-router.post('/reply', (req, res, next) => {
+router.post('/reply', (req, res) => {
     let user_id = req.query.id
     let blog_id = req.query.blog_id
     let { replyname, replycomment, replytime, replyface } = req.body;

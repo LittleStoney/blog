@@ -4,7 +4,7 @@ const express = require('express'),
 
 const log = console.log.bind(console)
 //查询评论
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
     (async () => {
         try {
             let comment = await query(`
@@ -21,7 +21,7 @@ router.get('/', (req, res, next) => {
     })()
 })
 //修改评论状态
-router.get('/ajax_status', (req, res, next) => {
+router.get('/ajax_status', (req, res) => {
     let { id, status } = req.query;
     (async () => {
         try {

@@ -15,7 +15,7 @@ function readFile(filename) {
     })
 }
 //系统管理首页
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
     let fileData = readFile(__dirname + "/../../config/webConfig.json")
         .then(e => {
             let data = JSON.parse(e.toString())
@@ -24,7 +24,7 @@ router.get('/', (req, res, next) => {
         .catch(error => { log(error); return })
 })
 //系统管理首页处理
-router.post('/save', upload.single('logo'), (req, res, next) => {
+router.post('/save', upload.single('logo'), (req, res) => {
     let imgRes = req.file
     let { title, keywords, description, copyright, record, logo } = req.body
     let newlogo = ''
