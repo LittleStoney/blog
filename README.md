@@ -19,7 +19,6 @@
     *Copyright © 2019 Shixtao*
 
 ## 已知bug
-+   前台回复评论 to 某人时 会一定概率显示undefined
 +   后台session过期会在浮动框架中显示登陆页面
 +    **本网站登录后台保存用户名和密码使用的是H5 localstorage，保存在前端有一定的风险！** 
 

@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
             FROM comment,blogs WHERE comment.blog_id = blogs.id ORDER BY comment.id DESC
             `)
             res.render('admin/comment/index.html', {
-                comment: comment
+                comment
             })
         } catch (error) {
             log(error)

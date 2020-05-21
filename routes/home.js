@@ -2,7 +2,8 @@ const express = require('express'),
     router = express.Router(),
     query = require('../config/db'),
     fs = require('fs'),
-    moment = require('moment')
+    moment = require('moment'),
+    xss = require('xss')
 
 const log = console.log.bind(console)
 const webConfigData = fs.readFileSync(__dirname + '/../config/webConfig.json')
@@ -115,15 +116,24 @@ router.get('/article/:id', (req, res) => {
 //处理评论
 router.post('/blogs/:id', (req, res) => {
     let { name, comment, time, face } = req.body
+    name = xss(name)
+    comment = xss(comment)
     let id = req.params.id;
     (async () => {
         try {
             let rows = await query('INSERT INTO comment (blog_id,name,content,face,time,status) VALUES (?,?,?,?,?,?)', [id, name, comment, face, time, 1])
             if (rows.affectedRows === 1) {
                 let updateComment = await query(`UPDATE blogs SET comment = comment + 1 WHERE id = ${id}`)
-                res.send('ok')
+                res.send({
+                    "data": { name, comment, time, face },
+                    "meta": {
+                        "status": 200
+                    }
+                })
             } else {
-                res.send('fail')
+                res.sendStatus(500)
+                res.send('服务器错误')
+                return
             }
         } catch (error) {
             log(error)
@@ -135,15 +145,24 @@ router.post('/blogs/:id', (req, res) => {
 router.post('/reply', (req, res) => {
     let user_id = req.query.id
     let blog_id = req.query.blog_id
-    let { replyname, replycomment, replytime, replyface } = req.body;
+    let { replyname, replycomment, replytime, replyface } = req.body
+    replyname = xss(replyname)
+    replycomment = xss(replycomment);
     (async () => {
         try {
             let rows = await query('INSERT INTO reply (name,content,time,status,reply_id,blog_id,face) VALUES (?,?,?,?,?,?,?)', [replyname, replycomment, replytime, 1, user_id, blog_id, replyface])
             let updateComment = await query(`UPDATE blogs SET comment = comment + 1 WHERE id = ${blog_id}`)
             if (rows.affectedRows === 1) {
-                res.send('ok')
+                res.send({
+                    "data": { replyname, replycomment, replytime, replyface },
+                    "meta": {
+                        "status": 200
+                    }
+                })
             } else {
-                res.send('fail')
+                res.sendStatus(500)
+                res.send('服务器错误')
+                return
             }
         } catch (error) {
             log(error)

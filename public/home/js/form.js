@@ -24,9 +24,6 @@ $(function () {
     $('#form').on('submit', function (e) {
         var name = $('input[name=name]').val().replace(/做爱|黄色|日|妈|操|gay|fuck/gi, '**'),
             comment = $('#form-control').val().replace(/做爱|黄色|日|妈|操|gay|fuck/gi, '**')
-
-        comment = filterXSS(comment) // 防止XSS攻击
-        name = filterXSS(name)
         var time = new Date().toLocaleString()
         var face = $('select[name=face]').val()
         if (!comment.replace(/ +/g, "").replace(/[\r\n]/g, "")) {
@@ -43,11 +40,10 @@ $(function () {
                 face: face
             },
             success: function (data) {
-                if (data === 'ok') {
+                if (data.meta.status === 200) {
                     localStorage.setItem('username', name)
                     var content = "<tr><td><div class=\"touxiang\"><img src=\"".concat(face, "\" alt=\"\u4EBA\u7269\u5934\u50CF\" width=\"50\" height=\"50\"><div>").concat(name, "</div></div><div class=\"content\">").concat(comment, "<br><small>").concat(time, "</small></div></td></tr>")
                     $('.table tbody').prepend(content)
-                    $(content).slideDown()
                     $('#form-control').val('')
                     $('input[name=name]').val('')
                 } else {
@@ -74,8 +70,7 @@ function reply(user_id) {
             replyname = $('#' + user_id + 'name').val().replace(/做爱|黄色|日|妈|操|gay|fuck/gi, '**')
         var replytime = new Date().toLocaleString()
         var replyface = $('#' + user_id + 'replyface').val()
-        replycomment = filterXSS(replycomment)
-        replyname = filterXSS(replyname)
+        var toname = $('#' + user_id + 'toname').html()
         if (!replycomment.replace(/ +/g, "").replace(/[\r\n]/g, "")) {
             alert('请输入内容！')
             return false
@@ -90,12 +85,14 @@ function reply(user_id) {
                 replyface: replyface
             },
             success: function (data) {
-                var toname = $('#' + user_id + 'toname').html()
-                if (data === 'ok') {
+                if (data.meta.status === 200) {
                     $('#' + user_id).parent().prepend("<div class=\"reply_area\"><span class=\"reply_info\"><img src=\"".concat(replyface, "\" alt=\"\u4EBA\u7269\u5934\u50CF\" width=\"50\" height=\"50\"> <span>").concat(replyname, "<span class=\"text-info\">&nbsp;\u56DE\u590D&nbsp;</span><span id=\"\"></span>").concat(toname, ":</span></span><span class=\"reply_content\">").concat(replycomment, "<br><small>").concat(replytime, "</small></span></div>"))
                     $('#' + user_id + 'reply').val('')
                     $('#' + user_id + 'name').val('')
                     $('#' + user_id).hide()
+                } else {
+                    alert('非法错误！')
+                    return false
                 }
             },
             error: function (error) {
