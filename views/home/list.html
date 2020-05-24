@@ -65,7 +65,8 @@
         <section class="blog-list px-3 py-5 p-md-5">
             <div class="container">
                 <% for(let data of blogs){ %>
-                <div class="item mb-5">
+                <!-- 内容开始 -->
+                <div class="item mb-5" style="visibility: hidden;">
                     <div class="media">
                         <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="<%= data.img %>" alt="博客封面图">
                         <div class="media-body">

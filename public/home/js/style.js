@@ -96,6 +96,25 @@ $(function () {
 			scrollTop: 0
 		})
 	})
+
+	// 懒加载内容
+	var options = {
+		threshold: 1,
+		rootMargin: '0px'
+	}
+	function lazyLoad(index, target) {
+		var io = new IntersectionObserver(function (entries, observer) {
+			entries.forEach(function (entry) {
+				if (entry.isIntersecting) {
+					var content = entry.target
+					$(content).css('visibility','visible')
+					observer.disconnect()
+				}
+			})
+		}, options)
+		io.observe(target)
+	}
+	$('.item').each(lazyLoad)
 })
 
 
