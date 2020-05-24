@@ -106,15 +106,16 @@ $(function () {
 		var io = new IntersectionObserver(function (entries, observer) {
 			entries.forEach(function (entry) {
 				if (entry.isIntersecting) {
-					var content = entry.target
-					$(content).css('visibility','visible')
+					var img = entry.target
+					var src = $(img).attr('data-src')
+					$(img).attr('src', src)
 					observer.disconnect()
 				}
 			})
 		}, options)
 		io.observe(target)
 	}
-	$('.item').each(lazyLoad)
+	$('.item img').each(lazyLoad)
 })
 
 

@@ -66,9 +66,9 @@
             <div class="container">
                 <% for(let data of blogs){ %>
                 <!-- 内容开始 -->
-                <div class="item mb-5" style="visibility: hidden;">
+                <div class="item mb-5">
                     <div class="media">
-                        <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="<%= data.img %>" alt="博客封面图">
+                        <img class="mr-3 img-fluid post-thumb d-none d-md-flex" data-src="<%= data.img %>">
                         <div class="media-body">
                             <h2 class="title mb-1">
                                 <a href="/article/<%= data.id %>"><%= data.title %></a>
