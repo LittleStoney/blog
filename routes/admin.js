@@ -32,7 +32,7 @@ router.get('/logout', (req, res) => {
 })
 //登录页处理
 router.post('/check', (req, res) => {
-    let { adminname, password } = req.body
+    let { adminname, password, isAutoLogin } = req.body
     if (adminname) {
         if (password) {
             let md5 = crypto.createHash('md5')
@@ -43,6 +43,10 @@ router.post('/check', (req, res) => {
                     if (namerows.length) {
                         let passrows = await query('SELECT * FROM admin WHERE adminname = ? AND password = ?  AND status = ?', [adminname, password, 0])
                         if (passrows.length) {
+                            // 7天自动登录
+                            if (isAutoLogin) {
+                                req.session.cookie.maxAge = 7 * 24 * 60 * 60 * 1000
+                            }
                             req.session.YzmMessageIsAdmin = true
                             req.session.YzmMessagePass = true
                             res.send('ok')

@@ -20,7 +20,7 @@ app.use(session({
     secret: 'shixtao',
     resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 1000 * 60 * 24 * 30 },
+    cookie: { maxAge: 1000 * 60 * 60 },
 }))
 app.use('/public/ueditor/ueditors', ueditor(path.join(__dirname, ''), (req, res, next) => {
     if (req.query.action === 'uploadimage') {

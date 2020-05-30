@@ -1,16 +1,11 @@
 'use strict'
 $(function () {
-	//保存密码
+	//保存用户名
 	var adminname = localStorage.getItem('adminname')
-	var password = localStorage.getItem('password')
 	if (adminname) {
 		$('#admin').val(adminname)
 	} else {
 		$('#admin').val('')
-	}
-	if (password) {
-		$('#pass').val(password)
-		$('#radio').prop("checked", true)
 	}
 	//登录验证
 	$('#form').on('submit', function (e) {
@@ -36,13 +31,7 @@ $(function () {
 						break
 					case 'ok':
 						var adminname = $('#admin').val()
-						var password = $('#pass').val()
 						localStorage.setItem('adminname', adminname)
-						if ($('#radio').is(':checked')) {
-							localStorage.setItem('password', password)
-						} else {
-							localStorage.removeItem('password')
-						}
 						window.location.href = '/admin'
 					default:
 						break
