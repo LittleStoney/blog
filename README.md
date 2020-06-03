@@ -5,14 +5,32 @@
 
 #### 安装教程
 
-1.  `yarn or npm install `安装依赖
-2.  **添加数据库，mysql执行sql文件**（必须）。注意数据库的名称和账户、密码，在config目录下的db.js可以修改
-3.  `yarn start or npm start` 启动
+1. 安装依赖
+
+   ```powershell
+   yarn
+   #or
+   npm install
+   ```
+
+   
+
+2. **添加数据库，mysql执行sql文件**（必须）。注意数据库的名称、账户和密码，在config目录下的db.js可以修改相关参数
+
+3.  启动
+
+   ```powershell
+   yarn start
+   #or
+   npm start
+   ```
+
+   
 
 #### 使用说明
 
-  后台管理初始账号：123456 初始密码：12345678
-  开启https服务：请查看https分支，免费申请证书：https://letsencrypt.osfipin.com/
+  后台管理初始账号：123456  初始密码：12345678
+  开启https服务：请查看https分支app.js文件。免费申请证书：https://letsencrypt.osfipin.com/
 
 #### 参与贡献
 
@@ -21,3 +39,8 @@
 ## 已知bug
 +   后台session过期会在浮动框架中显示登陆页面 
 
+
+
+------
+
+作者最近计划使用Egg框架重构整个项目，因此现在后端代码不会再进行维护，敬请谅解！
