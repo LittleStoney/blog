@@ -1,7 +1,7 @@
-# blogv2
+# blog_egg
 
 #### 介绍
-个人博客源码，后台由express搭建，前台模板引擎为ejs。值得大家学习，喜欢请star，谢谢！
+个人博客源码，基于原express项目完全重构，新版由Eggjs框架搭建，喜欢请star，谢谢！
 
 #### 安装教程
 
@@ -15,9 +15,18 @@
 
    
 
-2. **添加数据库，mysql执行sql文件**（必须）。注意数据库的名称、账户和密码，在config目录下的db.js可以修改相关参数
+2. **添加数据库，mysql执行sql文件**（必须）。注意数据库的名称、账户和密码，在config目录下的config.default.js可以修改相关参数
 
-3.  启动
+3.  开发
+
+   ```powershell
+   yarn dev
+   #or
+   npm dev
+   ```
+
+
+4. 线上部署
 
    ```powershell
    yarn start
@@ -30,7 +39,7 @@
 #### 使用说明
 
   后台管理初始账号：123456  初始密码：12345678
-  开启https服务：请查看https分支app.js文件。免费申请证书：https://letsencrypt.osfipin.com/
+  开启https服务：请查看个人博客说明：。免费申请证书：https://letsencrypt.osfipin.com/
 
 #### 参与贡献
 
@@ -41,6 +50,3 @@
 
 
 
-------
-
-作者最近计划使用Egg框架重构整个项目，因此现在后端代码不会再进行维护，敬请谅解！
