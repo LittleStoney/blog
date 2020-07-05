@@ -39,7 +39,7 @@ class BlogsService extends Service {
   async postAdd(type, title, time, newPath, keywords, description, author, cid, content, click) {
     const { app } = this;
     await app.mysql.insert('blogs', {
-      type, title, time, img: newPath, keywords, description, author, cid, content, click,
+      type, title, time, img: newPath, keywords, description, author, cid, content, click, comment: 0,
     });
   }
   async edit(id) {
