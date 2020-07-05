@@ -52,13 +52,13 @@ class HomeController extends Controller {
   async article() {
     const { ctx } = this;
     const id = ctx.params.id;
-    const queryBlog = ctx.service.home.queryBlog(id);
-    const queryList = ctx.service.home.queryList(id);
-    const queryComments = ctx.service.home.queryComments(id);
-    const queryReply = ctx.service.home.queryReply(id);
-    const updateClick = ctx.service.home.updateClick(id);
-    const [blog, list, comments, replys ] = await Promise.all([queryBlog, queryList, queryComments, queryReply, updateClick]);
     try {
+      const queryBlog = ctx.service.home.queryBlog(id);
+      const queryList = ctx.service.home.queryList(id);
+      const queryComments = ctx.service.home.queryComments(id);
+      const queryReply = ctx.service.home.queryReply(id);
+      const updateClick = ctx.service.home.updateClick(id);
+      const [blog, list, comments, replys ] = await Promise.all([queryBlog, queryList, queryComments, queryReply, updateClick]);
       blog.time = moment(blog.time * 1000).format('YYYY年MM月DD日 HH:mm:ss');
       await ctx.render('home/article.html', {
         webConfig,
