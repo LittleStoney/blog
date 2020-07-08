@@ -17,7 +17,7 @@ https://shixtao.cn
 
    
 
-2. **添加数据库，mysql执行sql文件**（必须）。注意数据库的名称、账户和密码，在config目录下的config.default.js可以修改相关参数
+2. **添加数据库，mysql执行blog_egg.sql文件**（必须）。注意数据库的名称、账户和密码，在config目录下的config.default.js可以修改相关参数
 
 3.  开发
 
@@ -41,7 +41,9 @@ https://shixtao.cn
 #### 使用说明
 
   后台管理初始账号：123456  初始密码：12345678
-  开启https服务：请查看个人博客说明：。免费申请证书：https://letsencrypt.osfipin.com/
+  开启https服务：请查看个人博客说明：https://shixtao.cn/article/41
+
+  免费申请SSL证书：https://letsencrypt.osfipin.com/
 
 #### 参与贡献
 

@@ -39,7 +39,11 @@
               />
               <div class="media-body">
                 <h2 class="title mb-1">
-                  <a href="/article/<%= data.id %>"><%= data.title %></a>
+                  <a href="/article/<%= data.id %>">
+                    <% if(data.top === 1) { %>
+                    <i class="iconfont icon-zhiding"></i>&nbsp;
+                    <% } %>
+                    <%= data.title %></a>
                 </h2>
                 <div class="meta mb-1">
                   <i class="iconfont icon-bokeyuan"></i>

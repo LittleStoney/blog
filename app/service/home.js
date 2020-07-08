@@ -9,7 +9,7 @@ class HomeService extends Service {
     const blogs = await app.mysql.query(`
     SELECT * FROM blogs
     WHERE title LIKE ? 
-    ORDER BY id DESC
+    ORDER BY top DESC,id DESC
     LIMIT ?, ?`,
     [`%${search}%`, start, end]
     );

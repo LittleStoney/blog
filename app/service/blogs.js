@@ -36,10 +36,10 @@ class BlogsService extends Service {
     });
     return result;
   }
-  async postAdd(type, title, time, newPath, keywords, description, author, cid, content, click) {
+  async postAdd(type, title, time, newPath, keywords, description, author, cid, top, content, click) {
     const { app } = this;
     await app.mysql.insert('blogs', {
-      type, title, time, img: newPath, keywords, description, author, cid, content, click, comment: 0,
+      type, title, time, img: newPath, keywords, description, author, cid, top, content, click, comment: 0,
     });
   }
   async edit(id) {
@@ -52,7 +52,7 @@ class BlogsService extends Service {
     });
     return rows[0];
   }
-  async postEdit(id, type, title, keywords, description, img, author, cid, content) {
+  async postEdit(id, type, title, keywords, description, img, author, cid, top, content) {
     const { app } = this;
     await app.mysql.update('blogs', {
       id,
@@ -63,6 +63,7 @@ class BlogsService extends Service {
       img,
       author,
       cid,
+      top,
       content,
     });
   }
