@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="description"
+      content="后台管理中心,管理员管理,用户管理,系统管理"
+    />
+    <meta name="keywords" content="后台管理，管理中心" />
+    <meta name="author" content="shixtao" />
+    <title>后台管理中心</title>
+    <link rel="stylesheet" href="/public/admin/css/pintuer.css" />
+    <link rel="stylesheet" href="/public/admin/css/admin.css" />
+    <link rel="shortcut icon" href="/public/home/images/favicon.ico" />
+    <script src="/public/admin/js/jquery.js"></script>
+  </head>
+  <body style="background-color: #f2f9fd;">
+    <div class="header bg-main">
+      <div class="logo margin-big-left fadein-top">
+        <h1>
+          <img
+            src="/public/admin/images/logo.png"
+            class="radius-circle rotate-hover"
+            height="50"
+            alt=""
+          />后台管理中心
+        </h1>
+      </div>
+      <div class="head-l">
+        <a class="button button-little bg-green" href="" target="_blank"
+          ><span class="icon-home"></span> 前台首页</a
+        >&nbsp;&nbsp;<a class="button button-little bg-red" href="/admin/logout"
+          ><span class="icon-power-off"></span> 退出登录</a
+        >
+      </div>
+    </div>
+    <div class="leftnav">
+      <div class="leftnav-title">
+        <strong><span class="icon-list"></span>菜单列表</strong>
+      </div>
+      <h2><i></i>博客管理</h2>
+      <ul>
+        <li>
+          <a href="/admin/blogstype" target="right"
+            ><span class="icon-caret-right"></span>博客分类管理</a
+          >
+        </li>
+        <li>
+          <a href="/admin/blogs" target="right"
+            ><span class="icon-caret-right"></span>博客管理</a
+          >
+        </li>
+        <li>
+          <a href="/admin/comment" target="right"
+            ><span class="icon-caret-right"></span>评论管理</a
+          >
+        </li>
+      </ul>
+      <h2><i></i>用户管理</h2>
+      <ul>
+        <li>
+          <a href="/admin/admin" target="right"
+            ><span class="icon-caret-right"></span>管理员管理</a
+          >
+        </li>
+      </ul>
+      <h2><i></i>系统管理</h2>
+      <ul>
+        <li>
+          <a href="/admin/system" target="right"
+            ><span class="icon-caret-right"></span>系统管理</a
+          >
+        </li>
+      </ul>
+    </div>
+    <script type="text/javascript">
+      $(function () {
+        $(".leftnav h2").click(function () {
+          $(this).next().slideToggle(200);
+          $(this).toggleClass("on");
+        });
+        $(".leftnav ul li a").click(function () {
+          $("#a_leader_txt").text($(this).text());
+          $(".leftnav ul li a").removeClass("on");
+          $(this).addClass("on");
+        });
+      });
+    </script>
+    <ul class="bread">
+      <li><a href="/" target="_blank" class="icon-home">博客首页</a></li>
+    </ul>
+    <div class="admin">
+      <iframe
+        scrolling="auto"
+        rameborder="0"
+        src="/admin/welcome"
+        name="right"
+        width="100%"
+        height="100%"
+      ></iframe>
+    </div>
+  </body>
+</html>

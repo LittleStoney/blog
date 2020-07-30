@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="<%= blog.description %>" />
+    <meta name="keywords" content="<%= blog.keywords %>" />
+    <meta name="baidu-site-verification" content="H91h9G7RRd" />
+    <meta name="author" content="shixtao" />
+    <link
+      href="/public/ueditor/third-party/highlight/styles/atom-one-dark.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script>
+      //颜色保存于localstorage中
+      function colorSet() {
+        var color = localStorage.getItem("color");
+        if (color) {
+          $(".header").css("backgroundColor", color);
+          $(".nav-link").css("backgroundColor", color);
+          $(".btn-primary").css({
+            backgroundColor: color,
+            borderColor: color,
+          });
+          $(".list-inline-item a").css("color", color);
+          $(".more-link").css("color", "#6C51A4");
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/public/home/css/index.css" />
+    <link rel="shortcut icon" href="/public/home/images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="//at.alicdn.com/t/font_1611091_k3rjchrrrgp.css"
+    />
+    <!--[if lt IE 11]>
+      <p style="text-align: center; color: red;">
+        您的浏览器版本过低，请使用更高版本的浏览器来获取更好的体验！ 使用<a
+          href="http://www.google.cn/intl/zh-CN/chrome/"
+          target="_blank"
+          >Google Chrome</a
+        >
+      </p>
+    <![endif]-->
+    <title><%= blog.title %></title>
+  </head>
+
+  <body onload="colorSet()">
+    <%- include('./public/header.html') %>
+    <div class="main-wrapper">
+      <article class="blog-post px-3 py-5 p-md-5">
+        <div class="container">
+          <header class="blog-post-header">
+            <h2 class="title mb-2">
+              <b><%= blog.title %></b>
+            </h2>
+            <div class="meta mb-3">
+              <i class="iconfont icon-bokeyuan"></i>
+              <span title="博客类型"
+                ><%= blog.type %>&nbsp;<span class="text-info"
+                  ><%= list.name %></span
+                ></span
+              >
+              <i class="iconfont icon-shizhong"></i>
+              <span title="发表时间"><%= blog.time %></span>
+              <i class="iconfont icon-renyuan"></i>
+              <span title="博客作者"><%= blog.author %></span>
+              <i class="iconfont icon-pinglun"></i>
+              <span title="评论"
+                ><a href="#form"><%= blog.comment %>评论</a></span
+              >
+              <i class="iconfont icon-liulan"></i>
+              <span title="浏览量"><%= blog.click %></span>
+            </div>
+          </header>
+          <!-- 内容区 -->
+          <div class="blog-post-body">
+            <%- blog.content %>
+          </div>
+          <h4 class="comment">评论区</h4>
+          <form id="form">
+            <fieldset>
+              <div class="form-group">
+                <label
+                  >输入大名：<input
+                    type="text"
+                    required
+                    name="name"
+                    maxlength="6"
+                    id="name"
+                /></label>
+                <label
+                  >选择头像：
+                  <select
+                    name="face"
+                    onchange="document.images['face'].src=options[selectedIndex].value;"
+                  >
+                    <option value="/public/home/images/p1.png">头像1</option>
+                    <option value="/public/home/images/p2.png">头像2</option>
+                    <option value="/public/home/images/p3.png">头像3</option>
+                    <option value="/public/home/images/p4.png">头像4</option>
+                    <option value="/public/home/images/p5.png">头像5</option>
+                    <option value="/public/home/images/p6.png">头像6</option>
+                    <option value="/public/home/images/p7.png">头像7</option>
+                    <option value="/public/home/images/p8.png">头像8</option>
+                  </select>
+                </label>
+                <span
+                  ><img
+                    src="/public/home/images/p1.png"
+                    id="face"
+                    class="face"
+                    alt="face"
+                    width="50"
+                    height="50"
+                /></span>
+
+                <textarea
+                  name="comment"
+                  rows="3"
+                  class="form-control"
+                  id="form-control"
+                  maxlength="50"
+                  placeholder="欢迎您留下宝贵的意见"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" id="blog-btn">
+                提交
+              </button>
+              <span id="txt">0</span><span>/30</span><br /><br />
+            </fieldset>
+          </form>
+          <table class="table">
+            <tbody>
+              <% for (let comment of comments) { %>
+              <tr>
+                <td>
+                  <div class="touxiang">
+                    <img
+                      src="<%= comment.face %>"
+                      alt="人物头像"
+                      width="50"
+                      height="50"
+                    />
+                    <div><%= comment.name %></div>
+                  </div>
+                  <div class="content">
+                    <%= comment.content %>
+                    <br />
+                    <small><%= comment.time %></small>
+                  </div>
+                  <div class="floor">
+                    <p onclick="alert('请联系作者！')" style="cursor: pointer;">
+                      举报
+                    </p>
+                    <p>
+                      <a
+                        href="#<%= comment.id %>"
+                        onclick="reply('<%= comment.id %>')"
+                        >回复</a
+                      >
+                    </p>
+                  </div>
+                  <% for (let reply of replys) { %> <% if(reply.reply_id ===
+                  comment.id){ %>
+                  <div class="reply_area">
+                    <span class="reply_info">
+                      <img
+                        src="<%= reply.face %>"
+                        alt="人物头像"
+                        width="50"
+                        height="50"
+                      />
+                      <span
+                        ><%= reply.name %><span class="text-info"
+                          >&nbsp;回复&nbsp;</span
+                        ><span id="<%= comment.id %>toname"
+                          ><%= comment.name %></span
+                        >:</span
+                      >
+                    </span>
+                    <span class="reply_content">
+                      <%= reply.content %><br />
+                      <small><%= reply.time %></small>
+                    </span>
+                  </div>
+                  <% } %> <% } %>
+                  <div class="replyedit">
+                    <form id="<%= comment.id %>" style="display: none;">
+                      <fieldset>
+                        <div class="form-group">
+                          <label
+                            >输入大名：<input
+                              type="text"
+                              required
+                              id="<%= comment.id %>name"
+                              maxlength="6"
+                          /></label>
+
+                          <label
+                            >选择头像：
+                            <select
+                              id="<%= comment.id %>replyface"
+                              onchange="document.images['<%= comment.id %>replyface'].src=options[selectedIndex].value;"
+                            >
+                              <option value="/public/home/images/p1.png"
+                                >头像1</option
+                              >
+                              <option value="/public/home/images/p2.png"
+                                >头像2</option
+                              >
+                              <option value="/public/home/images/p3.png"
+                                >头像3</option
+                              >
+                              <option value="/public/home/images/p4.png"
+                                >头像4</option
+                              >
+                              <option value="/public/home/images/p5.png"
+                                >头像5</option
+                              >
+                              <option value="/public/home/images/p6.png"
+                                >头像6</option
+                              >
+                              <option value="/public/home/images/p7.png"
+                                >头像7</option
+                              >
+                              <option value="/public/home/images/p8.png"
+                                >头像8</option
+                              >
+                            </select>
+                          </label>
+                          <span
+                            ><img
+                              src="/public/home/images/p1.png"
+                              class="face"
+                              id="<%= comment.id %>replyface"
+                              alt="face"
+                              width="50"
+                              height="50"
+                          /></span>
+
+                          <textarea
+                            id="<%= comment.id %>reply"
+                            rows="3"
+                            class="form-control"
+                            maxlength="50"
+                            placeholder="回复区"
+                          ></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                          回复
+                        </button>
+                        <span id="txt">0</span><span>/30</span><br /><br />
+                      </fieldset>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </article>
+      <%- include('./public/footer.html') %>
+    </div>
+    <%- include('./public/color.html') %>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/public/home/js/style.js"></script>
+    <script src="/public/ueditor/third-party/highlight/highlight.pack.js"></script>
+    <script>
+      // 代码高亮
+      hljs.initHighlightingOnLoad();
+      var allpre = document.querySelectorAll("pre");
+      for (var i = 0; i < allpre.length; i++) {
+        var onepre = document.querySelectorAll("pre")[i];
+        var mycode = document.querySelectorAll("pre")[i].innerHTML;
+        onepre.innerHTML = '<code id="mycode">' + mycode + "</code>";
+      }
+    </script>
+    <script
+      defer
+      src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+    ></script>
+    <script src="/public/home/js/form.js"></script>
+  </body>
+</html>
