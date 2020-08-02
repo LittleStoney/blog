@@ -1,0 +1,83 @@
+<header class="header text-center">
+  <h1 class="blog-name pt-lg-4 mb-0"><%= webConfig.title %></h1>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navigation"
+      aria-controls="navigation"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navigation" class="collapse navbar-collapse flex-column">
+      <div class="profile-section pt-3 pt-lg-0">
+        <img
+          class="profile-image mb-3 mx-auto"
+          src="<%= webConfig.logo %>"
+          alt="小涛,帅哥,logo图"
+        />
+        <div class="bio mb-3">
+          Hi，欢迎访问我的博客，和我一起学习<strong>Web前端</strong>和<strong>TypeScript</strong>知识吧！<br /><a
+            href="https://gitee.com/littlestoney/blog"
+            target="_blank"
+            >本博客源代码地址</a
+          >，欢迎star
+        </div>
+        <ul class="social-list list-inline py-3 mx-auto">
+          <li class="list-inline-item">
+            <a
+              href="tencent://message/?uin=1085813343&Site=QQ交谈&Menu=yes"
+              target="blank"
+              title="1085813343"
+              ><i class="iconfont icon-qq"></i
+            ></a>
+          </li>
+          <li class="list-inline-item">
+            <a href="javascript:void(0)" title="13088183198"
+              ><i class="iconfont icon-weixin"></i
+            ></a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://gitee.com/littlestoney" target="_blank"
+              ><i class="iconfont icon-github"></i
+            ></a>
+          </li>
+          <li class="list-inline-item">
+            <a href="mailto:Shixtao@qq.com"
+              ><i class="iconfont icon-youxiang"></i
+            ></a>
+          </li>
+        </ul>
+        <hr />
+      </div>
+      <ul class="navbar-nav flex-column text-left">
+        <li class="nav-item active">
+          <a class="nav-link" href="/"
+            ><i class="iconfont icon-shouye"></i>&nbsp;博客首页<span
+              class="sr-only"
+              >(current)</span
+            ></a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="/list" class="nav-link"
+            ><i class="iconfont icon-icon"></i>&nbsp;博客分类</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin"
+            ><i class="iconfont icon-bokeyuan"></i>&nbsp;博客管理</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:alert('小白一个，低调为主')"
+            ><i class="iconfont icon-guanyu"></i>&nbsp;关于作者</a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
