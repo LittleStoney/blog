@@ -6,7 +6,7 @@ class blogtypesService extends Service {
   async findAll() {
     const { app } = this;
     const rows = await app.mysql.select('blogstype', {
-      orders: [['id', 'desc']],
+      orders: [[ 'id', 'desc' ]],
     });
     return rows;
   }

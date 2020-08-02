@@ -1,4 +1,5 @@
 'use strict';
+
 // 去除空格
 var inputs = document.querySelectorAll('input[type=text]');
 inputs.forEach(function(item) {
@@ -62,16 +63,18 @@ $(function() {
   });
 });
 // 显示回复框
-function reply(user_id) {
+function reply(user_id, user_name) {
+  // 隐藏原评论框
+  $('#form').css('display', 'none');
   $('.table form').css('display', 'none');
   $('#' + user_id).show();
+  $('#' + user_id + 'name').val(username);
   // 提交回复
   $('#' + user_id).on('submit', function() {
     var replycomment = $('#' + user_id + 'reply').val().replace(/做爱|黄色|日|妈|操|gay|fuck/gi, '**'),
       replyname = $('#' + user_id + 'name').val().replace(/做爱|黄色|日|妈|操|gay|fuck/gi, '**');
     var replytime = new Date().toLocaleString();
     var replyface = $('#' + user_id + 'replyface').val();
-    var toname = $('#' + user_id + 'toname').html();
     if (!replycomment.replace(/ +/g, '').replace(/[\r\n]/g, '')) {
       alert('请输入内容！');
       return false;
@@ -87,7 +90,8 @@ function reply(user_id) {
       },
       success(data) {
         if (data.status === 200) {
-          $('#' + user_id).parent().prepend('<div class="reply_area"><span class="reply_info"><img src="'.concat(replyface, '" alt="\u4EBA\u7269\u5934\u50CF" width="50" height="50"> <span>').concat(replyname, '<span class="text-info">&nbsp;\u56DE\u590D&nbsp;</span><span id=""></span>').concat(toname, ':</span></span><span class="reply_content">')
+          localStorage.setItem('username', $('#' + user_id + 'name').val());
+          $('#' + user_id).parent().prepend('<div class="reply_area"><span class="reply_info"><img src="'.concat(replyface, '" alt="\u4EBA\u7269\u5934\u50CF" width="50" height="50"> <span>').concat(replyname, '<span class="text-info">&nbsp;\u56DE\u590D&nbsp;</span><span id=""></span>').concat(user_name, ':</span></span><span class="reply_content">')
             .concat(replycomment, '<br><small>')
             .concat(replytime, '</small></span></div>'));
           $('#' + user_id + 'reply').val('');

@@ -1,7 +1,7 @@
 'use strict';
 
 const { promises: fs, existsSync } = require('fs');
-const { uploadFile } = require('../common/utills');
+const { uploadFile } = require('../lib/utills');
 const moment = require('moment');
 const Controller = require('egg').Controller;
 

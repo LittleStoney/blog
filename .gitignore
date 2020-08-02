@@ -1,9 +1,8 @@
-package-lock.json
-.vscode/
+.vscode/**/*
+!.vscode/launch.json
 .idea/
 log/
 logs/
-*.log
 npm-debug.log
 yarn-error.log
 node_modules/
@@ -13,3 +12,4 @@ run/
 .DS_Store
 *.sw*
 *.un~
+*.log

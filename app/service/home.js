@@ -11,7 +11,7 @@ class HomeService extends Service {
     WHERE title LIKE ? 
     ORDER BY top DESC,id DESC
     LIMIT ?, ?`,
-    [`%${search}%`, start, end]
+    [ `%${search}%`, start, end ]
     );
     return blogs;
   }
@@ -31,7 +31,7 @@ class HomeService extends Service {
     SELECT * FROM blogs
      WHERE cid LIKE ? 
      ORDER BY id DESC
-    `, [`%${listSearch}%`]);
+    `, [ `%${listSearch}%` ]);
     return blogs;
   }
   async queryBlog(id) {
@@ -58,9 +58,9 @@ class HomeService extends Service {
     return await app.mysql.select('comment', {
       where: {
         blog_id: id,
+        status: 1,
       },
-      status: 1,
-      orders: [['id', 'desc']],
+      orders: [[ 'id', 'desc' ]],
     });
   }
   async queryReply(id) {
@@ -68,8 +68,8 @@ class HomeService extends Service {
     return await app.mysql.select('reply', {
       where: {
         blog_id: id,
+        status: 1,
       },
-      status: 1,
     });
   }
   async updateClick(id) {
@@ -101,7 +101,7 @@ class HomeService extends Service {
     INSERT INTO reply 
     (name,content,time,status,reply_id,blog_id,face)
      VALUES (?,?,?,?,?,?,?)`,
-    [replyname, replycomment, replytime, 1, user_id, blog_id, replyface]);
+    [ replyname, replycomment, replytime, 1, user_id, blog_id, replyface ]);
   }
 }
 

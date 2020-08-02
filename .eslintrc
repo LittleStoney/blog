@@ -4,8 +4,9 @@
   "rules": {
     "prefer-const": "off",
     "no-var": "off",
-    "no-inline-comments": "error",
+    "no-inline-comments": "off",
     "no-unused-vars": "off",
-    "array-bracket-spacing": "off"
+    "no-alert":"off",
+    "no-undef":"off"
   }
 }

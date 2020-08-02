@@ -1,10 +1,10 @@
 {
   "name": "blogv3",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "小涛博客第三版，后端改用EGGjs重构",
   "main": "index.js",
   "author": "shixtao@qq.com",
-  "license": "MIT",
+  "license": "apache",
   "scripts": {
     "dev": "egg-bin dev",
     "start": "egg-scripts start --daemon",

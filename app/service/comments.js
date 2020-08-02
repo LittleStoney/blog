@@ -1,7 +1,7 @@
 'use strict';
 
 const Service = require('egg').Service;
-const { pagess } = require('../common/utills');
+const { pagess } = require('../lib/utills');
 
 class CommentsService extends Service {
   async find(page) {

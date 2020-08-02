@@ -1,7 +1,7 @@
 'use strict';
 
 const Service = require('egg').Service;
-const { pagess } = require('../common/utills');
+const { pagess } = require('../lib/utills');
 const moment = require('moment');
 
 class BlogsService extends Service {
@@ -32,7 +32,7 @@ class BlogsService extends Service {
   async findTypes() {
     const { app } = this;
     const result = await app.mysql.select('blogstype', {
-      orders: [['id', 'desc']],
+      orders: [[ 'id', 'desc' ]],
     });
     return result;
   }

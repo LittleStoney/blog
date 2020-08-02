@@ -7,7 +7,7 @@ const crypto = require('crypto');
 class AdminService extends Service {
   async findAll(search) {
     const { app } = this;
-    const rows = await app.mysql.query('SELECT * FROM admin WHERE adminname LIKE ? ORDER BY id DESC', [`%${search}%`]);
+    const rows = await app.mysql.query('SELECT * FROM admin WHERE adminname LIKE ? ORDER BY id DESC', [ `%${search}%` ]);
     rows.forEach(item => {
       item.time = moment(item.time * 1000).format('YYYY年MM月DD日 HH:mm:ss');
     });

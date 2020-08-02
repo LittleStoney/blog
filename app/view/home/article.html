@@ -130,7 +130,7 @@
               <button type="submit" class="btn btn-primary" id="blog-btn">
                 提交
               </button>
-              <span id="txt">0</span><span>/30</span><br /><br />
+              <br /><br />
             </fieldset>
           </form>
           <table class="table">
@@ -159,7 +159,7 @@
                     <p>
                       <a
                         href="#<%= comment.id %>"
-                        onclick="reply('<%= comment.id %>')"
+                        onclick="reply('<%= comment.id %>','<%= comment.name %>')"
                         >回复</a
                       >
                     </p>
@@ -253,7 +253,7 @@
                         <button type="submit" class="btn btn-primary">
                           回复
                         </button>
-                        <span id="txt">0</span><span>/30</span><br /><br />
+                        <br /><br />
                       </fieldset>
                     </form>
                   </div>
