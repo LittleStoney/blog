@@ -1,6 +1,23 @@
 'use strict';
 
 $(function() {
+  // 检测webp
+  function checkWebp(img) {
+    var webImg = new Image();
+    webImg.src =
+      'data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=';
+    webImg.onload = function() {
+      var result = webImg.width > 0 && webImg.height > 0;
+      if (!result) {
+        img.src = '/public/home/images/win10狗头.jpg';
+      }
+    };
+    webImg.onerror = function() {
+      img.src = '/public/home/images/win10狗头.jpg';
+    };
+  }
+  checkWebp(document.querySelector('.profile-image'));
+
   // 点击切换颜色按钮
   $('#config-trigger').click(function(e) {
     e.preventDefault();

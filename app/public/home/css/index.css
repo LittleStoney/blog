@@ -9756,6 +9756,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .profile-section .profile-image {
   max-width: 160px;
+  border-radius: 50%;
 }
 @keyframes rotation{
 	from{
