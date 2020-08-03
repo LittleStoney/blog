@@ -54,5 +54,9 @@ https://shixtao.cn
 
 
 
+#### 需求
+
+- feat #1000 使用egg+sequelize重构数据库
+
 
 
