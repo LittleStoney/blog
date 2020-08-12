@@ -56,7 +56,8 @@ https://shixtao.cn
 
 #### 需求
 
-- feat #1000 使用egg+sequelize重构数据库
+- ~~feat: #1000 使用egg+sequelize重构数据库~~（考虑sequelize复杂性放弃）
+- feat: #1100 评论区接入QQ登录，使用QQ用户的头像和姓名
 
 
 
