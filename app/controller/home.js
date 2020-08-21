@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const moment = require('moment');
-
+const xss = require('xss');
 const webConfigData = fs.readFileSync(__dirname + '/../../config/config.system.json');
 const webConfig = JSON.parse(webConfigData.toString());
 
@@ -78,6 +78,8 @@ class HomeController extends Controller {
     const { ctx } = this;
     const id = ctx.params.id;
     let { name, comment, time, face } = ctx.request.body;
+    name = xss(name);
+    comment = xss(comment);
     const { affectedRows } = await ctx.service.home.comment(id, name, comment, time, face);
     await ctx.service.home.updateComment(id);
     if (affectedRows !== 1) {
@@ -97,6 +99,8 @@ class HomeController extends Controller {
     const user_id = ctx.request.query.id;
     const blog_id = ctx.request.query.blog_id;
     let { replyname, replycomment, replytime, replyface } = ctx.request.body;
+    replyname = xss(replyname);
+    replycomment = xss(replycomment);
     const { affectedRows } = await ctx.service.home.replyComment(user_id, blog_id, replyname, replycomment, replytime, replyface);
     await ctx.service.home.updateComment(blog_id);
     if (affectedRows !== 1) {
