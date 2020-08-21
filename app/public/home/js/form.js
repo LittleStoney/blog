@@ -43,8 +43,8 @@ $(function() {
       success(data) {
         if (data.status === 200) {
           localStorage.setItem('username', name);
-          var content = '<tr><td><div class="touxiang"><img src="'.concat(face, '" alt="\u4EBA\u7269\u5934\u50CF" width="50" height="50"><div>').concat(name, '</div></div><div class="content">').concat(comment, '<br><small>')
-            .concat(time, '</small></div></td></tr>');
+          var content = '<tr><td><div class="touxiang"><img src="'.concat(data.message.face, '" alt="\u4EBA\u7269\u5934\u50CF" width="50" height="50"><div>').concat(data.message.name, '</div></div><div class="content">').concat(data.message.comment, '<br><small>')
+            .concat(data.message.time, '</small></div></td></tr>');
           $('.table tbody').prepend(content);
           $('#form-control').val('');
           $('input[name=name]').val('');
@@ -91,9 +91,9 @@ function reply(user_id, user_name) {
       success(data) {
         if (data.status === 200) {
           localStorage.setItem('username', $('#' + user_id + 'name').val());
-          $('#' + user_id).parent().prepend('<div class="reply_area"><span class="reply_info"><img src="'.concat(replyface, '" alt="\u4EBA\u7269\u5934\u50CF" width="50" height="50"> <span>').concat(replyname, '<span class="text-info">&nbsp;\u56DE\u590D&nbsp;</span><span id=""></span>').concat(user_name, ':</span></span><span class="reply_content">')
-            .concat(replycomment, '<br><small>')
-            .concat(replytime, '</small></span></div>'));
+          $('#' + user_id).parent().prepend('<div class="reply_area"><span class="reply_info"><img src="'.concat(data.message.replyface, '" alt="\u4EBA\u7269\u5934\u50CF" width="50" height="50"> <span>').concat(data.message.replyname, '<span class="text-info">&nbsp;\u56DE\u590D&nbsp;</span><span id=""></span>').concat(user_name, ':</span></span><span class="reply_content">')
+            .concat(data.message.replycomment, '<br><small>')
+            .concat(data.message.replytime, '</small></span></div>'));
           $('#' + user_id + 'reply').val('');
           $('#' + user_id + 'name').val('');
           $('#' + user_id).hide();
