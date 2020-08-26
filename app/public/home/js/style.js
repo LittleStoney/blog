@@ -135,5 +135,11 @@ $(function() {
     io.observe(target);
   }
   $('.item img').each(lazyLoad);
+
+  // url search 隐藏分页
+  var urlSearch = location.search;
+  if (urlSearch.indexOf('?search') !== -1) {
+    $('.blog-nav').css('display', 'none');
+  }
 });
 
