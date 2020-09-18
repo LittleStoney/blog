@@ -10299,3 +10299,7 @@ body {
         transform: scale(.5);
     }
 }
+
+.highlightTitle {
+  color: red;
+}

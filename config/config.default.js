@@ -5,7 +5,7 @@ module.exports = appInfo => {
 
   config.keys = 'shixtao@qq.com';
 
-  config.middleware = ['notFound'];
+  config.middleware = [ 'notFound' ];
 
   // 添加 view 配置
   config.view = {

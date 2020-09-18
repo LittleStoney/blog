@@ -136,10 +136,24 @@ $(function() {
   }
   $('.item img').each(lazyLoad);
 
-  // url search 隐藏分页
+  // url search
   var urlSearch = location.search;
   if (urlSearch.indexOf('?search') !== -1) {
     $('.blog-nav').css('display', 'none');
+  }
+  var searchContent = location.search;
+  if (searchContent) {
+    searchContent = decodeURIComponent(searchContent.split('=')[1]);
+    if ($('.title a').length !== 0) {
+      $('.title a').each(function(index, ele) {
+        // ele is a HTMLElement
+        var title = $(ele).html();
+        var newTitle = title.replace(searchContent, '<mark class="highlightTitle">' + searchContent + '</mark>');
+        $(ele).html(newTitle);
+      });
+    } else {
+      $('.blog-list > .container').text('空空如也，世界变得清净了~');
+    }
   }
 });
 
