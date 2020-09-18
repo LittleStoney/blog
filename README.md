@@ -24,7 +24,7 @@ https://shixtao.cn
    ```powershell
    yarn dev
    #or
-   npm dev
+   npm run dev
    ```
 
 
@@ -34,6 +34,8 @@ https://shixtao.cn
    yarn start
    #or
    npm start
+   # https
+   yarn start -- --port=443
    ```
 
    
