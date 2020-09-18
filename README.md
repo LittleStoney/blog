@@ -1,7 +1,7 @@
 # blog_egg
 
 #### 介绍
-个人博客源码，基于原express框架（dev分支，不再维护）完全重构，新版由Egg.js框架搭建，喜欢请star，谢谢！
+个人博客源码，基于原express框架完全重构，新版由Egg.js框架搭建，喜欢请star，谢谢！
 
 https://shixtao.cn
 
