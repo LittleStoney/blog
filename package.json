@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "egg-bin": "^4.14.1",
+    "egg-ts-helper": "^1.25.8",
     "eslint": "^7.2.0",
     "eslint-config-egg": "^8.0.1"
   }

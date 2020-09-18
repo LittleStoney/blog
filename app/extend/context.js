@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+
   /**
    *  扩展ctx.success()方法
    *  @param {string} [content] 需要返回给前端的alert内容
