@@ -176,15 +176,11 @@ class adminController extends Controller {
   async deleteBlog() {
     const { ctx } = this;
     const { id, img } = ctx.request.query;
-    const result = await ctx.service.blogs.delete(id);
-    if (result.affectedRows !== 1) {
-      ctx.ajaxFailed(200, '删除失败！');
-    } else {
-      if (existsSync(__dirname + '/../' + img)) {
-        fs.unlink(__dirname + '/../' + img);
-      }
-      ctx.ajaxSuccess(200, '删除成功！');
+    await ctx.service.blogs.delete(id);
+    if (existsSync(__dirname + '/../' + img)) {
+      fs.unlink(__dirname + '/../' + img);
     }
+    ctx.ajaxSuccess(200, '删除成功！');
   }
   // 管理员管理页
   async admin() {

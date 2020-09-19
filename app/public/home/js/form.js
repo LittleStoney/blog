@@ -67,6 +67,7 @@ function reply(user_id, user_name) {
   // 隐藏原评论框
   $('#form').css('display', 'none');
   $('.table form').css('display', 'none');
+  // 显示回复评论框
   $('#' + user_id).show();
   $('#' + user_id + 'name').val(username);
   // 提交回复

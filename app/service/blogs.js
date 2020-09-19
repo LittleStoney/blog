@@ -68,7 +68,7 @@ class BlogsService extends Service {
     });
   }
   async delete(id) {
-    const { app } = this;
+    const { app, ctx } = this;
     // 查询是否有对应数据
     const findOne = await app.mysql.get('blogs', {
       id,
@@ -76,10 +76,18 @@ class BlogsService extends Service {
     if (!findOne) {
       throw new Error('不存在该博客id！');
     }
-    const result = await app.mysql.delete('blogs', {
-      id,
-    });
-    return result;
+    const result = await app.mysql.beginTransactionScope(async conn => {
+      await conn.delete('blogs', {
+        id,
+      });
+      await conn.delete('comment', {
+        blog_id: id,
+      });
+      await conn.delete('reply', {
+        blog_id: id,
+      });
+      return { success: true };
+    }, ctx);
   }
 }
 
