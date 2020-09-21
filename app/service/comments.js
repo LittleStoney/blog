@@ -1,7 +1,6 @@
 'use strict';
 
 const Service = require('egg').Service;
-const { pagess } = require('../lib/utills');
 
 class CommentsService extends Service {
   async find(page) {
@@ -12,7 +11,7 @@ class CommentsService extends Service {
     FROM comment
     `);
     total = total[0].total;
-    const fpage = pagess(total, page, size);
+    const fpage = app.lib.utils.pagess(total, page, size);
     const result = await app.mysql.query(`
     SELECT comment.*, blogs.title,blogs.img
     FROM comment

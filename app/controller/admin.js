@@ -1,7 +1,6 @@
 'use strict';
 
 const { promises: fs, existsSync } = require('fs');
-const { uploadFile } = require('../lib/utills');
 const moment = require('moment');
 const Controller = require('egg').Controller;
 
@@ -136,12 +135,12 @@ class adminController extends Controller {
   }
   // 处理添加博客页
   async postAddBlog() {
-    const { ctx } = this;
+    const { ctx, app } = this;
     const { type, title, keywords, description, author, cid, top, content } = ctx.request.body;
     const click = 0;
     const time = Math.round((new Date().getTime()) / 1000);
     const img = ctx.request.files[0];
-    const newPath = await uploadFile(img);
+    const newPath = await app.lib.utils.uploadFile(img);
     await ctx.service.blogs.postAdd(type, title, time, newPath, keywords, description, author, cid, top, content, click);
     ctx.success('添加成功！', 'location.href="/admin/blogs"');
   }
@@ -158,12 +157,12 @@ class adminController extends Controller {
   }
   // 处理修改博客页
   async postEditBlog() {
-    const { ctx } = this;
+    const { ctx, app } = this;
     const { id, type, title, keywords, description, oldimg, author, cid, top, content } = ctx.request.body;
     let img = oldimg;
     const newImg = ctx.request.files[0];
     if (newImg) {
-      img = await uploadFile(newImg);
+      img = await app.lib.utils.uploadFile(newImg);
       // 删除旧博客封面
       if (existsSync(__dirname + '/../' + oldimg)) {
         await fs.unlink(__dirname + '/../' + oldimg);
@@ -296,12 +295,12 @@ class adminController extends Controller {
   }
   // 处理系统管理页
   async postSystem() {
-    const { ctx } = this;
+    const { ctx, app } = this;
     const { title, keywords, description, copyright, record, logo } = ctx.request.body;
     const file = ctx.request.files[0];
     let newlogo = '';
     if (file) {
-      newlogo = await uploadFile(file);
+      newlogo = await app.lib.utils.uploadFile(file);
     }
     const data = {
       title,

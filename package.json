@@ -5,6 +5,18 @@
   "main": "index.js",
   "author": "shixtao@qq.com",
   "license": "apache",
+  "egg": {
+    "declarations": true,
+    "tsHelper": {
+      "watchDirs": {
+        "utils": {
+          "enabled": true,
+          "directory": "app/lib",
+          "declareTo": "Application.utils"
+        }
+      }
+    }
+  },
   "scripts": {
     "dev": "egg-bin dev",
     "start": "egg-scripts start --daemon",

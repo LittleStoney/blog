@@ -55,5 +55,13 @@ module.exports = appInfo => {
     prefix: '/public',
   };
 
+  // util
+  config.customLoader = {
+    lib: {
+      directory: 'app/lib',
+      inject: 'app',
+    },
+  };
+
   return config;
 };

@@ -1,7 +1,6 @@
 'use strict';
 
 const Service = require('egg').Service;
-const { pagess } = require('../lib/utills');
 const moment = require('moment');
 
 class BlogsService extends Service {
@@ -13,7 +12,7 @@ class BlogsService extends Service {
     FROM blogs
     `);
     total = total[0].total;
-    const fpage = pagess(total, page, size);
+    const fpage = app.lib.utils.pagess(total, page, size);
     const rows = await app.mysql.query(`
     SELECT blogs.*,blogstype.name tname
     FROM blogs
