@@ -61,13 +61,13 @@ class AdminService extends Service {
     await app.mysql.query(sql);
   }
   async delete(id) {
-    const { app } = this;
+    const { app, ctx } = this;
     // 查询是否有对应数据
     const findOne = await app.mysql.get('admin', {
       id,
     });
     if (!findOne) {
-      throw new Error('不存在该管理员id！');
+      ctx.logger.error(new Error('不存在该管理员id！'));
     }
     const result = await app.mysql.delete('admin', {
       id,
@@ -81,7 +81,7 @@ class AdminService extends Service {
       id,
     });
     if (!findOne) {
-      throw new Error('不存在该管理员id！');
+      ctx.logger.error(new Error('不存在该管理员id！'));
     }
     const result = await app.mysql.update('admin', {
       id,

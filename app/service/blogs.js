@@ -73,9 +73,9 @@ class BlogsService extends Service {
       id,
     });
     if (!findOne) {
-      throw new Error('不存在该博客id！');
+      ctx.logger.error(new Error('不存在该博客id！'));
     }
-    const result = await app.mysql.beginTransactionScope(async conn => {
+    await app.mysql.beginTransactionScope(async conn => {
       await conn.delete('blogs', {
         id,
       });

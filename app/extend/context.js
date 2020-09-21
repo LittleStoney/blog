@@ -25,7 +25,7 @@ module.exports = {
   /**
    *  扩展ctx.ajaxSuccess()方法
    *  @param {number} code 需要返回给前端HTTP Code，默认200
-   *  @param {any} [message] 返回内容message
+   *  @param {*} [message] 返回内容message
    */
   ajaxSuccess(code = 200, message) {
     this.status = code;

@@ -155,5 +155,6 @@ $(function() {
       $('.blog-list > .container').text('空空如也，世界变得清净了~');
     }
   }
+
 });
 

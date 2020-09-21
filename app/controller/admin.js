@@ -269,9 +269,11 @@ class adminController extends Controller {
   async comment() {
     const { ctx } = this;
     const page = ctx.request.query.page ? ctx.request.query.page : 1;
-    const { result: comment, show } = await ctx.service.comments.find(page);
+    const { result: comment, show } = await ctx.service.comments.findComments(page);
+    const { result: reply } = await ctx.service.comments.findReplies();
     await ctx.render('admin/comment/index.html', {
       comment,
+      reply,
       show,
     });
   }
@@ -284,7 +286,6 @@ class adminController extends Controller {
       ctx.ajaxFailed(500, '修改失败');
     }
     ctx.ajaxSuccess(200, '修改成功');
-
   }
   // 系统管理页
   async system() {

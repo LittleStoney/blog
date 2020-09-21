@@ -21,12 +21,13 @@ class blogtypesService extends Service {
     return rows[0];
   }
   async add(name, sort) {
-    const { app } = this;
+    const { app, ctx } = this;
     // 查询是否有相同的分类名称
     const hasName = await app.mysql.get('blogstype', {
       name,
     });
     if (hasName) {
+      ctx.logger.error(new Error('添加失败，存在相同的分类名称！'));
       throw new Error('添加失败，存在相同的分类名称！');
     }
     await app.mysql.insert('blogstype', {
@@ -50,19 +51,20 @@ class blogtypesService extends Service {
     });
   }
   async delete(id) {
-    const { app } = this;
+    const { app, ctx } = this;
     // 查询是否有对应数据
     const findOne = await app.mysql.get('blogstype', {
       id,
     });
     if (!findOne) {
-      throw new Error('不存在该分类id！');
+      ctx.logger.error(new Error('不存在该分类id！'));
     }
     // 查询是否有博客正在使用该分类
     const findBlog = await app.mysql.get('blogs', {
       cid: id,
     });
     if (findBlog) {
+      ctx.logger.error(new Error('当前有博客正在使用该分类，不允许删除！'));
       throw new Error('当前有博客正在使用该分类，不允许删除！');
     }
     const result = await app.mysql.delete('blogstype', {

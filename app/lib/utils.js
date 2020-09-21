@@ -10,10 +10,9 @@ module.exports = class Utils {
     this.logger = app.logger;
   }
 
-  // 会被挂载为 `app.utils.formatter`
   /**
    * 拷贝文件
-   * @param {File} file 需要上传的file
+   * @param {*} file 需要上传的file
    * @return {Promise<String>} 返回新的路径
    */
   async uploadFile(file) {
@@ -27,7 +26,7 @@ module.exports = class Utils {
       await fs.writeFile(__dirname + '/..' + newPath, data);
       return newPath;
     } catch (error) {
-      throw new Error(error);
+      this.logger.error(new Error(error));
     } finally {
       // 删除临时文件
       await fs.unlink(tmpPath);
@@ -39,7 +38,7 @@ module.exports = class Utils {
    * @param {number} total 总页数
    * @param {number} page 页码
    * @param {number} size 每页数量
-   * @return {{start,size,show}} 返回数据
+   * @return {{star:number,size:number,show:string}} 返回数据
    */
   pagess(total, page = 1, size = 4) {
   // 1.计算截取的开始位置、结束位置、总页数

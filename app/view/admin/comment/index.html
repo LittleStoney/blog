@@ -36,18 +36,40 @@
             <td><%= item.id %></td>
             <td><%= item.name %></td>
             <td><%= item.title %></td>
-            <td><img src="<%= item.img %>" width="200px"></td>
+            <td>
+              <a href="https://shixtao.cn/article/<%= item.blogId %>" target="_blank">
+                <img src="<%= item.img %>" width="200px">
+              </a>
+            </td>
             <td><%= item.content%></td>
             <td><%= item.time%></td>
             <td>
-                <select name="" id="" onchange="status(this,<%= item.id %>)">
+                <select onchange="status(this,<%= item.id %>)">
                     <option <%= item.status == 0 ? 'selected' : '' %> value="0">未审核</option>
                     <option <%= item.status == 1 ? 'selected' : '' %> value="1">审核通过</option>
                     <option <%= item.status == 2 ? 'selected' : '' %> value="2">审核失败</option>
                   </select>
             </td>
+            <tr>
+              <th>回复id</th>
+              <th>用户名</th>
+              <th>评论内容</th>
+              <th>评论时间</th>
+              <th>评论状态</th>
+            </tr>
+            <% reply.forEach(item2 => { %>
+              <% if(item.id===item2.reply_id) { %>
+              <tr>
+              <td><%= item2.id %></td>
+              <td><%= item2.name %></td>
+              <td><%= item2.content %></td>
+              <td><%= item2.time %></td>
+              <td><%= item2.status %></td>
+              </tr>
+              <% } %>
+            <% }) %>
           </tr>
-        <% }) %>
+          <% }) %>
         <tr>
           <td colspan="8">
             <div class="pagelist">
