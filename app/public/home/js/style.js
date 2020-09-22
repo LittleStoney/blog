@@ -143,12 +143,16 @@ $(function() {
   }
   var searchContent = location.search;
   if (searchContent) {
-    searchContent = decodeURIComponent(searchContent.split('=')[1]);
+    searchContent = decodeURIComponent(searchContent.split('?search=')[1]);
     if ($('.title a').length !== 0) {
       $('.title a').each(function(index, ele) {
         // ele is a HTMLElement
         var title = $(ele).html();
-        var newTitle = title.replace(searchContent, '<mark class="highlightTitle">' + searchContent + '</mark>');
+        var reg = new RegExp(searchContent, 'gi');
+        var newSearchContent = title.match(reg);
+        var newTitle = newSearchContent.reduce(function(total, cur) {
+          return total.replace(cur, '<mark class="highlightTitle">' + cur + '</mark>');
+        }, title);
         $(ele).html(newTitle);
       });
     } else {
