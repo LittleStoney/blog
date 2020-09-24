@@ -74,6 +74,7 @@ class BlogsService extends Service {
     });
     if (!findOne) {
       ctx.logger.error(new Error('不存在该博客id！'));
+      throw new Error('不存在该分类id！');
     }
     await app.mysql.beginTransactionScope(async conn => {
       await conn.delete('blogs', {

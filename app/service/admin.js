@@ -82,6 +82,7 @@ class AdminService extends Service {
     });
     if (!findOne) {
       ctx.logger.error(new Error('不存在该管理员id！'));
+      throw new Error('不存在该管理员id！');
     }
     const result = await app.mysql.update('admin', {
       id,

@@ -13,7 +13,7 @@ module.exports = class Utils {
   /**
    * 拷贝文件
    * @param {*} file 需要上传的file
-   * @return {Promise<String>} 返回新的路径
+   * @return {Promise<string>} 返回新的路径
    */
   async uploadFile(file) {
     const tmpPath = file.filepath;

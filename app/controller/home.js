@@ -58,14 +58,14 @@ class HomeController extends Controller {
       const queryComments = ctx.service.home.queryComments(id);
       const queryReply = ctx.service.home.queryReply(id);
       const updateClick = ctx.service.home.updateClick(id);
-      const [ blog, list, comments, replys ] = await Promise.all([ queryBlog, queryList, queryComments, queryReply, updateClick ]);
+      const [ blog, list, comments, replies ] = await Promise.all([ queryBlog, queryList, queryComments, queryReply, updateClick ]);
       blog.time = moment(blog.time * 1000).format('YYYY年MM月DD日 HH:mm:ss');
       await ctx.render('home/article.html', {
         webConfig,
         blog,
         list,
         comments,
-        replys,
+        replies,
       });
     } catch (error) {
       // 防止用户在url地址任意输入博客id
@@ -77,17 +77,17 @@ class HomeController extends Controller {
   async comment() {
     const { ctx } = this;
     const id = ctx.params.id;
-    let { name, comment, time, face } = ctx.request.body;
+    let { name, content, time, face } = ctx.request.body;
     name = xss(name);
-    comment = xss(comment);
-    const { affectedRows } = await ctx.service.home.comment(id, name, comment, time, face);
+    content = xss(content);
+    const { affectedRows } = await ctx.service.home.comment(id, name, content, time, face);
     await ctx.service.home.updateComment(id);
     if (affectedRows !== 1) {
       ctx.ajaxFailed(500, '评论失败');
     } else {
       ctx.ajaxSuccess(200, {
         name,
-        comment,
+        content,
         time,
         face,
       });
@@ -98,19 +98,20 @@ class HomeController extends Controller {
     const { ctx } = this;
     const user_id = ctx.request.query.id;
     const blog_id = ctx.request.query.blog_id;
-    let { replyname, replycomment, replytime, replyface } = ctx.request.body;
-    replyname = xss(replyname);
-    replycomment = xss(replycomment);
-    const { affectedRows } = await ctx.service.home.replyComment(user_id, blog_id, replyname, replycomment, replytime, replyface);
+    let { name, content, time, face, reply_name } = ctx.request.body;
+    name = xss(name);
+    content = xss(content);
+    const { affectedRows } = await ctx.service.home.replyComment(user_id, blog_id, name, content, time, face, reply_name);
     await ctx.service.home.updateComment(blog_id);
     if (affectedRows !== 1) {
       ctx.ajaxFailed(500, '回复失败');
     } else {
       ctx.ajaxSuccess(200, {
-        replyname,
-        replycomment,
-        replytime,
-        replyface,
+        replyname: name,
+        replycomment: content,
+        replytime: time,
+        replyface: face,
+        reply_name,
       });
     }
   }

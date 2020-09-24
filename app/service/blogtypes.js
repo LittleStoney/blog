@@ -58,6 +58,7 @@ class blogtypesService extends Service {
     });
     if (!findOne) {
       ctx.logger.error(new Error('不存在该分类id！'));
+      throw new Error('不存在该分类id！');
     }
     // 查询是否有博客正在使用该分类
     const findBlog = await app.mysql.get('blogs', {

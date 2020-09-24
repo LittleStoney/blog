@@ -1,7 +1,6 @@
 'use strict';
 
 const Service = require('egg').Service;
-const xss = require('xss');
 
 class HomeService extends Service {
   async findAll(search, start, end) {
@@ -76,14 +75,12 @@ class HomeService extends Service {
     const { app } = this;
     await app.mysql.query(`UPDATE blogs SET click = click + 1 WHERE id = ${id}`);
   }
-  async comment(id, name, comment, time, face) {
+  async comment(id, name, content, time, face) {
     const { app } = this;
-    name = xss(name);
-    comment = xss(comment);
     return await app.mysql.insert('comment', {
       blog_id: id,
       name,
-      content: comment,
+      content,
       face,
       time,
       status: 1,
@@ -93,15 +90,13 @@ class HomeService extends Service {
     const { app } = this;
     await app.mysql.query(`UPDATE blogs SET comment = comment + 1 WHERE id = ${blog_id}`);
   }
-  async replyComment(user_id, blog_id, replyname, replycomment, replytime, replyface) {
+  async replyComment(user_id, blog_id, name, content, time, face, reply_name) {
     const { app } = this;
-    replyname = xss(replyname);
-    replycomment = xss(replycomment);
     return await app.mysql.query(`
     INSERT INTO reply 
-    (name,content,time,status,reply_id,blog_id,face)
-     VALUES (?,?,?,?,?,?,?)`,
-    [ replyname, replycomment, replytime, 1, user_id, blog_id, replyface ]);
+    (name,content,time,status,reply_id,blog_id,face,reply_name)
+     VALUES (?,?,?,?,?,?,?,?)`,
+    [ name, content, time, 1, user_id, blog_id, face, reply_name ]);
   }
 }
 
