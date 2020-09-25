@@ -46,11 +46,10 @@ class CommentsService extends Service {
       ctx.logger.error(new Error('不存在该评论id！'));
       throw new Error('不存在该评论id！');
     }
-    const result = await app.mysql.update('comment', {
+    await app.mysql.update('comment', {
       id,
       status,
     });
-    return result;
   }
 }
 

@@ -92,11 +92,18 @@ class HomeService extends Service {
   }
   async replyComment(user_id, blog_id, name, content, time, face, reply_name) {
     const { app } = this;
-    return await app.mysql.query(`
-    INSERT INTO reply 
-    (name,content,time,status,reply_id,blog_id,face,reply_name)
-     VALUES (?,?,?,?,?,?,?,?)`,
-    [ name, content, time, 1, user_id, blog_id, face, reply_name ]);
+    return await app.mysql.insert('reply',
+      {
+        name,
+        content,
+        time,
+        status: 1,
+        reply_id: user_id,
+        blog_id,
+        face,
+        reply_name,
+      }
+    );
   }
 }
 

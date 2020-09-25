@@ -68,7 +68,7 @@ class HomeController extends Controller {
         replies,
       });
     } catch (error) {
-      // 防止用户在url地址任意输入博客id
+      ctx.logger.error(error.message);
       ctx.status = 404;
       await ctx.render('404.html');
     }

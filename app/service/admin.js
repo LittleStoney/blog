@@ -14,14 +14,13 @@ class AdminService extends Service {
     return rows;
   }
   async add(adminname, password) {
-    const { app } = this;
-    let message = '';
-    const name = await app.mysql.select('admin', {
+    const { app, ctx } = this;
+    const hasName = await app.mysql.select('admin', {
       where: {
         adminname,
       },
     });
-    if (name.length === 0) {
+    if (hasName.length === 0) {
       const time = Math.trunc((new Date().getTime()) / 1000);
       const md5 = crypto.createHash('md5');
       password = md5.update(password).digest('hex');
@@ -33,62 +32,63 @@ class AdminService extends Service {
           time,
         });
     } else {
-      message = '该管理员名已注册，请重新输入!';
-      return message;
+      ctx.logger.error(new Error('管理员名称已存在！'));
+      throw new Error('管理员名称已存在！');
     }
   }
+  /**
+   * 查询管理员是否存在
+   * @async
+   * @param {number} id 管理员id
+   * @return {Promise<{id:number,adminname:string,password:string,status:number,time:number}>} 管理员数据
+   */
   async findOne(id) {
     const { app } = this;
     return await app.mysql.get('admin', { id });
   }
   async edit(id, adminname, password, repassword, status) {
-    const { app } = this;
-    let message = '',
-      sql = '';
-    if (password) {
+    const { app, ctx } = this;
+    const row = {
+      id,
+      status,
+    };
+    if (repassword) {
       if (password === repassword) {
         let md5 = crypto.createHash('md5');
         password = md5.update(password).digest('hex');
-        // 偷懒，未对sql转义
-        sql = `UPDATE admin SET status = ${status},password = '${password}' WHERE id = ${id}`;
+        // 修改了密码
+        row.password = password;
       } else {
-        message = '两次输入的密码不一致！';
-        return message;
+        ctx.logger.error(new Error('两次输入的密码不一致！'));
+        throw new Error('两次输入的密码不一致！');
       }
-    } else {
-      sql = `UPDATE admin SET status = ${status} WHERE id = ${id}`;
     }
-    await app.mysql.query(sql);
+    await app.mysql.update('admin', row);
   }
   async delete(id) {
     const { app, ctx } = this;
     // 查询是否有对应数据
-    const findOne = await app.mysql.get('admin', {
-      id,
-    });
+    const findOne = await ctx.service.admin.findOne(id);
     if (!findOne) {
-      ctx.logger.error(new Error('不存在该管理员id！'));
+      ctx.logger.error(new Error('不存在该管理员！'));
+      throw new Error('不存在该管理员！');
     }
-    const result = await app.mysql.delete('admin', {
+    await app.mysql.delete('admin', {
       id,
     });
-    return result;
   }
   async change(id, status) {
-    const { app } = this;
+    const { app, ctx } = this;
     // 查询是否有对应数据
-    const findOne = await app.mysql.get('admin', {
-      id,
-    });
+    const findOne = await ctx.service.admin.findOne(id);
     if (!findOne) {
-      ctx.logger.error(new Error('不存在该管理员id！'));
-      throw new Error('不存在该管理员id！');
+      ctx.logger.error(new Error('不存在该管理员！'));
+      throw new Error('不存在该管理员！');
     }
-    const result = await app.mysql.update('admin', {
+    await app.mysql.update('admin', {
       id,
       status,
     });
-    return result;
   }
 }
 

@@ -11,7 +11,7 @@
  Target Server Version : 80021
  File Encoding         : 65001
 
- Date: 24/09/2020 10:08:43
+ Date: 24/09/2020 10:28:42
 */
 
 SET NAMES utf8mb4;
@@ -22,7 +22,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin`  (
-  `id` bigint NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `adminname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `status` tinyint(1) NULL DEFAULT NULL,
@@ -40,8 +40,8 @@ INSERT INTO `admin` VALUES (5, '123456', '25d55ad283aa400af464c76d713c07ad', 0, 
 -- ----------------------------
 DROP TABLE IF EXISTS `blogs`;
 CREATE TABLE `blogs`  (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `cid` bigint NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cid` tinyint NULL DEFAULT NULL,
   `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE `blogs`  (
   `keywords` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `content` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `comment` bigint NULL DEFAULT NULL,
+  `comment` int NULL DEFAULT NULL,
   `top` tinyint NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 60 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
@@ -65,7 +65,7 @@ CREATE TABLE `blogs`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `blogstype`;
 CREATE TABLE `blogstype`  (
-  `id` bigint NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `sort` tinyint(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
@@ -80,8 +80,8 @@ CREATE TABLE `blogstype`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment`  (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `blog_id` bigint NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `blog_id` int NULL DEFAULT NULL,
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `status` tinyint(1) NULL DEFAULT NULL,
@@ -99,13 +99,13 @@ CREATE TABLE `comment`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `reply`;
 CREATE TABLE `reply`  (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `blog_id` bigint NULL DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `blog_id` int NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `status` tinyint(1) NULL DEFAULT NULL,
-  `reply_id` bigint NULL DEFAULT NULL,
+  `reply_id` int NULL DEFAULT NULL,
   `face` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `reply_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE

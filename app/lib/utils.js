@@ -12,6 +12,7 @@ module.exports = class Utils {
 
   /**
    * 拷贝文件
+   * @async
    * @param {*} file 需要上传的file
    * @return {Promise<string>} 返回新的路径
    */
