@@ -21,6 +21,7 @@
                 name="search"
                 class="form-control mr-md-1"
                 placeholder="输入您想搜索的文章"
+                required
               />
             </div>
             <button type="search" class="btn btn-primary">搜索</button>
@@ -76,7 +77,7 @@
           </div>
           <% } %>
           <!-- 分页 -->
-          <% if(pageNum > 1) { %>
+          <% if(pageNum > 1 && !search) { %>
           <nav class="blog-nav nav my-5">
             <% for(let i = 1; i<= pageNum; i++) { %>
             <a class="nav-item nav-link rounded" href="/?page=<%= i %>"

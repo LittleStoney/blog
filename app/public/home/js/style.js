@@ -62,6 +62,11 @@ $(function() {
       backgroundColor: resultColor,
       borderColor: resultColor,
     });
+    $('.pageNum').css({
+      'border-width': '1px',
+      'border-style': 'solod',
+      'border-color': resultColor,
+    });
     localStorage.setItem('color', resultColor);
   });
   // 遍历存储色
@@ -137,18 +142,14 @@ $(function() {
   $('.item img').each(lazyLoad);
 
   // url search
-  var urlSearch = location.search;
-  if (urlSearch.indexOf('?search') !== -1) {
-    $('.blog-nav').css('display', 'none');
-  }
   var searchContent = location.search;
-  if (searchContent) {
-    searchContent = decodeURIComponent(searchContent.split('?search=')[1]);
+  if (searchContent && searchContent.indexOf('?search') !== -1) {
+    var search = decodeURIComponent(searchContent.split('?search=')[1]);
     if ($('.title a').length !== 0) {
       $('.title a').each(function(index, ele) {
         // ele is a HTMLElement
         var title = $(ele).html();
-        var reg = new RegExp(searchContent, 'gi');
+        var reg = new RegExp(search, 'gi');
         var newSearchContent = title.match(reg);
         var newTitle = newSearchContent.reduce(function(total, cur) {
           return total.replace(cur, '<mark class="highlightTitle">' + cur + '</mark>');
@@ -159,6 +160,5 @@ $(function() {
       $('.blog-list > .container').text('空空如也，世界变得清净了~');
     }
   }
-
 });
 
