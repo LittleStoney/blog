@@ -48,13 +48,6 @@ module.exports = appInfo => {
     fileModeMatch: /\/upload_file$/,
   };
 
-  // 静态资源
-  config.static = {
-    gzip: true,
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-    prefix: '/public',
-  };
-
   // util
   config.customLoader = {
     lib: {
