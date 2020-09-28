@@ -68,6 +68,7 @@ https://shixtao.cn
 + ~~feat: #2000 完善评论回复功能~~
 + ~~feat: #1300 主页分页ui美化~~
 + ~~feat: #3000 静态资源js/css采用gulp打包优化缓存~~
++ feat: #1400 读取博客配置逻辑改为读取egg config文件
 
 
 
