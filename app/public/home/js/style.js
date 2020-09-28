@@ -62,11 +62,6 @@ $(function() {
       backgroundColor: resultColor,
       borderColor: resultColor,
     });
-    $('.pageNum').css({
-      'border-width': '1px',
-      'border-style': 'solod',
-      'border-color': resultColor,
-    });
     localStorage.setItem('color', resultColor);
   });
   // 遍历存储色

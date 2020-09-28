@@ -77,12 +77,11 @@
           </div>
           <% } %>
           <!-- 分页 -->
-          <% if(pageNum > 1 && !search) { %>
+          <% if(totalPage > 1 && !search) { %>
           <nav class="blog-nav nav my-5">
-            <% for(let i = 1; i<= pageNum; i++) { %>
-            <a class="nav-item nav-link rounded" href="/?page=<%= i %>"
-              ><%= i %></a
-            >
+            <% for(let i = 1; i<= totalPage; i++) { %>
+            <a class="pageBtn <%= +i === +currentPage ? 'currentBtn' : '' %>" href="/?page=<%= i %>"
+              ><%= i %></a>
             <% } %>
           </nav>
           <% } %>

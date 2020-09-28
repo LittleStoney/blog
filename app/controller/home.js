@@ -12,23 +12,23 @@ class HomeController extends Controller {
   // 首页
   async index() {
     const { ctx } = this;
-    const page = ctx.request.query.page || 1;
-    const start = (page - 1) * 6;
+    const currentPage = ctx.request.query.page || 1;
+    const start = (currentPage - 1) * 6;
     const end = 6;
     const search = ctx.request.query.search || '';
     const blogs = await ctx.service.home.findAll(search, start, end);
     let num = await ctx.service.home.count();
     const lists = await ctx.service.home.lists();
     num = num[0].num;
-    const pageNum = Math.ceil(num / 6);
+    const totalPage = Math.ceil(num / 6);
     for (const item of blogs) {
       item.time = moment(item.time * 1000).format('YYYY年MM月DD日 HH:mm:ss');
     }
     await ctx.render('home/index.html', {
       webConfig,
       blogs,
-      pageNum,
-      page,
+      totalPage,
+      currentPage,
       lists,
       search,
     });
