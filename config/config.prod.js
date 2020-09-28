@@ -20,5 +20,10 @@ module.exports = appInfo => {
     },
   };
 
+  // etag
+  config.etag = {
+    weak: false,
+  };
+
   return config;
 };

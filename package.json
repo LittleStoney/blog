@@ -26,6 +26,7 @@
   "dependencies": {
     "await-stream-ready": "^1.0.1",
     "egg": "^2.26.1",
+    "egg-etag": "^1.1.0",
     "egg-mysql": "^3.0.0",
     "egg-scripts": "^2.13.0",
     "egg-static": "^2.2.0",

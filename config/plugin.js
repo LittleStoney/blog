@@ -15,3 +15,7 @@ exports.validate = {
   enable: true,
   package: 'egg-validate',
 };
+// etag
+exports.etag = {
+  package: 'egg-etag',
+};
