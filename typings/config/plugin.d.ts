@@ -17,6 +17,7 @@ import 'egg-view';
 import 'egg-view-ejs';
 import 'egg-mysql';
 import 'egg-validate';
+import 'egg-etag';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {
   interface EggPlugin {
@@ -35,5 +36,6 @@ declare module 'egg' {
     ejs?: EggPluginItem;
     mysql?: EggPluginItem;
     validate?: EggPluginItem;
+    etag?: EggPluginItem;
   }
 }
