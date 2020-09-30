@@ -1,6 +1,9 @@
 'use strict';
 const ueditor = require('egg-ueditor');
 
+/**
+ * @param {Egg.Application} app - egg application
+ */
 module.exports = app => {
   // 前台
   require('./router/home')(app);

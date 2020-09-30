@@ -34,7 +34,7 @@ class adminController extends Controller {
     if (ctx.cookies.get('login')) {
       ctx.redirect('/admin');
     }
-    await this.ctx.render('admin/login.html');
+    await ctx.render('admin/login.html');
   }
   // 登录页处理
   async check() {
