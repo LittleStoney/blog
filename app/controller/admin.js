@@ -136,15 +136,14 @@ class adminController extends Controller {
     const { type, title, keywords, description, author, cid, top, content } = ctx.request.body;
     const click = 0;
     const time = Math.round((new Date().getTime()) / 1000);
-    let img;
-    if (ctx.request.files[0]) {
-      img = ctx.request.files[0];
-      const newPath = await app.lib.utils.uploadFile(img);
-      await ctx.service.blogs.postAdd(type, title, time, newPath, keywords, description, author, cid, top, content, click);
-      ctx.success('添加成功！', 'location.href="/admin/blogs"');
-    } else {
+    if (!ctx.request.files[0]) {
       ctx.failed('请上传博客图片！');
+      return false;
     }
+    const img = ctx.request.files[0];
+    const newPath = await app.lib.utils.uploadFile(img);
+    await ctx.service.blogs.postAdd(type, title, time, newPath, keywords, description, author, cid, top, content, click);
+    ctx.success('添加成功！', 'location.href="/admin/blogs"');
   }
   // 修改博客页
   async editBlog() {
