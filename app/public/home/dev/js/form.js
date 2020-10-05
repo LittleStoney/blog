@@ -55,7 +55,7 @@ function reply(user_id, comment_id, reply_name) {
   });
 }
 /**
- * 统一提交评论逻辑
+ * 统一提交评论逻辑，太尼玛混乱，不想维护了
  * @author shixtao <shixtao@qq.com> 2020-09-23
  * @param {string} [user_id] 用户id
  * @param {string} user_name 用户名
@@ -83,10 +83,10 @@ PostComment.prototype.commentData = function() {
   var that = this;
   var url = '/article/' + id;
   var data = {
-    name: that.user_name,
-    content: that.content,
-    time: that.time,
-    face: that.face,
+    name: this.user_name,
+    content: this.content,
+    time: this.time,
+    face: this.face,
   };
   function success(data) {
     if (data.status === 200) {
@@ -112,10 +112,10 @@ PostComment.prototype.replyData = function(reply_name, user_id) {
   var that = this;
   var url = '/reply?id=' + that.user_id + '&blog_id=' + id;
   var data = {
-    name: that.user_name,
-    content: that.content,
-    time: that.time,
-    face: that.face,
+    name: this.user_name,
+    content: this.content,
+    time: this.time,
+    face: this.face,
     reply_name: reply_name,
   };
   function success(data) {

@@ -1,4 +1,4 @@
-# blog_egg
+# blog
 
 ### 介绍
 个人博客源码，基于原express框架完全重构，新版由Egg.js框架搭建（BootStrap + jQuery + ejs），喜欢请star，谢谢！
@@ -9,7 +9,7 @@ https://shixtao.cn
 
 1. 如果你有Node.js基础，那么很简单，首先进入文件目录终端执行命令安装依赖
 
-   ```powershell
+   ```bash
    yarn
    #or
    npm install
@@ -21,7 +21,7 @@ https://shixtao.cn
 
 3.  本地开发
 
-   ```powershell
+   ```bash
    yarn dev
    #or
    npm run dev
@@ -30,7 +30,7 @@ https://shixtao.cn
 
 4. 线上部署
 
-   ```powershell
+   ```bash
    yarn start
    #or
    npm start
@@ -61,7 +61,7 @@ https://shixtao.cn
 
     + 打包静态css+js方法
 
-      ```powershell
+      ```bash
       yarn build
       #or
       npm run build
@@ -73,7 +73,7 @@ https://shixtao.cn
 
 #### 参与贡献
 
-    *Copyright © 2019 Shixtao*
+    *Copyright © 2019 Shixtao@qq.com*
 
 
 #### 已知bug

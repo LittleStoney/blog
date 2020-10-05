@@ -1,8 +1,7 @@
 {
-  "name": "blogv3",
-  "version": "3.0.0",
-  "description": "小涛博客第三版，后端改用EGGjs重构",
-  "main": "index.js",
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "小涛个人博客，Powered by Egg.js",
   "author": "shixtao@qq.com",
   "license": "apache",
   "egg": {
@@ -22,7 +21,7 @@
     "start": "egg-scripts start --daemon",
     "stop": "egg-scripts stop",
     "debug": "egg-bin debug",
-    "build":"gulp js && gulp css"
+    "build": "gulp js && gulp css"
   },
   "dependencies": {
     "await-stream-ready": "^1.0.1",

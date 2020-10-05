@@ -160,7 +160,7 @@
                 id="mpass"
                 name="img"
               />
-              <img src="<%= rows.img %>" alt="" />
+              <img id="img" src="<%= rows.img %>" alt="" />
               <input type="hidden" name="id" value="<%= rows.id %>" />
               <input type="hidden" name="oldimg" value="<%= rows.img %>" />
             </div>
@@ -197,5 +197,16 @@
   <script>
     //实例化编辑器
     var ue = UE.getEditor("editor");
+
+    var reader = new FileReader();
+    var input = document.querySelector('input[type=file]');
+    var img = document.getElementById('img');
+    input.addEventListener('change', function (e) {
+      var file = this.files[0];
+      reader.readAsDataURL(file);
+    });
+    reader.onload = function (e) {
+      img.src = this.result;
+    };
   </script>
 </html>
