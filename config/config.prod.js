@@ -15,8 +15,8 @@ module.exports = appInfo => {
   // https
   config.cluster = {
     https: {
-      key: path.join(__dirname, './2_shixtao.cn.key'),
-      cert: path.join(__dirname, '1_shixtao.cn_bundle.crt'),
+      key: path.join(__dirname, '/home/private.key'),
+      cert: path.join(__dirname, '/home/fullchain.crt'),
     },
   };
 
