@@ -51,7 +51,7 @@ https://shixtao.cn
 
 #### 静态资源
 
-​	为优化前端性能，加快页面打开速度，本博客前台静态资源采用了如下优化：
+​	为优化前端性能，加快页面打开速度，本博客前台静态资源采用了如下优化（切换prod分支）：
 
   + BootStrap 和 jQuery 采用了BootCDN加速 https://www.bootcdn.cn/
 
@@ -67,7 +67,7 @@ https://shixtao.cn
       npm run build
       ```
 
-      打包后新生成的文件在 _/public/home/dist/_ 目录下
+      打包后新生成的文件在 _app/public/home/_ 目录下
 
 
 
