@@ -13,5 +13,5 @@ run/
 *.un~
 *.log
 rev/
-typings/**/*
+typings/
 app/public/upload/*
