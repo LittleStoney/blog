@@ -1,5 +1,4 @@
 'use strict';
-const path = require('path');
 
 module.exports = appInfo => {
   const config = exports = {};
@@ -15,8 +14,8 @@ module.exports = appInfo => {
   // https
   config.cluster = {
     https: {
-      key: path.join(__dirname, '/home/private.key'),
-      cert: path.join(__dirname, '/home/fullchain.crt'),
+      key: '/home/private.key',
+      cert: '/home/fullchain.crt',
     },
   };
 
