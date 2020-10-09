@@ -1,5 +1,4 @@
-.vscode/**/*
-!.vscode/launch.json
+.vscode/*
 .idea/
 log/
 logs/
@@ -14,3 +13,5 @@ run/
 *.un~
 *.log
 rev/
+typings/**/*
+app/public/upload/*
