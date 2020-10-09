@@ -1,5 +1,3 @@
-.vscode/**/*
-!.vscode/launch.json
 .idea/
 log/
 logs/
@@ -13,4 +11,3 @@ run/
 *.sw*
 *.un~
 *.log
-rev/
