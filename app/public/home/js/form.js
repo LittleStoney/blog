@@ -2,7 +2,6 @@
 /* eslint-disable object-shorthand */
 
 // 去除空格
-alert(1);
 var inputs = document.querySelectorAll('input[type=text]');
 inputs.forEach(function(item) {
   item.onkeyup = function() {
