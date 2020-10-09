@@ -3,7 +3,6 @@
 const gulp = require('gulp'),
   cleanCSS = require('gulp-clean-css'),
   rev = require('gulp-rev'),
-  revCollector = require('gulp-rev-collector'),
   rename = require('gulp-rename'),
   uglify = require('gulp-uglify'),
   concat = require('gulp-concat');

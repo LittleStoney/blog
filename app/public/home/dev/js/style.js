@@ -38,6 +38,35 @@ $(function() {
     $('#config-trigger').click();
   });
 
+  // url header li高亮
+  var currenPage = location.href;
+  if (currenPage.indexOf('list') !== -1) {
+    // 分类页
+    $('.navbar-nav > .nav-item:nth-child(2)').addClass('active');
+  } else {
+    $('.navbar-nav > .nav-item:nth-child(1)').addClass('active');
+  }
+
+  // url search
+  var searchContent = location.search;
+  if (searchContent && searchContent.indexOf('?search') !== -1) {
+    var search = decodeURIComponent(searchContent.split('?search=')[1]);
+    if ($('.title a').length !== 0) {
+      $('.title a').each(function(index, ele) {
+        // ele is a HTMLElement
+        var title = $(ele).html();
+        var reg = new RegExp(search, 'gi');
+        var newSearchContent = title.match(reg);
+        var newTitle = newSearchContent.reduce(function(total, cur) {
+          return total.replace(cur, '<mark class="highlightTitle">' + cur + '</mark>');
+        }, title);
+        $(ele).html(newTitle);
+      });
+    } else {
+      $('.blog-list > .container').text('空空如也，世界变得清净了~');
+    }
+  }
+
   // 点击选择颜色
   var colors = [	// 颜色数组
     '#5ecca9',
@@ -135,25 +164,5 @@ $(function() {
     io.observe(target);
   }
   $('.item img').each(lazyLoad);
-
-  // url search
-  var searchContent = location.search;
-  if (searchContent && searchContent.indexOf('?search') !== -1) {
-    var search = decodeURIComponent(searchContent.split('?search=')[1]);
-    if ($('.title a').length !== 0) {
-      $('.title a').each(function(index, ele) {
-        // ele is a HTMLElement
-        var title = $(ele).html();
-        var reg = new RegExp(search, 'gi');
-        var newSearchContent = title.match(reg);
-        var newTitle = newSearchContent.reduce(function(total, cur) {
-          return total.replace(cur, '<mark class="highlightTitle">' + cur + '</mark>');
-        }, title);
-        $(ele).html(newTitle);
-      });
-    } else {
-      $('.blog-list > .container').text('空空如也，世界变得清净了~');
-    }
-  }
 });
 
