@@ -88,12 +88,11 @@ https://shixtao.cn
 #### 需求
 
 + ~~feat: #1000 使用egg+sequelize重构数据库~~（考虑sequelize复杂性放弃）
-+ feat: #1100 评论区接入QQ登录，使用QQ用户的头像和姓名
++ ~~feat: #1100 评论区接入QQ登录，使用QQ用户的头像和姓名~~（腾讯不给审核）
 + ~~feat: #1200 搜索框关键词高亮~~
 + ~~feat: #2000 完善评论回复功能~~
 + ~~feat: #1300 主页分页ui美化~~
-+ ~~feat: #3000 静态资源js/css采用gulp打包优化缓存~~
-+ ~~feat: #1400 读取博客配置逻辑改为读取egg config文件~~(config只读，不推荐更改)
++ ~~feat: #3000 静态资源js/css采用gulp打包优化缓存~~（config只读，不推荐更改）
 
 
 
