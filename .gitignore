@@ -11,3 +11,5 @@ run/
 *.sw*
 *.un~
 *.log
+rev/
+app/public/upload/*
