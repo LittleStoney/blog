@@ -9,6 +9,8 @@ module.exports = app => {
   router.get('/', app.controller.home.index);
   // 分类页
   router.get('/list', app.controller.home.list);
+  // ajax分类
+  router.get('/ajax_list', app.controller.home.ajaxList);
   // 文章页
   router.get('/article/:id', app.controller.home.article);
   // 评论

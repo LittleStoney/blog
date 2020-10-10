@@ -10,15 +10,19 @@
       <section class="cta-section theme-bg-light py-5">
         <div class="container text-center">
           <h2 class="heading">小涛的博客 ——— 选择你喜欢的博客分类</h2>
-          <ul class="navbar-nav flex-column" style="text-align: left;">
-            <% for(let list of lists) { %>
-            <li class="nav-item list-nav-item">
-              <a class="blog-type" href="/list?listSearch=<%= list.id %>"
-                ><%= list.name %></a
-              >
-            </li>
-            <% } %>
-          </ul>
+          <form>
+            <div class="form-row align-items-center justify-content-center">
+              <div class="col-auto my-1">
+                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                  <option selected>选择分类</option>
+                  <% lists.forEach(list => { %>
+                  <option value="<%= list.id %>"><%= list.name %></option>
+                  <% }) %>
+                </select>
+              </div>
+            </div>
+          </form>
         </div>
       </section>
       <section class="blog-list px-3 py-5 p-md-5">
