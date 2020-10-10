@@ -24,13 +24,18 @@ class HomeService extends Service {
     const lists = await app.mysql.select('blogstype');
     return lists;
   }
-  async listBlogs(listSearch) {
+  async listBlogs(cid) {
     const { app } = this;
-    const blogs = await app.mysql.query(`
-    SELECT * FROM blogs
-     WHERE cid LIKE ? 
-     ORDER BY id DESC
-    `, [ `%${listSearch}%` ]);
+    let where;
+    if (cid) {
+      where = {
+        cid,
+      };
+    }
+    const blogs = await app.mysql.select('blogs', {
+      where,
+      orders: [[ 'id', 'desc' ]],
+    });
     return blogs;
   }
   async queryBlog(id) {

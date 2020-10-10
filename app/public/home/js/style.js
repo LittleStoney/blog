@@ -164,5 +164,34 @@ $(function() {
     io.observe(target);
   }
   $('.item img').each(lazyLoad);
+
+  // 分类页select框
+  $('#inlineFormCustomSelect').on('change', function() {
+    var value = $('#inlineFormCustomSelect option:checked').val();
+    var listName = $('#inlineFormCustomSelect option:checked').text();
+    $.get('/ajax_list', { cid: value }, function(datas) {
+      if (datas.status === 200 && datas.message.length > 0) {
+        var documentFragment = document.createDocumentFragment();
+        datas.message.forEach(function(data) {
+          var div = $('<div class="item mb-5"></div>')[0];
+          div.innerHTML = '<div class="media">\n        <img\n          src="https://via.placeholder.com/110x110.png?text=shixtao.cn"\n          class="mr-3 img-fluid post-thumb d-none d-md-flex"\n          data-src="'.concat(data.img, '"\n        />\n        <div class="media-body">\n          <h2 class="title mb-1">\n            <a href="/article/').concat(data.id, '">').concat(data.title, '</a>\n          </h2>\n          <div class="meta mb-1">\n            <i class="iconfont icon-bokeyuan"></i>\n            <span title="\u535A\u5BA2\u7C7B\u578B"\n              >')
+            .concat(data.type, '&nbsp;\n              <span class="text-info">\n                ')
+            .concat(listName, '\n              </span>\n            </span>\n            <i class="iconfont icon-shizhong"></i>\n            <span title="\u53D1\u8868\u65F6\u95F4">')
+            .concat(data.time, '</span>\n            <i class="iconfont icon-renyuan"></i>\n            <span title="\u535A\u5BA2\u4F5C\u8005">')
+            .concat(data.author, '</span>\n            <i class="iconfont icon-pinglun"></i>\n            <span title="\u8BC4\u8BBA"\n              ><a href="/article/')
+            .concat(data.id, '#form"\n                >')
+            .concat(data.comment, ' \u8BC4\u8BBA</a\n              ></span\n            >\n            <i class="iconfont icon-liulan"></i>\n            <span title="\u6D4F\u89C8\u91CF">')
+            .concat(data.click, '</span>\n          </div>\n          <div class="intro">')
+            .concat(data.description, '</div>\n          <a class="more-link" href="/article/')
+            .concat(data.id, '"\n            >\u66F4\u591A\u5185\u5BB9 &rarr;</a\n          >\n        </div>\n      </div>\n          ');
+          documentFragment.appendChild(div);
+        });
+        $('.blog-list > .container').html(documentFragment);
+        $('.item img').each(lazyLoad);
+      } else {
+        location.href = '/list';
+      }
+    });
+  });
 });
 

@@ -36,9 +36,8 @@ class HomeController extends Controller {
   // 分类页
   async list() {
     const { ctx } = this;
-    const listSearch = ctx.request.query.listSearch ? ctx.request.query.listSearch : '';
     const lists = await ctx.service.home.lists();
-    const blogs = await ctx.service.home.listBlogs(listSearch);
+    const blogs = await ctx.service.home.listBlogs();
     blogs.forEach(item => {
       item.time = moment(item.time * 1000).format('YYYY年MM月DD日 HH:mm:ss');
     });
@@ -47,6 +46,16 @@ class HomeController extends Controller {
       lists,
       blogs,
     });
+  }
+  // ajax搜索分类
+  async ajaxList() {
+    const { ctx } = this;
+    const cid = ctx.query.cid;
+    const blogs = await ctx.service.home.listBlogs(cid);
+    blogs.forEach(item => {
+      item.time = moment(item.time * 1000).format('YYYY年MM月DD日 HH:mm:ss');
+    });
+    ctx.ajaxSuccess(200, blogs);
   }
   // 文章页
   async article() {
