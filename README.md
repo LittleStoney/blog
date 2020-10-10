@@ -51,7 +51,7 @@ https://shixtao.cn
 
 #### 静态资源
 
-​	为优化前端性能，加快页面打开速度，本博客前台静态资源采用了如下优化：（说明见文章）
+​	为优化前端性能，加快页面打开速度，本博客前台静态资源采用了如下优化：（https://shixtao.cn/article/54）
 
   + BootStrap 和 jQuery 采用了BootCDN加速 https://www.bootcdn.cn/
 

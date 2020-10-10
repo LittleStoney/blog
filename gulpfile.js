@@ -18,7 +18,7 @@ gulp.task('css', function() {
 });
 
 gulp.task('js', function() {
-  return gulp.src('./app/public/home/js/*.js')
+  return gulp.src([ './app/public/home/js/form.js', './app/public/home/js/style.js' ])
     .pipe(concat('index.js'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(rev())
