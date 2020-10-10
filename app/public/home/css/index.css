@@ -3404,7 +3404,6 @@ input[type="button"].btn-block {
   line-height: 1.5;
   color: #5c5c5c;
   vertical-align: middle;
-  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23434343' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
   background-color: #fff;
   border: 1px solid #9c9c9c;
   border-radius: 0.25rem;
@@ -10221,31 +10220,6 @@ body {
 }
 .blog-type {
   color: #000;
-}
-.list-nav-item::before {
-  width: 18px;
-  height: 18px;
-  color: #fff;
-  line-height: 18px;
-  border-radius: 5px;
-  display: inline-block;
-  text-align: center;
-}
-.list-nav-item:first-child::before {
-  content: "1";
-  background: #ff858e;
-}
-.list-nav-item:nth-child(2)::before {
-  content: "2";
-  background: #77d549;
-}
-.list-nav-item:nth-child(3)::before {
-  content: "3";
-  background: #007bff;
-}
-.list-nav-item:nth-child(n+4)::before {
-  content: "";
-  background: #cecece;
 }
 /* logo */
 .logo {
