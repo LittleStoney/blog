@@ -95,8 +95,6 @@ class HomeController extends Controller {
       ctx.ajaxFailed(500, '评论失败');
       return false;
     }
-    // 原评论缓存全部设置过期
-    redisClient.expire('comments', 0);
     ctx.ajaxSuccess(200, {
       name,
       content,
@@ -118,7 +116,6 @@ class HomeController extends Controller {
       ctx.ajaxFailed(500, '回复失败');
       return false;
     }
-    redisClient.expire('replies', 0);
     ctx.ajaxSuccess(200, {
       replyname: name,
       replycomment: content,
