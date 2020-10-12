@@ -94,7 +94,6 @@ https://shixtao.cn
 + ~~feat: #1300 主页分页ui美化~~
 + ~~feat: #3000 静态资源js/css采用gulp打包优化缓存~~（config只读，不推荐更改）
 + ~~feat: #4000 分类页采用ajax渲染文章，添加热门分类~~
-+ feat: #5000 评论区采用读写分离，使用redis读取评论和回复
 
 
 
