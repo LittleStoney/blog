@@ -2,6 +2,7 @@
 // Do not modify this file!!!!!!!!!
 
 import 'egg';
+import ExportRedis = require('../../../app/lib/redis');
 import ExportUtils = require('../../../app/lib/utils');
 
 declare module 'egg' {
@@ -10,6 +11,7 @@ declare module 'egg' {
   }
 
   interface T_utils {
+    redis: ExportRedis;
     utils: ExportUtils;
   }
 }

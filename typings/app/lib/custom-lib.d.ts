@@ -6,6 +6,7 @@ type AnyClass = new (...args: any[]) => any;
 type AnyFunc<T = any> = (...args: any[]) => T;
 type CanExportFunc = AnyFunc<Promise<any>> | AnyFunc<IterableIterator<any>>;
 type AutoInstanceType<T, U = T extends CanExportFunc ? T : T extends AnyFunc ? ReturnType<T> : T> = U extends AnyClass ? InstanceType<U> : U;
+import ExportRedis = require('../../../app/lib/redis');
 import ExportUtils = require('../../../app/lib/utils');
 
 declare module 'egg' {
@@ -14,6 +15,7 @@ declare module 'egg' {
   }
 
   interface T_custom_lib {
+    redis: AutoInstanceType<typeof ExportRedis>;
     utils: AutoInstanceType<typeof ExportUtils>;
   }
 }
