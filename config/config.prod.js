@@ -6,7 +6,7 @@ module.exports = appInfo => {
   // 静态资源
   config.static = {
     gzip: true,
-    maxAge: 1000 * 60 * 24 * 7,
+    maxAge: 1000 * 60 * 60 * 24 * 7,
     prefix: '/public/',
     buffer: false,
   };
