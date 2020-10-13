@@ -7,6 +7,8 @@ module.exports = app => {
   const { router } = app;
   // 首页
   router.get('/', app.controller.home.index);
+  // 热门文章
+  router.get('/hot', app.controller.home.hot);
   // 分类页
   router.get('/list', app.controller.home.list);
   // ajax分类
