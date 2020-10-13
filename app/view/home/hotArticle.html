@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <%- include('./public/head.html') %>
+  </head>
+
+  <body onload="colorSet()">
+    <%- include('./public/header.html') %>
+    <div class="main-wrapper">
+      <section class="cta-section theme-bg-light py-5">
+        <div class="container text-center">
+          <h2 class="heading">小涛的博客 ——— 热门文章（每日更新）</h2>
+        </div>
+      </section>
+      <section class="blog-list px-3 py-5 p-md-5">
+        <div class="container">
+          <div class="list-group">
+            <% hotBlogs.forEach(item => { %>
+            <a href="/article/<%= item.id %>" class="list-group-item list-group-item-action mb-1 active1">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><%= item.title %></h5>
+                <small><i class="iconfont icon-remen1"></i><%= item.click %></small>
+              </div>
+              <p class="mb-1 text-truncate"><%= item.description %></p>
+              <small><%= item.keywords %></small>
+            </a>
+            <% }) %>
+          </div>
+        </div>
+      </section>
+      <%- include('./public/footer.html') %>
+    </div>
+    <%- include('./public/color.html') %>
+    <%- include('./public/script.html') %>
+  </body>
+</html>

@@ -10271,3 +10271,15 @@ body {
   background: var(--cyan);
   color: #fff;
 }
+.active1:hover {
+  background: var(--cyan);
+}
+.active2:hover {
+  background: var(--bule);
+}
+.active3:hover {
+  background: var(--orange);
+}
+.active4:hover {
+  background: var(--purple);
+}
