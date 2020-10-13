@@ -40,9 +40,12 @@ $(function() {
 
   // url header li高亮
   var currenPage = location.href;
-  if (currenPage.indexOf('list') !== -1) {
-    // 分类页
+  if (currenPage.indexOf('hot') !== -1) {
+    // 热门博客
     $('.navbar-nav > .nav-item:nth-child(2)').addClass('active');
+  } else if (currenPage.indexOf('list') !== -1) {
+    // 分类
+    $('.navbar-nav > .nav-item:nth-child(3)').addClass('active');
   } else {
     $('.navbar-nav > .nav-item:nth-child(1)').addClass('active');
   }
@@ -91,6 +94,8 @@ $(function() {
       backgroundColor: resultColor,
       borderColor: resultColor,
     });
+    var targetActive = 'active' + (currentIndex + 1);
+    $('.list-group-item').removeClass().addClass('list-group-item list-group-item-action mb-1 ' + targetActive);
     localStorage.setItem('color', resultColor);
   });
   // 遍历存储色

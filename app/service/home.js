@@ -19,6 +19,15 @@ class HomeService extends Service {
     const num = await app.mysql.query('SELECT COUNT(*) AS num FROM blogs');
     return num;
   }
+  async findHotBlogs() {
+    const { app } = this;
+    const hotBlogs = await app.mysql.select('blogs', {
+      orders: [[ 'click', 'desc' ]],
+      offset: 0,
+      limit: 6,
+    });
+    return hotBlogs;
+  }
   async lists() {
     const { app } = this;
     const lists = await app.mysql.select('blogstype');

@@ -6,9 +6,9 @@
 <meta name="keywords" content="<%= webConfig.keywords %>" />
 <meta name="baidu-site-verification" content="H91h9G7RRd" />
 <meta name="author" content="shixtao" />
-<link rel="stylesheet" href="/public/home/css/index-824a61fed6.min.css" />
+<link id="theme-style" rel="stylesheet" href="/public/home/css/index-fac6475525.min.css" />
 <link rel="shortcut icon" href="/public/home/images/favicon.ico" />
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1611091_bx54xqd4lzu.css" />
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1611091_sf4ghg5ts0i.css" />
 <script>
   //颜色保存于localstorage中
   function colorSet() {
@@ -22,6 +22,20 @@
       });
       $(".list-inline-item a").css("color", color);
       $(".more-link").css("color", color);
+      var colors = [
+      '#5ecca9',
+      '#3b7eeb',
+      '#eea73b',
+      '#6c51a4',
+      ];
+      var targetActive = 1;
+      colors.forEach(function (item, index) {
+        if (color === item) {
+          targetActive = index + 1;
+        }
+      });
+      console.log(targetActive);
+      $('.list-group-item').removeClass().addClass('list-group-item list-group-item-action mb-1 active' + targetActive);
     }
   }
 </script>

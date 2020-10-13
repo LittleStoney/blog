@@ -5,6 +5,8 @@ const moment = require('moment');
 const xss = require('xss');
 const webConfigData = fs.readFileSync(__dirname + '/../../config/config.system.json');
 const webConfig = JSON.parse(webConfigData.toString());
+const { getRedisClient } = require('../lib/redis');
+const redisClient = getRedisClient();
 
 const Controller = require('egg').Controller;
 
@@ -31,6 +33,45 @@ class HomeController extends Controller {
       currentPage,
       lists,
       search,
+    });
+  }
+  // 热门页
+  async hot() {
+    const { ctx } = this;
+    const lists = await ctx.service.home.lists();
+    let hotBlogs = [];
+    const HOTBLOGIDARRAY = await redisClient.zrevrange('hotBlogsID', 0, -1);
+
+    if (HOTBLOGIDARRAY && HOTBLOGIDARRAY.length) {
+      console.info('读取redis缓存');
+      for (const hotBlogId of HOTBLOGIDARRAY) {
+        const result = await redisClient.hmget(`hotBlogsID:${hotBlogId}`, 'id', 'title', 'click', 'description', 'keywords');
+        hotBlogs.push({
+          id: result[0],
+          title: result[1],
+          click: result[2],
+          description: result[3],
+          keywords: result[4],
+        });
+      }
+    } else {
+      console.info('读取mysql');
+      hotBlogs = await ctx.service.home.findHotBlogs();
+      for (const item of hotBlogs) {
+        redisClient.zadd('hotBlogsID', item.click, item.id);
+        redisClient.hmset(`hotBlogsID:${item.id}`, item);
+        redisClient.expire(`hotBlogsID:${item.id}`, 60 * 60 * 24);
+      }
+      redisClient.expire('hotBlogsID', 60 * 60 * 24);
+    }
+
+    for (const item of hotBlogs) {
+      item.time = moment(item.time * 1000).format('YYYY年MM月DD日 HH:mm:ss');
+    }
+    await ctx.render('home/hotArticle.html', {
+      webConfig,
+      hotBlogs,
+      lists,
     });
   }
   // 分类页
