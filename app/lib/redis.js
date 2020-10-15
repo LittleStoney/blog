@@ -14,7 +14,7 @@ const redisConfig = {
 
 /**
  * 获取redis客户端
- * @return {client} 返回redis客户端
+ * @return {Redis} 返回redis客户端
  */
 const getRedisClient = () => {
 
