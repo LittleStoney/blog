@@ -9,11 +9,11 @@ $(function() {
     webImg.onload = function() {
       var result = webImg.width > 0 && webImg.height > 0;
       if (!result) {
-        img.src = '/public/home/dev/images/win10狗头.jpg';
+        img.src = '/public/home/images/win10狗头.jpg';
       }
     };
     webImg.onerror = function() {
-      img.src = '/public/home/dev/images/win10狗头.jpg';
+      img.src = '/public/home/images/win10狗头.jpg';
     };
   }
   checkWebp(document.querySelector('.profile-image'));
