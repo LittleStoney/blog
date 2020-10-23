@@ -155,6 +155,13 @@ $(function() {
     threshold: 1,
     rootMargin: '0px',
   };
+  if (typeof IntersectionObserver !== 'function') {
+    var listImgsSrc = $('.img-list');
+    listImgsSrc.each(function() {
+      const imgSrc = this.getAttribute('data-src');
+      $(this).attr('src', imgSrc);
+    });
+  }
   function lazyLoad(index, target) {
     var io = new IntersectionObserver(function(entries, observer) {
       entries.forEach(function(entry) {
