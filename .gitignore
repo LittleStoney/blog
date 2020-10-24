@@ -13,3 +13,4 @@ run/
 *.log
 rev/
 app/public/upload/*
+typings/
