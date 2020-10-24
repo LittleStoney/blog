@@ -155,13 +155,6 @@ $(function() {
     threshold: 1,
     rootMargin: '0px',
   };
-  if (typeof IntersectionObserver !== 'function') {
-    var listImgsSrc = $('.img-list');
-    listImgsSrc.each(function() {
-      var imgSrc = this.getAttribute('data-src');
-      $(this).attr('src', imgSrc);
-    });
-  }
   function lazyLoad(index, target) {
     var io = new IntersectionObserver(function(entries, observer) {
       entries.forEach(function(entry) {
@@ -175,7 +168,15 @@ $(function() {
     }, options);
     io.observe(target);
   }
-  $('.item img').each(lazyLoad);
+  if (typeof IntersectionObserver !== 'function') {
+    var listImgsSrc = $('.img-list');
+    listImgsSrc.each(function() {
+      var imgSrc = this.getAttribute('data-src');
+      $(this).attr('src', imgSrc);
+    });
+  } else {
+    $('.item img').each(lazyLoad);
+  }
 
   // 分类页select框
   $('#inlineFormCustomSelect').on('change', function() {
