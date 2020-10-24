@@ -2,11 +2,8 @@
 /* eslint-disable object-shorthand */
 
 // 去除空格
-var inputs = document.querySelectorAll('input[type=text]');
-inputs.forEach(function(item) {
-  item.onkeyup = function() {
-    this.value = this.value.trim();
-  };
+$('input[type=text]').on('keyup', function() {
+  this.value = this.value.trim();
 });
 // 处理url信息
 var htmlHref = window.location.href;
