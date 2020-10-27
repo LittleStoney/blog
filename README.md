@@ -17,7 +17,7 @@ https://shixtao.cn
 
    
 
-2. **添加数据库，mysql执行blog_egg.sql文件**（必须）。注意数据库的名称、账户和密码，在config目录下的config.default.js可以修改相关参数
+2. **创建数据库，MySQL执行blog_egg.sql文件（表默认存储引擎为InnoDB）**。注意数据库的名称、账户和密码，在config目录下的config.default.js可以修改相关参数。1.0正式版后添加了redis缓存热门博客功能，因此还需要启动redis服务。redis相关配置在app/lib/redis.js文件，默认为**localhost 6379端口**，因此只需要执行```redis-server &``` 命令启动服务即可
 
 3.  本地开发
 
