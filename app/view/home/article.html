@@ -14,22 +14,6 @@
       rel="stylesheet"
       type="text/css"
     />
-    <script>
-      //颜色保存于localstorage中
-      function colorSet() {
-        var color = localStorage.getItem("color");
-        if (color) {
-          $(".header").css("backgroundColor", color);
-          $(".nav-link").css("backgroundColor", color);
-          $(".btn-primary").css({
-            backgroundColor: color,
-            borderColor: color,
-          });
-          $(".list-inline-item a").css("color", color);
-          $(".more-link").css("color", "#6C51A4");
-        }
-      }
-    </script>
     <link rel="stylesheet" href="/public/home/css/index.css" />
     <link rel="shortcut icon" href="/public/home/images/favicon.ico" />
     <link
@@ -48,7 +32,7 @@
     <title><%= blog.title %></title>
   </head>
 
-  <body onload="colorSet()">
+  <body>
     <%- include('./public/header.html') %>
     <div class="main-wrapper">
       <article class="blog-post px-3 py-5 p-md-5">
