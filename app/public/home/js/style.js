@@ -1,6 +1,73 @@
 /* eslint-disable strict */
 
 $(function() {
+
+  // 颜色保存于localstorage中
+  var colors = [
+    '#5ecca9',
+    '#3b7eeb',
+    '#eea73b',
+    '#6c51a4',
+  ];
+  var color = localStorage.getItem('color');
+  if (color) {
+    $('.header').css('backgroundColor', color);
+    $('.nav-link').css('backgroundColor', color);
+    $('.btn-primary').css({
+      backgroundColor: color,
+      borderColor: color,
+    });
+    $('.list-inline-item a').css('color', color);
+    $('.more-link').css('color', color);
+    var targetActive = 1;
+    colors.forEach(function(item, index) {
+      if (color === item) {
+        targetActive = index + 1;
+      }
+    });
+    $('.list-group-item').removeClass().addClass('list-group-item list-group-item-action mb-1 active' + targetActive);
+  }
+  // 点击选择颜色
+  // 切换皮肤
+  var cureentColor = localStorage.getItem('color'),
+    $listLnlineItem = $('#color-options .list-inline-item');
+  $listLnlineItem.click(function() {
+    $(this).addClass('active').siblings()
+      .removeClass('active');
+    var currentIndex = $(this).index(),
+      resultColor;
+    resultColor = colors[currentIndex];
+    $('.header').css('backgroundColor', resultColor);
+    $('.nav-link').css('backgroundColor', resultColor);
+    $('.more-link').css('color', resultColor);
+    $('.list-inline-item a').css('color', resultColor);
+    $('.btn-primary').css({
+      backgroundColor: resultColor,
+      borderColor: resultColor,
+    });
+    var targetActive = 'active' + (currentIndex + 1);
+    $('.list-group-item').removeClass().addClass('list-group-item list-group-item-action mb-1 ' + targetActive);
+    localStorage.setItem('color', resultColor);
+  });
+  // 遍历存储色
+  switch (cureentColor) {
+    case colors[0]:
+      $listLnlineItem.eq(0).addClass('active');
+      break;
+    case colors[1]:
+      $listLnlineItem.eq(1).addClass('active');
+      break;
+    case colors[2]:
+      $listLnlineItem.eq(2).addClass('active');
+      break;
+    case colors[3]:
+      $listLnlineItem.eq(3).addClass('active');
+      break;
+    default:
+      $listLnlineItem.eq(0).addClass('active');
+      break;
+  }
+
   // 检测webp
   function checkWebp(img) {
     var webImg = new Image();
@@ -68,53 +135,6 @@ $(function() {
     } else {
       $('.blog-list > .container').text('空空如也，世界变得清净了~');
     }
-  }
-
-  // 点击选择颜色
-  var colors = [	// 颜色数组
-    '#5ecca9',
-    '#3b7eeb',
-    '#eea73b',
-    '#6c51a4',
-  ];
-  // 切换皮肤
-  var cureentColor = localStorage.getItem('color'),
-    $listLnlineItem = $('#color-options .list-inline-item');
-  $listLnlineItem.click(function() {
-    $(this).addClass('active').siblings()
-      .removeClass('active');
-    var currentIndex = $(this).index(),
-      resultColor;
-    resultColor = colors[currentIndex];
-    $('.header').css('backgroundColor', resultColor);
-    $('.nav-link').css('backgroundColor', resultColor);
-    $('.more-link').css('color', resultColor);
-    $('.list-inline-item a').css('color', resultColor);
-    $('.btn-primary').css({
-      backgroundColor: resultColor,
-      borderColor: resultColor,
-    });
-    var targetActive = 'active' + (currentIndex + 1);
-    $('.list-group-item').removeClass().addClass('list-group-item list-group-item-action mb-1 ' + targetActive);
-    localStorage.setItem('color', resultColor);
-  });
-  // 遍历存储色
-  switch (cureentColor) {
-    case colors[0]:
-      $listLnlineItem.eq(0).addClass('active');
-      break;
-    case colors[1]:
-      $listLnlineItem.eq(1).addClass('active');
-      break;
-    case colors[2]:
-      $listLnlineItem.eq(2).addClass('active');
-      break;
-    case colors[3]:
-      $listLnlineItem.eq(3).addClass('active');
-      break;
-    default:
-      $listLnlineItem.eq(0).addClass('active');
-      break;
   }
 
   // 动态logo
