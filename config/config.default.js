@@ -22,7 +22,7 @@ module.exports = appInfo => {
       // host
       host: 'localhost',
       // 端口号
-      port: '3306',
+      port: '3307',
       // 用户名
       user: 'root',
       // 密码
