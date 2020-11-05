@@ -2,6 +2,7 @@
 <html lang="zh-CN">
   <head>
     <%- include('./public/head.html') %>
+    <script src="../../controller/home.js"></script>
   </head>
 
   <body>
@@ -47,11 +48,13 @@
                 </h2>
                 <div class="meta mb-1">
                   <i class="iconfont icon-bokeyuan"></i>
-                  <span title="博客类型"
+                  <span
                     ><%= data.type %>&nbsp;
-                    <span class="text-info">
-                      <% for(let list of lists){ %> <% if(data.cid === list.id){
-                      %> <%= list.name %> <% } %> <% } %>
+                    <span>
+                      <a class="text-info" href="/list?cid=<%= data.cid %>" title="博客类型">
+                        <% for(let list of lists){ %> <% if(data.cid === list.id){
+                        %> <%= list.name %> <% } %> <% } %>
+                      </a>
                     </span>
                   </span>
                   <i class="iconfont icon-shizhong"></i>
