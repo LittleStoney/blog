@@ -77,8 +77,9 @@ class HomeController extends Controller {
   // 分类页
   async list() {
     const { ctx } = this;
+    const { cid } = ctx.query;
     const lists = await ctx.service.home.lists();
-    const blogs = await ctx.service.home.listBlogs();
+    const blogs = await ctx.service.home.listBlogs(cid);
     blogs.forEach(item => {
       item.time = moment(item.time * 1000).format('YYYY年MM月DD日 HH:mm:ss');
     });
