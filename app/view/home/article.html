@@ -43,11 +43,11 @@
             </h2>
             <div class="meta mb-3">
               <i class="iconfont icon-bokeyuan"></i>
-              <span title="博客类型"
-                ><%= blog.type %>&nbsp;<span class="text-info"
-                  ><%= list.name %></span
-                ></span
-              >
+              <span title="博客类型"><%= blog.type %>&nbsp;
+                <span title="博客分类">
+                <a class="text-info" href="/list?cid=<%= blog.cid %>"><%= list.name %></a>
+                </span>
+              </span>
               <i class="iconfont icon-shizhong"></i>
               <span title="发表时间"><%= blog.time %></span>
               <i class="iconfont icon-renyuan"></i>
