@@ -1,9 +1,7 @@
 'use strict';
-
 const { promises: fs, existsSync } = require('fs');
 const moment = require('moment');
 const Controller = require('egg').Controller;
-
 const rule = {
   adminname: {
     required: true,
@@ -16,7 +14,6 @@ const rule = {
     min: 8,
   },
 };
-
 class adminController extends Controller {
   // 后台首页
   async index() {
