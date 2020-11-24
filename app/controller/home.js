@@ -87,6 +87,7 @@ class HomeController extends Controller {
       webConfig,
       lists,
       blogs,
+      cid,
     });
   }
   // ajax搜索分类

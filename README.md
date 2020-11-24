@@ -15,7 +15,7 @@ https://shixtao.cn
    npm install
    ```
 
-   
+
 
 2. **创建数据库，MySQL执行blog_egg.sql文件（表默认存储引擎为InnoDB）**。注意数据库的名称、账户和密码，在config目录下的config.default.js可以修改相关参数。1.0正式版后添加了redis缓存热门博客功能，因此还需要启动redis服务。redis相关配置在app/lib/redis.js文件，默认为**localhost 6379端口**，因此只需要执行```redis-server &``` 命令启动服务即可
 
@@ -38,14 +38,14 @@ https://shixtao.cn
    yarn start -- --port=443
    ```
 
-   
+
 
 #### 使用说明
 
   后台管理初始账号：123456  初始密码：12345678
   开启https服务：请查看个人博客说明：https://shixtao.cn/article/41
 
-  免费申请SSL证书：https://letsencrypt.osfipin.com/  
+  免费申请SSL证书：https://letsencrypt.osfipin.com/
 
 
 
@@ -99,7 +99,7 @@ https://shixtao.cn
 + ~~feat: #5000 **博客新增热门页，采用redis进行缓存**~~
 + ~~feat: #1400 博客主题切换优化，抽离colorSet函数~~
 
-### 赞助  
+### 赞助
   感谢 [JetBrains](https://www.jetbrains.com/?from=LittleStoney)公司对本开源项目的大力支持，为本开源项目提供了正版全家桶IDE支持，Thanks a lot！
 
 ![jetbrains-variant-4](https://note.youdao.com/yws/api/personal/file/WEBdd8cf6ced948fe5c38182858f2f6ae8c?method=download&shareKey=9e13b20d59ec1290f0d595c3745d5bf0)
