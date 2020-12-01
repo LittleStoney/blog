@@ -98,6 +98,7 @@ https://shixtao.cn
 + ~~feat: #4000 分类页采用ajax渲染文章，添加热门分类~~
 + ~~feat: #5000 **博客新增热门页，采用redis进行缓存**~~
 + ~~feat: #1400 博客主题切换优化，抽离colorSet函数~~
++ feat: #1500 后台博客管理页优化
 
 ### 赞助
   感谢 [JetBrains](https://www.jetbrains.com/?from=LittleStoney)公司对本开源项目的大力支持，为本开源项目提供了正版全家桶IDE支持，Thanks a lot！
